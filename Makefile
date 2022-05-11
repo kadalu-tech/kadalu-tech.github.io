@@ -11,7 +11,7 @@ site-build:
 site-build-prod: css-build
 	bundle install
 	npm install
-	bundle exec nanoc
+	bundle exec nanoc compile --env prod
 
 site-view:
 	bundle exec nanoc view -L
