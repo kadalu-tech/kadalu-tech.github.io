@@ -1,0 +1,11 @@
+---
+title: Kadalu Storage Documentation
+---
+
+== Kadalu Storage for Kubernetes
+
+Setting up Kadalu Storage for Kubernetes is very easy. Click link:#[here] for Kadalu Kubernetes Storage documentation.
+
+== Kadalu Storage for Cloud, On-Premise or Raspberry pi
+
+Follow link:#[this documentation] to know more about Kadalu Storage installation and usage.

@@ -1,0 +1,5 @@
+---
+title: Kadalu Storage for Gluster users
+---
+
+If you are familiar with GlusterFS and want to know about similarities and differences?

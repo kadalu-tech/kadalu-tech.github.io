@@ -4,10 +4,7 @@
     <body>
         <div id="main">
             <%= render '/top_bar.*' %>
-            <div class="py-10 px-10" id="content">
-                <h1><%= @item[:title] %></h1>
-                <%= yield %>
-            </div>
+            <%= yield %>
             <%= render '/footer.*' %>
         </div>
     </body>

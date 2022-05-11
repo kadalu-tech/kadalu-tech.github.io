@@ -1,0 +1,16 @@
+---
+title: List of Blog Posts
+---
+<div class="md:flex flex-row flex-wrap pb-10 mt-10">
+    <% sort_blog_posts(@items.find_all('/blog/*')).each do |post| %>
+        <% author = author_data(post[:author].to_sym) %>
+        <% slug, created_at = slug_and_created_at(post) %>
+        <div class="basis-1/4">
+            <a class="shadow-lg bg-white m-2 p-5 bg-blue-50 rounded-lg mb-5 block h-[350px] text-gray-700" href="/blog/<%= slug %>">
+                <div class="font-semibold text-xl mb-2 text-black"><%= post[:title] %></div>
+                <div class="text-gray-500 text-sm mb-7">Posted on <strong><%= get_pretty_date(created_at) %></strong> by <strong><%= author[:name] %></strong></div>
+                <p class="text-sm text-gray-600"><%= post[:description] %>...</p>
+            </a>
+        </div>
+    <% end %>
+</div>

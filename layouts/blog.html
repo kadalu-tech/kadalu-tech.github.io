@@ -1,0 +1,44 @@
+<% slug, created_at = slug_and_created_at(item) %>
+<% author = author_data(item[:author].to_sym) %>
+<!DOCTYPE HTML>
+<html lang="en">
+    <%= render '/head.*' %>
+    <body>
+        <div id="main">
+            <%= render '/top_bar.*' %>
+            <div class="py-10 px-10 md:flex flex-row" id="content">
+                <div class="basis-9/12">
+                    <h1><%= @item[:title] %></h1>
+                    <div class="text-gray-500 text-sm mb-1">
+                        Posted on <strong><%= get_pretty_date(created_at) %></strong> by <strong><%= author[:name] %></strong>
+                    </div>
+                    <div class="text-gray-600 text-sm mb-7">
+                        <svg class="w-6 h-6 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                        <%= reading_time(item.compiled_content) %> read.
+                    </div>
+                    <%= yield %>
+                </div>
+                <div class="basis-3/12 mt-20 md:mt-0 bg-blue-50">
+                    
+                    <div class="text-center py-5">
+                            <img class="rounded-full mb-5 mx-auto" style="width:150px;height:150px" src="https://github.com/<%= item[:author] %>.png?size=300px"/>
+                            <h2 class="font-semibold text-center"><%= author[:name] %></h2>
+                            <% if author.has_key?(:bio) %>
+                            <p><%= author[:bio] %></p>
+                            <% end %>
+                            <p>
+                                <% if author.has_key?(:site) %>
+                                <a class="mr-2 text-indigo-600" href="<%= author[:site] %>">Website</a>|
+                                <% end %>
+                                <% if author.has_key?(:twitter) %>
+                                <a class="mx-2 text-indigo-600" href="https://twitter.com/<%= author[:twitter] %>">Twitter</a>|
+                                <% end %>
+                                <a class="ml-2 text-indigo-600" href="https://github.com/<%= item[:author] %>">Github</a>
+                            </p>
+                    </div>
+                </div>
+            </div>
+            <%= render '/footer.*' %>
+        </div>
+    </body>
+</html>
