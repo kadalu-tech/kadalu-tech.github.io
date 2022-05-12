@@ -2,4 +2,16 @@
 title: Kadalu Storage for Gluster users
 ---
 
-If you are familiar with GlusterFS and want to know about similarities and differences?
+Kadalu Storage uses core file system layer from Gluster project and built a new ecosystem around it. This article shows similarities and differences compared to Gluster.
+
+[cols="<1,<2,<2", options=header]
+|===
+|Topic
+|Gluster
+|Kadalu Storage
+
+|CLI
+|gluster
+|kadalu
+
+|===

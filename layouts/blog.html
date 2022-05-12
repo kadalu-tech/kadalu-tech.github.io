@@ -8,6 +8,7 @@
             <%= render '/top_bar.*' %>
             <div class="py-10 px-10 md:flex flex-row" id="content">
                 <div class="basis-9/12">
+                    <div class="pr-10">
                     <h1><%= @item[:title] %></h1>
                     <div class="text-gray-500 text-sm mb-1">
                         Posted on <strong><%= get_pretty_date(created_at) %></strong> by <strong><%= author[:name] %></strong>
@@ -17,6 +18,7 @@
                         <%= reading_time(item.compiled_content) %> read.
                     </div>
                     <%= yield %>
+                    </div>
                 </div>
                 <div class="basis-3/12 mt-20 md:mt-0 bg-blue-50">
                     

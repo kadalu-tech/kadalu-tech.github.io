@@ -1,34 +1,49 @@
 ---
 title: Hello World! - Kadalu Technologies
 author: aravindavk
-description: "Hello World!"
+description: "Kadalu Open Source project was started in 2019 with the idea to integrate Gluster natively with Kubernetes APIs without using Glusterd(Gluster's management layer). Later the idea was extended for non-Kubernetes use cases by creating a modern storage manager."
 ---
 
 == Kadalu
 
-Kadalu is a Kannada word which means Ocean.
+Kadalu means Ocean in Kannada(Karnataka, India) language.
+
+++++
+ <audio controls>
+  <source src="https://raw.githubusercontent.com/kadalu/kadalu/devel/extras/assets/kadalu_01.wav" type="audio/wav">
+</audio>
+++++
 
 == Open Source
 
-Kadalu Open Source project was started in 2019 with the focus on developing a natively integrated easy to use storage solution for Kubernetes. Later the idea was extended for non-Kubernetes use cases as well and started a new Glusterd alternative "Moana".
+Kadalu Open Source project was started in 2019 with the idea to integrate Gluster natively with Kubernetes APIs without using Glusterd(Gluster's management layer). Later the idea was extended for non-Kubernetes use cases by creating a modern storage manager (Code name: Moana).
 
-A few popular Kadalu Open source projects are:
+All Open Source projects from Kadalu are available under Github organization https://github.com/kadalu["Kadalu"]. A few popular projects are:
 
 === Kadalu Kubernetes Storage
-Natively integrated with Kubernetes APIs and uses Gluster core file system layer to provide Storage for the apps running on Kubernetes.
 
-=== Kadalu Storage
-With the modern Storage manager, easily manage the Storage resources using CLI, ReST APIs or using the web interface.
+Natively integrated with Kubernetes APIs and uses Gluster core file system layer to provide Storage for the apps running on Kubernetes (https://github.com/kadalu/kadalu[link])
+
+=== Kadalu Storage (Moana)
+
+With the modern Storage manager, easily manage the Storage resources using CLI, ReST APIs or using the web interface (https://github.com/kadalu/moana[link]).
 
 === Binnacle
-A test framework focused on Tester's delight.
+
+A new testing framework that can be used to test any CLIs or server applications easily. Binnacle adopted an easy syntax that is focused on Tester's delight! (https://github.com/kadalu/binnacle[link])
 
 === Gluster Metrics Exporter
-Prometheus and JSON exporter for Gluster metrics.
+
+Prometheus and JSON exporter for Gluster metrics (https://github.com/kadalu/gluster-metrics-exporter[link]).
 
 === Gdash
-Simple web dashboard for GlusterFS.
+
+Simple web dashboard for GlusterFS (https://github.com/kadalu/gdash[link]).
+
+== Gluster
+
+We are active contributors and maintainers in the Gluster community. We contribute to https://github.com/gluster/glusterfs[GlusterFS], https://github.com/gluster/gstatus[Gstatus], https://github.com/gluster/glustercli-python[Gluster CLI Python bindings] and many https://github.com/gluster[other projects].
 
 == Company
 
-On _Apr 15, 2022_, **Kadalu Technologies** is incorporated with the focus on providing enterprise support for the Kadalu Storage, GlusterFS feature development and consultancy services.
+Kadalu Technologies provides enterprise support for Kadalu Storage. We also develop Gluster features and provide Consultancy based on the client's needs. Write to us at hello@kadalu.tech if you have any questions about our offerings.

@@ -37,3 +37,15 @@ p {
 #content pre {
     @apply my-10 text-sm py-2 px-5 bg-blue-50;
 }
+
+#content table {
+    @apply w-full;
+}
+
+#content td {
+    @apply border-b;
+}
+
+#content th {
+    @apply font-semibold;
+}
