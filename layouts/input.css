@@ -39,7 +39,7 @@ p {
 }
 
 #content table {
-    @apply w-full;
+    @apply w-full my-5;
 }
 
 #content td {
@@ -48,4 +48,8 @@ p {
 
 #content th {
     @apply font-semibold;
+}
+
+.halign-left {
+    @apply text-left;
 }

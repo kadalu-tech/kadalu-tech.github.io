@@ -472,6 +472,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   visibility: visible;
 }
 
+.fixed {
+  position: fixed;
+}
+
 .absolute {
   position: absolute;
 }
@@ -1191,6 +1195,8 @@ p {
 }
 
 #content table {
+  margin-top: 1.25rem;
+  margin-bottom: 1.25rem;
   width: 100%;
 }
 
@@ -1200,6 +1206,10 @@ p {
 
 #content th {
   font-weight: 600;
+}
+
+.halign-left {
+  text-align: left;
 }
 
 .hover\:text-blue-800:hover {

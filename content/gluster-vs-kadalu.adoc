@@ -1,0 +1,77 @@
+---
+title: Gluster vs Kadalu Storage
+---
+
+Kadalu Storage uses core file system layer from Gluster project and built a new ecosystem around it. This article shows similarities and differences with Gluster.
+
+[cols="<1,<2,<2", options=header]
+|===
+|Topic
+|Gluster
+|Kadalu Storage
+
+|CLI
+|gluster
+|kadalu
+
+|Management
+|glusterd
+|Kadalu Storage Manager
+
+|Storage Pools
+|Single Storage pool is supported.
+|Multiple Storage pools are supported.
+
+|ReST APIs
+|No ReST APIs available.
+|ReST APIs are available to manage Kadalu Storage.
+
+|Kubernetes support
+|No native solution.
+|Natively integrated with Kubernetes APIs.
+
+|Python bindings
+|Wrappers around CLI.
+|Wrappers around ReST APIs, easily use bindings from a remote node.
+
+|Storage export directory
+|Storage export directory is called Brick.
+|Storage export directory is called Storage unit.
+
+|Port Management
+|Brick ports are dynamic. New free ports allocated on every restart of brick.
+|Storage unit ports are fixed. Allocated during the Volume creation and will not change for the lifetime. It is also possible to assign a port manually while creating the Volume.
+
+|Monitoring
+|No native metrics exporters available. Use CLI or external tools like https://github.com/kadalu/gluster-metrics-exporter[Gluster Metrics Exporter]
+|Native Prometheus and JSON metrics exporter.
+
+|Communication between nodes
+|Mesh network between nodes.
+|No Mesh network. Only one node acts as Manager node and all other nodes are client nodes.
+
+|Volume Start
+|Manually start the Volume after Create.
+|Automatically start the Volume after Create. Use `--no-start` option to disable this behaviour.
+
+|User Management
+|Only sudo users or the users with permission to access the Glusterd socket file.
+|Multiple users are supported. You can install Kadalu CLI in a remote machine and interact with the Storage pools. Kadalu Storage adds support for creating Storage admins, maintainers, viewers, and Clients.
+
+|Nodes management
+|Manually add the nodes to the default Storage pool.
+|Automatically add nodes to a Storage Pool while creating the Volume by providing `--auto-add-nodes` option.
+
+|Volfile Management
+|Glusterd generates the Volfiles required to run the Gluster processes. To change or add a new Volfile modify the Glusterd source code.
+|Template based Volfile generation. Easily modify the existing Volfiles or add new Volfile templates as required.
+
+|Volume Size in Status command
+|Run Volume status and aggregate the utilization from bricks or mount the Volume and use `df` command.
+|Volume status command provides utilization info.
+
+|Quota
+|
+|Uses Simple Quota feature.
+
+|===
