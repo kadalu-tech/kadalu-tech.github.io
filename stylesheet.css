@@ -988,6 +988,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   padding-right: 5rem;
 }
 
+.pr-10 {
+  padding-right: 2.5rem;
+}
+
 .pb-10 {
   padding-bottom: 2.5rem;
 }
@@ -1184,6 +1188,18 @@ p {
   padding-right: 1.25rem;
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+#content table {
+  width: 100%;
+}
+
+#content td {
+  border-bottom-width: 1px;
+}
+
+#content th {
+  font-weight: 600;
 }
 
 .hover\:text-blue-800:hover {
