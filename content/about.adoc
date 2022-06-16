@@ -2,6 +2,6 @@
 title: About Us
 ---
 
-Kadalu Technologies was started by the core team members of GlusterFS to provide Enterprise support to Kadalu Storage, Gluster feature development and Consultancy services.
+Kadalu Technologies was started by the core team members of GlusterFS to provide Enterprise support to Kadalu Storage, Gluster feature development, and Consultancy services.
 
 
