@@ -1,5 +1,6 @@
 ---
 title: Terms
+draft: true
 ---
 
 Standard Terms of use

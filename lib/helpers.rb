@@ -1,6 +1,7 @@
 use_helper Nanoc::Helpers::Rendering
 include Nanoc::Helpers::Blogging
 include Nanoc::Helpers::Text
+include Nanoc::Helpers::XMLSitemap
 
 def slug_and_created_at(post)
   match = /([0-9]+)\-([0-9]+)\-([0-9]+)\-([^\/]+)/.match(post.identifier.without_ext)

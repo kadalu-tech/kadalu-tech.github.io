@@ -1,0 +1,3 @@
+<%= xml_sitemap(
+items: items.select { |i| !i.path.start_with?("/static") && !i[:draft] && !i.path.end_with?(".css") && !i.path.end_with?(".js") && !i.path.end_with?("CNAME") && !i.path.start_with?("/images") }
+) %>

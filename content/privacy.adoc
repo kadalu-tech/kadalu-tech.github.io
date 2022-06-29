@@ -1,5 +1,6 @@
 ---
 title: Privacy
+draft: true
 ---
 
 Talk about Privacy policy.
