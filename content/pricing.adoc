@@ -1,5 +1,6 @@
 ---
 title: Pricing
+draft: true
 ---
 
 Kadalu Storage is 100% Open Source licensed under GPLv3. For stable, long term supported version Kadalu Storage commercial license is available. Following table shows the features and available plans.

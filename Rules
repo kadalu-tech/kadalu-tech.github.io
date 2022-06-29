@@ -76,6 +76,12 @@ compile '/**/*.erb' do
   end
 end
 
+compile '/sitemap.xml' do
+  filter :erb
+
+  write item.identifier.to_s
+end
+
 compile '/**/*' do
   write item.identifier.to_s
 end

@@ -9,3 +9,11 @@ prune:
 data_sources:
   - type: filesystem
     encoding: utf-8
+
+environments:
+  default:
+    base_url: http://localhost:3000
+  prod:
+    base_url: https://kadalu.tech
+  dev:
+    base_url: http://localhost:3000
