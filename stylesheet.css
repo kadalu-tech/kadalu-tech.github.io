@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.1.4 | MIT License | https://tailwindcss.com
+! tailwindcss v3.1.6 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -558,6 +558,40 @@ video {
   --tw-backdrop-sepia:  ;
 }
 
+.container {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
+
 .visible {
   visibility: visible;
 }
@@ -576,6 +610,14 @@ video {
 
 .bottom-10 {
   bottom: 2.5rem;
+}
+
+.col-span-9 {
+  grid-column: span 9 / span 9;
+}
+
+.col-span-3 {
+  grid-column: span 3 / span 3;
 }
 
 .m-2 {
@@ -683,6 +725,10 @@ video {
   display: table;
 }
 
+.grid {
+  display: grid;
+}
+
 .contents {
   display: contents;
 }
@@ -739,14 +785,6 @@ video {
   width: 0.75rem;
 }
 
-.basis-9\/12 {
-  flex-basis: 75%;
-}
-
-.basis-3\/12 {
-  flex-basis: 25%;
-}
-
 .basis-2\/12 {
   flex-basis: 16.666667%;
 }
@@ -761,14 +799,6 @@ video {
 
 .basis-1\/3 {
   flex-basis: 33.333333%;
-}
-
-.basis-9 {
-  flex-basis: 2.25rem;
-}
-
-.basis-3 {
-  flex-basis: 0.75rem;
 }
 
 .basis-2 {
@@ -793,6 +823,10 @@ video {
 
 .resize {
   resize: both;
+}
+
+.grid-cols-12 {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
 }
 
 .flex-row {
@@ -1356,12 +1390,20 @@ p {
 #content pre {
   margin-top: 2.5rem;
   margin-bottom: 2.5rem;
+  overflow-x: auto;
   --tw-bg-opacity: 1;
   background-color: rgb(239 246 255 / var(--tw-bg-opacity));
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
   padding-left: 1.25rem;
   padding-right: 1.25rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+#content p code {
+  --tw-bg-opacity: 1;
+  background-color: rgb(239 246 255 / var(--tw-bg-opacity));
   font-size: 0.875rem;
   line-height: 1.25rem;
 }
@@ -1404,6 +1446,10 @@ p {
 
   .md\:flex {
     display: flex;
+  }
+
+  .md\:grid {
+    display: grid;
   }
 
   .md\:w-3\/4 {
