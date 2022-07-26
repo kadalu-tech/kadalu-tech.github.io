@@ -35,7 +35,11 @@ p {
 }
 
 #content pre {
-    @apply my-10 text-sm py-2 px-5 bg-blue-50;
+    @apply my-10 text-sm py-2 px-5 bg-blue-50 overflow-x-auto;
+}
+
+#content p code {
+    @apply text-sm bg-blue-50;
 }
 
 #content table {
