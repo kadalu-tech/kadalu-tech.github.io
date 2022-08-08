@@ -1,0 +1,27 @@
+---
+title: Announcing Kadalu Storage 1.0 Beta release
+author: aravindavk
+description: "We are happy to announce the beta release of Kadalu Storage 1.0. This release includes many features from GlusterFS along with many improvements."
+image: /images/kadalu-storage-release-1.0-beta.1.png
+---
+
+Kadalu Storage is a modern storage solution based on GlusterFS. It uses core file system layer from GlusterFS and provides a modern management interface, ReST APIs, and many features.
+
+image::/images/kadalu-storage-release-1.0-beta.1.png[Kadalu Storage Beta 1]
+
+We are happy to announce the beta release of Kadalu Storage 1.0. This release includes many features from GlusterFS along with many improvements.
+
+Following quick start guide will help you to try out Kadalu Storage. Please provide your valuable feedback and feel free to open issues with feature requests or bug reports (https://github.com/kadalu/moana/issues[Github Issues])
+
+https://kadalu.tech/storage/quick-start
+
+A few other additional links to understand the similarities/differences between Kadalu Storage and Gluster.
+
+- Gluster vs Kadalu Storage: https://kadalu.tech/gluster-vs-kadalu/
+- Try Kadalu Storage with containers: https://kadalu.tech/blog/try-kadalu-storage/
+- Project repository: https://github.com/kadalu/moana
+
+=== Notes:
+
+- 1.0 Beta release of Kubernetes integration is expected in a couple of weeks.
+- Packages for other distributions are work in progress and will be available after the 1.0 release.

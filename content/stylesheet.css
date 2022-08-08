@@ -711,6 +711,10 @@ Ensure the default browser behavior of the `hidden` attribute.
   resize: both;
 }
 
+.list-disc {
+  list-style-type: disc;
+}
+
 .grid-cols-12 {
   grid-template-columns: repeat(12, minmax(0, 1fr));
 }
@@ -1288,6 +1292,11 @@ p {
 
 .halign-left {
   text-align: left;
+}
+
+#content ul {
+  list-style-position: outside;
+  list-style-type: disc;
 }
 
 .hover\:text-blue-800:hover {

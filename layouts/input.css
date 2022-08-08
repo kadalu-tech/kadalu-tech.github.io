@@ -57,3 +57,7 @@ p {
 .halign-left {
     @apply text-left;
 }
+
+#content ul {
+    @apply list-disc list-outside;
+}
