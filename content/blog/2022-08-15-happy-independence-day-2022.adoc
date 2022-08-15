@@ -1,0 +1,20 @@
+---
+title: Happy 75th Independence Day - India
+author: aravindavk
+description: "Happy 75th Independence Day to all Kadalu Storage users in India."
+image: /images/kadalu_independence_day.png
+---
+
+Happy 75th Independence Day to all Kadalu Storage users in India.
+
+image::/images/kadalu_independence_day.png[Independence day]
+
+Kadalu Storage is a 100% Open Source project providing distributed Storage solution to enterprise needs. Kadalu Storage project was started and actively maintained by the Bengaluru (India) based company. The project uses the core file system layer from GlusterFS project and built a new ecosystem around it.
+
+A few highlights on how Kadalu Storage helps to achieve independence from vendor lockins.
+
+* Open Source - All development and discussion related to the project is in public.
+* Kadalu Storage supports any file system(xfs/zfs/ext4..) that has xattr support to use as storage units. This is a huge positive for users since data will be accessible always and readable even if at some point Kadalu stops support or if user wants to move out the data from Kadalu Storage.
+* Petabytes of Storage with commodity hardware and manage easily in local data centers.
+* Cloud friendly Storage, securely host Kadalu Storage Volumes in the cloud provider of your choice based on your requirements.
+* Local packages repositories - If your business depends on usage of the Software that is available from the data centers inside India, then we have covered it. Based on the request, we will set up local packages repositories.
