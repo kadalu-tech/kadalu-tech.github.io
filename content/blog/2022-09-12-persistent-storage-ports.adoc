@@ -1,0 +1,57 @@
+---
+title: Persistent Storage Ports and Happy Admins
+author: aravindavk
+description: "Kadalu Storage decided to solve the fluctuating Storage unit ports issue and make the Admins happy. When a Kadalu Storage Volume is created, ports are allocated for each storage unit. Whenever the Volume is restarted or nodes are rebooted the storage units always use the same ports that are assigned to them."
+---
+
+When a Kadalu Storage Volume is created, it starts the server process for each Storage unit. Client process connects to these Storage units using the port specified in the Volfile. Gluster assigns ports dynamically to each Storage unit (bricks) when they restart. A few problems with the dynamic port assignment are:
+
+* If a Storage unit or the Volume restarts, then the Client has to get the new port details from the management and reconnect to the Storage units.
+* Admins hate this. They have to open a range of ports to make this dynamic port assignment. There is no way to specify only specific ports.
+* No manual control. Some applications generate the Client Volfile and mount the Volume without using the Management Server. To achieve this the application should be able to configure the port instead of automatic ports.
+
+== How Kadalu Storage solves this problem?
+
+Kadalu Storage decided to solve the fluctuating Storage unit ports issue and make the Admins happy. When a Kadalu Storage Volume is created, ports are allocated for each storage unit. Whenever the Volume is restarted or nodes are rebooted the storage units always use the same ports that are assigned to them.
+
+Run the Volume list detail command and get the list of ports to be opened in each node.
+
+[source,console]
+----
+$ kadalu volume list PROD/vol1 --detail
+Name                    : PROD/vol1
+Type                    : Replicate
+ID                      : 2b42df21-3e9c-4f17-beb8-e5b2f75e2a54
+State                   : Started
+Size                    : 373GiB
+Inodes                  : 26.2M
+Options                 : -
+Number of Storage units : 3
+Distribute Group 1      :
+    Storage Unit 1      : server1:/exports/vol1/s1 (Port: 49252)
+    Storage Unit 2      : server2:/exports/vol1/s2 (Port: 49252)
+    Storage Unit 3      : server3:/exports/vol1/s3 (Port: 49252)
+----
+
+Or run your firewall updater script when a new Volume is created.
+
+[source,console]
+----
+$ kadalu volume list PROD/vol1 --json | ./update_firewall_rules.py
+----
+
+Kadalu also provides a option to specify the ports while creating the Volume
+
+[source,console]
+----
+$ kadalu volume create PROD/vol1 server1.example.com:4503:/exports/vol1/s1
+----
+
+Another proposed way to update the port is by running the following command (**Upcoming feature**).
+
+[source,console]
+----
+$ kadalu volume create PROD/vol1 server1.example.com:/exports/vol1/s1 --no-start
+$ kadalu port update PROD/vol1 server1.example.com:/exports/vol1/s1 4503
+$ kadalu volume start PROD/vol1
+----
