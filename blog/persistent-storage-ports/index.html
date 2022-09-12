@@ -1,0 +1,189 @@
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charSet="utf-8"/>
+    <title>Persistent Storage Ports and Happy Admins</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="/syntax-highlight-emacs.css">
+
+    <meta name="generator" content="Nanoc 4.12.7">
+
+    <script defer data-domain="kadalu.tech" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+    
+<link href="/static/css/fav.png" rel="icon" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/static/css/fav.png" />
+<meta name="generator" content="Nanoc 4.12.7">
+<meta property="og:title" content="Persistent Storage Ports and Happy Admins"/>
+<meta name="author" content="aravindavk"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="description" content="Kadalu Storage decided to solve the fluctuating Storage unit ports issue and make the Admins happy. When a Kadalu Storage Volume is created, ports are allocated for each storage unit. Whenever the Volume is restarted or nodes are rebooted the storage units always use the same ports that are assigned to them."/>
+<meta property="og:description" content="Kadalu Storage decided to solve the fluctuating Storage unit ports issue and make the Admins happy. When a Kadalu Storage Volume is created, ports are allocated for each storage unit. Whenever the Volume is restarted or nodes are rebooted the storage units always use the same ports that are assigned to them."/>
+<link rel="canonical" href="/blog/persistent-storage-ports/"/>
+<meta property="og:url" content="/blog/persistent-storage-ports/"/>
+<meta property="og:site_name" content="Kadalu"/>
+<meta property="og:image" content=""/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2022-09-12"/>
+<meta name="twitter:card" content="summary_large_image"/>
+<meta property="twitter:image" content=""/>
+<meta property="twitter:title" content="Persistent Storage Ports and Happy Admins"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <body>
+        <div id="main">
+            <div class="px-10 py-5 bg-white md:flex flex-row">
+    <div class="basis-2/12">
+        <a href="/"><img src="/images/logo.svg" class="h-16"/></a>
+    </div>
+    <nav class="text-right block basis-10/12 py-2 top-bar">
+        <a class="block md:inline-block" href="/blog">Blog</a>
+        <a class="block md:inline-block" href="/about">About Us</a>
+        
+    </nav>
+</div>
+
+            <div class="py-10 px-10" id="content">
+                <div class="md:grid grid-cols-12">
+                    <div class="col-span-9">
+                        <div class="pr-10">
+                            <h1>Persistent Storage Ports and Happy Admins</h1>
+                            <div class="text-gray-500 text-sm mb-1">
+                                Posted on <strong>Sep 12, 2022</strong> by <strong>Aravinda Vishwanathapura</strong>
+                            </div>
+                            <div class="text-gray-600 text-sm mb-7">
+                                <svg class="w-6 h-6 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                                2 minutes read.
+                            </div>
+                            <div class="paragraph">
+<p>When a Kadalu Storage Volume is created, it starts the server process for each Storage unit. Client process connects to these Storage units using the port specified in the Volfile. Gluster assigns ports dynamically to each Storage unit (bricks) when they restart. A few problems with the dynamic port assignment are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>If a Storage unit or the Volume restarts, then the Client has to get the new port details from the management and reconnect to the Storage units.</p>
+</li>
+<li>
+<p>Admins hate this. They have to open a range of ports to make this dynamic port assignment. There is no way to specify only specific ports.</p>
+</li>
+<li>
+<p>No manual control. Some applications generate the Client Volfile and mount the Volume without using the Management Server. To achieve this the application should be able to configure the port instead of automatic ports.</p>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_how_kadalu_storage_solves_this_problem">How Kadalu Storage solves this problem?</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kadalu Storage decided to solve the fluctuating Storage unit ports issue and make the Admins happy. When a Kadalu Storage Volume is created, ports are allocated for each storage unit. Whenever the Volume is restarted or nodes are rebooted the storage units always use the same ports that are assigned to them.</p>
+</div>
+<div class="paragraph">
+<p>Run the Volume list detail command and get the list of ports to be opened in each node.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="console"><span class="gp">$</span><span class="w"> </span>kadalu volume list PROD/vol1 <span class="nt">--detail</span>
+<span class="go">Name                    : PROD/vol1
+Type                    : Replicate
+ID                      : 2b42df21-3e9c-4f17-beb8-e5b2f75e2a54
+State                   : Started
+Size                    : 373GiB
+Inodes                  : 26.2M
+Options                 : -
+Number of Storage units : 3
+Distribute Group 1      :
+    Storage Unit 1      : server1:/exports/vol1/s1 (Port: 49252)
+    Storage Unit 2      : server2:/exports/vol1/s2 (Port: 49252)
+    Storage Unit 3      : server3:/exports/vol1/s3 (Port: 49252)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Or run your firewall updater script when a new Volume is created.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="console"><span class="gp">$</span><span class="w"> </span>kadalu volume list PROD/vol1 <span class="nt">--json</span> | ./update_firewall_rules.py</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Kadalu also provides a option to specify the ports while creating the Volume</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="console"><span class="gp">$</span><span class="w"> </span>kadalu volume create PROD/vol1 server1.example.com:4503:/exports/vol1/s1</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Another proposed way to update the port is by running the following command (<strong>Upcoming feature</strong>).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="console"><span class="gp">$</span><span class="w"> </span>kadalu volume create PROD/vol1 server1.example.com:/exports/vol1/s1 <span class="nt">--no-start</span>
+<span class="gp">$</span><span class="w"> </span>kadalu port update PROD/vol1 server1.example.com:/exports/vol1/s1 4503
+<span class="gp">$</span><span class="w"> </span>kadalu volume start PROD/vol1</code></pre>
+</div>
+</div>
+</div>
+</div>
+                        </div>
+                    </div>
+                    <div class="col-span-3 mt-20 md:mt-0 bg-blue-50">
+                        <div class="text-center py-5">
+                            <img class="rounded-full mb-5 mx-auto" style="width:150px;height:150px" src="https://github.com/aravindavk.png?size=300px"/>
+                            <h2 class="font-semibold text-center">Aravinda Vishwanathapura</h2>
+                            
+                            <p>Co-Founder, CTO - Kadalu Technologies</p>
+                            
+                            <p>
+                                
+                                <a class="mr-2 text-indigo-600" href="https://aravindavk.in">Website</a>|
+                                
+                                
+                                <a class="mx-2 text-indigo-600" href="https://twitter.com/aravindavk">Twitter</a>|
+                                
+                                <a class="ml-2 text-indigo-600" href="https://github.com/aravindavk">Github</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="min-h-[50vh] py-10 px-10 bg-[#007ca3] text-white  underline-offset-8">
+    <div class="flex flex-row flex-wrap">
+        <div class="p-5 footer-column">
+            <h2 class="text-xl underline py-2">Company</h2>
+            <a href="/about">About Us</a>
+            <a href="/blog">Blog Posts</a>
+        </div>
+        <div class="p-5 footer-column">
+            <h2 class="text-xl underline py-2">Resources</h2>
+            <a href="/support">Support</a>
+            <a href="/security">Security</a>
+            <a href="/gluster-vs-kadalu">Gluster vs Kadalu</a>
+            <a href="/storage/quick-start">Kadalu Storage Quick start</a>
+        </div>
+        <div class="p-5 footer-column">
+            <h2 class="text-xl underline py-2">Community</h2>
+            <a target="_blank" href="https://join.slack.com/t/kadalu/shared_invite/enQtNzg1ODQ0MDA5NTM2LWMzMTc5ZTJmMjk4MzI0YWVhOGFlZTJjZjY5MDNkZWI0Y2VjMDBlNzVkZmI1NWViN2U3MDNlNDJhNjE5OTBlOGU">Community Slack</a>
+            <a target="_blank" href="https://github.com/kadalu">Github</a>
+        </div>
+
+        <div class="p-5 footer-column">
+            <h2 class="text-xl underline py-2">Contact Us</h2>
+            <a href="mailto:hello@kadalu.tech">Email to hello@kadalu.tech</a>
+            <a href="https://twitter.com/kadalu_tech">Twitter</a>
+            <a href="https://linkedin.com/kadalu_tech">Linkedin</a>
+        </div>
+    </div>
+    <div class="text-center mt-20">
+        Copyright &copy; 2022 Kadalu Technologies Private Limited.
+    </div>
+</div>
+
+        </div>
+    </body>
+</html>
