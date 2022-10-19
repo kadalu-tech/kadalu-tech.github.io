@@ -1,0 +1,16 @@
+---
+title: "500 Stars: A major milestone for the project"
+author: amarts
+description: "As of today, the kadalu project has 505 GitHub stars, 502 commits, 48 releases, and 37 contributors."
+image: /images/kadalu-500-stars.png
+---
+
+As of today, the kadalu project has *505 GitHub stars*, *502 commits*, *48 releases*, and *37 contributors*.
+
+image::/images/kadalu-500-stars.png[500 stars]
+
+For a https://github.com/kadalu/kadalu[project] with fewer developers than fingers in the hand focused full time on it, this is a great feeling.
+
+Having developers try out a project, and taking the trouble to click on "Star" to indicate they took notice of the project is a big thing for the maintainers of the project. Kadalu started as an idea that cropped up during our discussions while carpooling to the office. The pandemic caused some delay in getting many things done, but it was such a simple concept that https://aravindavk.in[Aravinda] got the prototype working within weeks.
+
+Now with more users, and many use cases covered, we feel this is the right time for us to look at bringing our experience with Kadalu management to glusterfs's management, and make a proper kadalu storage, which can make use of the layered modules (translator -> xlators) concept of glusterfs to the true use. Soon we wish to reach more users.
