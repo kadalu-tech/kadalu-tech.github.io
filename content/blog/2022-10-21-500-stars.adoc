@@ -1,0 +1,19 @@
+---
+title: "500+ Stars: A major milestone for the project"
+author: amarts
+description: "As of today, the kadalu project has 505 GitHub stars, 505 commits, 48 releases, and 38 contributors."
+image: /images/kadalu-500-stars.png
+---
+
+As of today, the kadalu project has *505 GitHub stars*, *505 commits*, *48 releases*, and *38 contributors*.
+
+image::/images/kadalu-500-stars.png[500 stars]
+
+For a https://github.com/kadalu/kadalu[project] with fewer developers than fingers in the hand focused full time on it, this is a great feeling. With this note, I would like to thank every contributor, consumers of the project for this milestone. I also would like to thank the companies who sponsored the team with a few projects related to glusterfs and kadalu, so developers could continue on the project full time.
+
+Having developers try out a project, and taking the trouble to click on 'Star' to indicate they took notice of the project is a big thing for the maintainers of the project. Kadalu started as an idea that came up during our discussions while carpooling to the office. The pandemic caused some delay in getting many things done, but it was such a simple concept that https://aravindavk.in[Aravinda] got the prototype working within weeks. We hope to continue the project development with the same logic, keep it simple, for both developers and users.
+
+Now with more users, and many use cases covered, we feel this is the right time for us to look at bringing our experience with Kadalu project to glusterfs's management, and make a proper kadalu storage, which can make use of the layered modules (translator -> xlators) concept of glusterfs to the true use. This we believe would make justice to our initial idea of modular / plug and play feature stack for glusterfs a reality. 
+
+I know this is just the beginning of the project, and we will have more milestones to achieve, but every step climbed feels good when we are on an upward path :-) Do continue to use the product, give feedback, let us know what more you need in the project. Also if possible, sponsor feature development so it would be a win-win situation for all. You can reach out on https://kadalu.tech/[Kadalu Website] if interested in such activity.
+
