@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.1.8 | MIT License | https://tailwindcss.com
+! tailwindcss v3.2.1 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -410,6 +410,12 @@ video {
   height: auto;
 }
 
+/* Make elements with the HTML hidden attribute stay hidden by default */
+
+[hidden] {
+  display: none;
+}
+
 *, ::before, ::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
@@ -587,6 +593,10 @@ video {
 
 .visible {
   visibility: visible;
+}
+
+.collapse {
+  visibility: collapse;
 }
 
 .fixed {
@@ -1300,8 +1310,7 @@ video {
 }
 
 .underline {
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
+  text-decoration-line: underline;
 }
 
 .underline-offset-8 {
@@ -1332,8 +1341,7 @@ p {
   padding-right: 0.5rem;
   --tw-text-opacity: 1;
   color: rgb(0 124 163 / var(--tw-text-opacity));
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
+  text-decoration-line: underline;
   text-underline-offset: 8px;
 }
 
@@ -1342,7 +1350,7 @@ p {
   color: rgb(30 64 175 / var(--tw-text-opacity));
 }
 
-#content h1,  #blog-list h1 {
+#content h1, #blog-list h1 {
   margin-bottom: 1.75rem;
   font-size: 2.25rem;
   line-height: 2.5rem;
@@ -1374,8 +1382,7 @@ p {
 #content a {
   --tw-text-opacity: 1;
   color: rgb(0 124 163 / var(--tw-text-opacity));
-  -webkit-text-decoration-line: underline;
-          text-decoration-line: underline;
+  text-decoration-line: underline;
   text-underline-offset: 8px;
 }
 
