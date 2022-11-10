@@ -10,14 +10,16 @@
 <link rel="canonical" href="<%= @item.path %>"/>
 <meta property="og:url" content="<%= @item.path %>"/>
 <meta property="og:site_name" content="Kadalu"/>
-<meta property="og:image" content="<%= @item[:image] %>"/>
 <meta property="og:type" content="article"/>
 <meta property="article:published_time" content="<%= created_at %>"/>
 <% if @item[:image] && @item[:image] != "" %>
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="<%= @item[:image] %>"/>
+<meta name="twitter:image" content="https://kadalu.tech<%= @item[:image] %>"/>
+<meta property="og:image" content="https://kadalu.tech<%= @item[:image] %>"/>
 <% else %>
 <meta name="twitter:card" content="summary"/>
+<meta name="twitter:image" content="https://kadalu.tech/images/logo-icon-spaced.png"/>
+<meta property="og:image" content="https://kadalu.tech/images/logo-icon-spaced.png"/>
 <% end %>
 <meta name="twitter:site" content="https://kadalu.tech"/>
 <meta name="twitter:title" content="<%= @item[:title] %>"/>
