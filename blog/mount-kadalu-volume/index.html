@@ -1,0 +1,234 @@
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charSet="utf-8"/>
+    <title>Mount a Kadalu Storage Volume</title>
+    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="/syntax-highlight-emacs.css">
+
+    <meta name="generator" content="Nanoc 4.12.7">
+    
+<link href="/static/css/fav.png" rel="icon" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/static/css/fav.png" />
+<meta name="generator" content="Nanoc 4.12.7">
+<meta property="og:title" content="Mount a Kadalu Storage Volume"/>
+<meta name="author" content="aravindavk"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="description" content="Kadalu Storage Volumes can be accessed via Fuse mount, NFS Ganesha, Samba and GFAPI bindings. This blog post describes how to mount a Kadalu Storage Volume using Fuse mount."/>
+<meta property="og:description" content="Kadalu Storage Volumes can be accessed via Fuse mount, NFS Ganesha, Samba and GFAPI bindings. This blog post describes how to mount a Kadalu Storage Volume using Fuse mount."/>
+<link rel="canonical" href="/blog/mount-kadalu-volume/"/>
+<meta property="og:url" content="/blog/mount-kadalu-volume/"/>
+<meta property="og:site_name" content="Kadalu"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2022-11-15"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kadalu.tech/images/kadalu-storage-mount.png"/>
+<meta property="og:image" content="https://kadalu.tech/images/kadalu-storage-mount.png"/>
+
+<meta name="twitter:site" content="https://kadalu.tech"/>
+<meta name="twitter:title" content="Mount a Kadalu Storage Volume"/>
+<meta name="twitter:description" content="Kadalu Storage Volumes can be accessed via Fuse mount, NFS Ganesha, Samba and GFAPI bindings. This blog post describes how to mount a Kadalu Storage Volume using Fuse mount."/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <script defer data-domain="kadalu.tech" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+    <body>
+        <div id="main">
+            <div class="px-10 py-5 bg-white md:flex flex-row">
+    <div class="basis-2/12">
+        <a href="/"><img src="/images/logo.svg" class="h-16"/></a>
+    </div>
+    <nav class="text-right block basis-10/12 py-2 top-bar">
+        <a class="block md:inline-block" href="/blog">Blog</a>
+        <a class="block md:inline-block" href="/about">About Us</a>
+        
+    </nav>
+</div>
+
+            <div class="py-10 px-10" id="content">
+                <div class="md:grid grid-cols-12">
+                    <div class="col-span-9">
+                        <div class="pr-10">
+                            <h1>Mount a Kadalu Storage Volume</h1>
+                            <div class="text-gray-500 text-sm mb-1">
+                                Posted on <strong>Nov 15, 2022</strong> by <strong>Aravinda Vishwanathapura</strong>
+                            </div>
+                            <div class="text-gray-600 text-sm mb-7">
+                                <svg class="w-6 h-6 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                                2 minutes read.
+                            </div>
+                            <div class="paragraph">
+<p>Kadalu Storage Volumes can be accessed via <a href="https://www.kernel.org/doc/html/latest/filesystems/fuse.html">Fuse mount</a>, <a href="https://github.com/nfs-ganesha/nfs-ganesha">NFS Ganesha</a>, <a href="https://www.samba.org/">Samba</a> and <a href="https://github.com/gluster/glusterfs/tree/devel/api">GFAPI</a> bindings. This blog post describes how to mount a Kadalu Storage Volume using Fuse mount.</p>
+</div>
+<div class="paragraph">
+<p>This post assumes that Kadalu Storage is already installed and Volume is created (If not, read this <a href="https://kadalu.tech/storage/quick-start/">quick start guide</a>).</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/kadalu-storage-mount.png" alt="Mount a Kadalu Storage Volume">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_mount_command">Mount Command</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Login to Kadalu Storage by running the following command</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="console"><span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>kadalu user login admin
+<span class="go">Password:</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run the mount command by giving the Storage Manager URL as below.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="console"><span class="gp">$</span><span class="w"> </span><span class="nb">sudo mkdir</span> /mnt/vol1
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>chattr +i /mnt/vol1
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>mount <span class="nt">-t</span> kadalu /PROD/vol1 /mnt/vol1
+<span class="go">Executing the following command to mount the Kadalu Storage Volume
+
+/usr/sbin/glusterfs --volfile-id=client-PROD-vol1 --process-name=fuse.kadalu \
+   --fs-display-name=kadalu:PROD/vol1 /mnt/vol1 \
+   --volfile-server=server1:49252 --volfile-server=server2:49252 --volfile-server=server3:49252</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Run <code>df</code> command to verify that Kadalu Storage Volume is mounted.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="console"><span class="gp">$</span><span class="w"> </span><span class="nb">df</span> <span class="nt">-h</span> /mnt/vol1
+<span class="go">kadalu:PROD/vol1  4.7G  1.8G  3.0G  38% /mnt/vol1</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fstab_based_mount"><code>fstab</code> based mount</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To mount the Volume automatically on node reboot, add entry to fstab.</p>
+</div>
+<div class="paragraph">
+<p>Copy the volfile-server printed in the mount command above and add to <code>/etc/fstab</code> file as below. <strong>Note</strong>: Storage manager URL is not required here.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>/PROD/vol1       /mnt/vol1 kadalu  defaults,_netdev,volfile-servers="server1:49252\040server2:49252\040server3:49252"       0       0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Note</strong>: <code>\040</code> is added to give space between volfile servers list.</p>
+</div>
+<div class="paragraph">
+<p>Run <code>mount -a</code> to test if it works.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_systemd_based_mount">Systemd based mount</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Create a systemd unit file (<code>/etc/systemd/system/mnt-vol1.mount</code>) with the content as below. Uncomment After and Requires section if the Client node is one of the Storage node (If Storage unit process to be started before mounting the volume).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>[Unit]
+Description=Kadalu Storage Volume mount - vol1
+# After=kadalu-mgr.service
+# Requires=kadalu-mgr.service
+
+[Mount]
+What=/PROD/vol1
+Where=/mnt/vol1
+Type=kadalu
+Options=defaults,_netdev,volfile-servers="server1:49253 server2:49253 server3:49253"
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Enable the mount by running</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>systemctl enable mnt-vol1.mount
+systemctl start mnt-vol1.mount</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Verify the mount by running <code>df</code> command.</p>
+</div>
+<div class="paragraph">
+<p>In our next blog posts, we will discuss using Kadalu Storage Volumes using other access protocols.</p>
+</div>
+</div>
+</div>
+                        </div>
+                    </div>
+                    <div class="col-span-3 mt-20 md:mt-0 bg-blue-50">
+                        <div class="text-center py-5">
+                            <img class="rounded-full mb-5 mx-auto" style="width:150px;height:150px" src="https://github.com/aravindavk.png?size=300px"/>
+                            <h2 class="font-semibold text-center">Aravinda Vishwanathapura</h2>
+                            
+                            <p>Co-Founder, CTO - Kadalu Technologies</p>
+                            
+                            <p>
+                                
+                                <a class="mr-2 text-indigo-600" href="https://aravindavk.in">Website</a>|
+                                
+                                
+                                <a class="mx-2 text-indigo-600" href="https://twitter.com/aravindavk">Twitter</a>|
+                                
+                                <a class="ml-2 text-indigo-600" href="https://github.com/aravindavk">Github</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="min-h-[50vh] py-10 px-10 bg-[#007ca3] text-white  underline-offset-8">
+    <div class="flex flex-row flex-wrap">
+        <div class="p-5 footer-column">
+            <h2 class="text-xl underline py-2">Company</h2>
+            <a href="/about">About Us</a>
+            <a href="/blog">Blog Posts</a>
+        </div>
+        <div class="p-5 footer-column">
+            <h2 class="text-xl underline py-2">Resources</h2>
+            <a href="/support">Support</a>
+            <a href="/security">Security</a>
+            <a href="/gluster-vs-kadalu">Gluster vs Kadalu</a>
+            <a href="/storage/quick-start">Kadalu Storage Quick start</a>
+        </div>
+        <div class="p-5 footer-column">
+            <h2 class="text-xl underline py-2">Community</h2>
+            <a target="_blank" href="https://join.slack.com/t/kadalu/shared_invite/enQtNzg1ODQ0MDA5NTM2LWMzMTc5ZTJmMjk4MzI0YWVhOGFlZTJjZjY5MDNkZWI0Y2VjMDBlNzVkZmI1NWViN2U3MDNlNDJhNjE5OTBlOGU">Community Slack</a>
+            <a target="_blank" href="https://github.com/kadalu">Github</a>
+        </div>
+
+        <div class="p-5 footer-column">
+            <h2 class="text-xl underline py-2">Contact Us</h2>
+            <a href="mailto:hello@kadalu.tech">Email to hello@kadalu.tech</a>
+            <a href="https://twitter.com/kadalu_tech">Twitter</a>
+            <a href="https://linkedin.com/kadalu_tech">Linkedin</a>
+        </div>
+    </div>
+    <div class="text-center mt-20">
+        Copyright &copy; 2022 Kadalu Technologies Private Limited.
+    </div>
+</div>
+
+        </div>
+    </body>
+</html>
