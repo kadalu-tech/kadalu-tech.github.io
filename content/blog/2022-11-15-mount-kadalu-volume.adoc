@@ -1,0 +1,90 @@
+---
+title: Mount a Kadalu Storage Volume
+author: aravindavk
+description: "Kadalu Storage Volumes can be accessed via Fuse mount, NFS Ganesha, Samba and GFAPI bindings. This blog post describes how to mount a Kadalu Storage Volume using Fuse mount."
+image: /images/kadalu-storage-mount.png
+---
+
+Kadalu Storage Volumes can be accessed via https://www.kernel.org/doc/html/latest/filesystems/fuse.html[Fuse mount], https://github.com/nfs-ganesha/nfs-ganesha[NFS Ganesha], https://www.samba.org/[Samba] and https://github.com/gluster/glusterfs/tree/devel/api[GFAPI] bindings. This blog post describes how to mount a Kadalu Storage Volume using Fuse mount.
+
+This post assumes that Kadalu Storage is already installed and Volume is created (If not, read this https://kadalu.tech/storage/quick-start/[quick start guide]).
+
+image::/images/kadalu-storage-mount.png[Mount a Kadalu Storage Volume]
+
+== Mount Command
+Login to Kadalu Storage by running the following command
+
+[source,console]
+----
+$ sudo kadalu user login admin
+Password:
+----
+
+Run the mount command by giving the Storage Manager URL as below.
+
+[source,console]
+----
+$ sudo mkdir /mnt/vol1
+$ sudo chattr +i /mnt/vol1
+$ sudo mount -t kadalu /PROD/vol1 /mnt/vol1
+Executing the following command to mount the Kadalu Storage Volume
+
+/usr/sbin/glusterfs --volfile-id=client-PROD-vol1 --process-name=fuse.kadalu \
+   --fs-display-name=kadalu:PROD/vol1 /mnt/vol1 \
+   --volfile-server=server1:49252 --volfile-server=server2:49252 --volfile-server=server3:49252
+----
+
+Run `df` command to verify that Kadalu Storage Volume is mounted.
+
+[source,console]
+----
+$ df -h /mnt/vol1
+kadalu:PROD/vol1  4.7G  1.8G  3.0G  38% /mnt/vol1
+----
+
+== `fstab` based mount
+
+To mount the Volume automatically on node reboot, add entry to fstab.
+
+Copy the volfile-server printed in the mount command above and add to `/etc/fstab` file as below. **Note**: Storage manager URL is not required here.
+
+
+----
+/PROD/vol1       /mnt/vol1 kadalu  defaults,_netdev,volfile-servers="server1:49252\040server2:49252\040server3:49252"       0       0
+----
+
+**Note**: `\040` is added to give space between volfile servers list.
+
+Run `mount -a` to test if it works.
+
+== Systemd based mount
+
+Create a systemd unit file (`/etc/systemd/system/mnt-vol1.mount`) with the content as below. Uncomment After and Requires section if the Client node is one of the Storage node (If Storage unit process to be started before mounting the volume).
+
+[source]
+----
+[Unit]
+Description=Kadalu Storage Volume mount - vol1
+# After=kadalu-mgr.service
+# Requires=kadalu-mgr.service
+
+[Mount]
+What=/PROD/vol1
+Where=/mnt/vol1
+Type=kadalu
+Options=defaults,_netdev,volfile-servers="server1:49253 server2:49253 server3:49253"
+
+[Install]
+WantedBy=multi-user.target
+----
+
+Enable the mount by running
+
+----
+systemctl enable mnt-vol1.mount
+systemctl start mnt-vol1.mount
+----
+
+Verify the mount by running `df` command.
+
+In our next blog posts, we will discuss using Kadalu Storage Volumes using other access protocols.
