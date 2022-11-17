@@ -4,8 +4,10 @@
     <meta name="viewport" content="width=device-width"/>
     <meta charSet="utf-8"/>
     <title>Gluster/Kadalu Storage Feature development</title>
+    <link rel="stylesheet" href="/bulma-0.9.4.min.css">
     <link rel="stylesheet" href="/stylesheet.css">
     <link rel="stylesheet" href="/syntax-highlight-emacs.css">
+    <script defer src="/alpinejs-3.10.5.min.js"></script>
 
     <meta name="generator" content="Nanoc 4.12.7">
     
@@ -39,16 +41,28 @@
 
     <body>
         <div id="main">
-            <div class="px-10 py-5 bg-white md:flex flex-row">
-    <div class="basis-2/12">
-        <a href="/"><img src="/images/logo.svg" class="h-16"/></a>
-    </div>
-    <nav class="text-right block basis-10/12 py-2 top-bar">
-        <a class="block md:inline-block" href="/blog">Blog</a>
-        <a class="block md:inline-block" href="/about">About Us</a>
-        
-    </nav>
-</div>
+            <nav class="navbar px-4" role="navigation" aria-label="main navigation" x-data="{showing: false}">
+  <div class="navbar-brand has-text-left">
+      <a class="navbar-item" href="/">
+          <img src="/images/logo.svg" alt="Kadalu Technologies" width="300">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" :class="showing ? 'is-active' : ''" aria-expanded="false" @click="showing = !showing">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-end" x-show="showing">
+      <a class="navbar-item" href="/blog">
+          Blog
+      </a>
+      <a class="navbar-item" href="/about">
+          About Us
+      </a>
+  </div>
+</nav>
 
             <div class="text-center py-20 px-10 h-[60vh]">
     <h1 class="text-6xl font-semibold mb-2">Gluster/Kadalu Storage Feature development</h1>
@@ -103,34 +117,34 @@
     </div>
 </div>
 
-            <div class="min-h-[50vh] py-10 px-10 bg-[#007ca3] text-white  underline-offset-8">
-    <div class="flex flex-row flex-wrap">
-        <div class="p-5 footer-column">
-            <h2 class="text-xl underline py-2">Company</h2>
-            <a href="/about">About Us</a>
-            <a href="/blog">Blog Posts</a>
+            <div class="footer has-background-primary has-text-white mt-6">
+    <div class="columns">
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Company</h2>
+            <a class="is-block has-text-white" href="/about">About Us</a>
+            <a class="is-block has-text-white" href="/blog">Blog Posts</a>
         </div>
-        <div class="p-5 footer-column">
-            <h2 class="text-xl underline py-2">Resources</h2>
-            <a href="/support">Support</a>
-            <a href="/security">Security</a>
-            <a href="/gluster-vs-kadalu">Gluster vs Kadalu</a>
-            <a href="/storage/quick-start">Kadalu Storage Quick start</a>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Resources</h2>
+            <a class="is-block has-text-white" href="/support">Support</a>
+            <a class="is-block has-text-white" href="/security">Security</a>
+            <a class="is-block has-text-white" href="/gluster-vs-kadalu">Gluster vs Kadalu</a>
+            <a class="is-block has-text-white" href="/storage/quick-start">Kadalu Storage Quick start</a>
         </div>
-        <div class="p-5 footer-column">
-            <h2 class="text-xl underline py-2">Community</h2>
-            <a target="_blank" href="https://join.slack.com/t/kadalu/shared_invite/enQtNzg1ODQ0MDA5NTM2LWMzMTc5ZTJmMjk4MzI0YWVhOGFlZTJjZjY5MDNkZWI0Y2VjMDBlNzVkZmI1NWViN2U3MDNlNDJhNjE5OTBlOGU">Community Slack</a>
-            <a target="_blank" href="https://github.com/kadalu">Github</a>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Community</h2>
+            <a class="is-block has-text-white" target="_blank" href="https://join.slack.com/t/kadalu/shared_invite/enQtNzg1ODQ0MDA5NTM2LWMzMTc5ZTJmMjk4MzI0YWVhOGFlZTJjZjY5MDNkZWI0Y2VjMDBlNzVkZmI1NWViN2U3MDNlNDJhNjE5OTBlOGU">Community Slack</a>
+            <a class="is-block has-text-white" target="_blank" href="https://github.com/kadalu">Github</a>
         </div>
 
-        <div class="p-5 footer-column">
-            <h2 class="text-xl underline py-2">Contact Us</h2>
-            <a href="mailto:hello@kadalu.tech">Email to hello@kadalu.tech</a>
-            <a href="https://twitter.com/kadalu_tech">Twitter</a>
-            <a href="https://linkedin.com/kadalu_tech">Linkedin</a>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Contact Us</h2>
+            <a class="is-block has-text-white" href="mailto:hello@kadalu.tech">Email to hello@kadalu.tech</a>
+            <a class="is-block has-text-white" href="https://twitter.com/kadalu_tech">Twitter</a>
+            <a class="is-block has-text-white" href="https://linkedin.com/kadalu_tech">Linkedin</a>
         </div>
     </div>
-    <div class="text-center mt-20">
+    <div class="has-text-centered mt-6">
         Copyright &copy; 2022 Kadalu Technologies Private Limited.
     </div>
 </div>

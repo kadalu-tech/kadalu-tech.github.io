@@ -4,8 +4,10 @@
     <meta name="viewport" content="width=device-width"/>
     <meta charSet="utf-8"/>
     <title>List of Blog Posts</title>
+    <link rel="stylesheet" href="/bulma-0.9.4.min.css">
     <link rel="stylesheet" href="/stylesheet.css">
     <link rel="stylesheet" href="/syntax-highlight-emacs.css">
+    <script defer src="/alpinejs-3.10.5.min.js"></script>
 
     <meta name="generator" content="Nanoc 4.12.7">
     
@@ -39,122 +41,206 @@
 
     <body>
         <div id="main">
-            <div class="px-10 py-5 bg-white md:flex flex-row">
-    <div class="basis-2/12">
-        <a href="/"><img src="/images/logo.svg" class="h-16"/></a>
-    </div>
-    <nav class="text-right block basis-10/12 py-2 top-bar">
-        <a class="block md:inline-block" href="/blog">Blog</a>
-        <a class="block md:inline-block" href="/about">About Us</a>
-        
-    </nav>
-</div>
+            <nav class="navbar px-4" role="navigation" aria-label="main navigation" x-data="{showing: false}">
+  <div class="navbar-brand has-text-left">
+      <a class="navbar-item" href="/">
+          <img src="/images/logo.svg" alt="Kadalu Technologies" width="300">
+    </a>
 
-            <div class="py-10 px-10 w-full" id="blog-list">
-                <h1>List of Blog Posts</h1>
-                <div class="md:flex flex-row flex-wrap pb-10 mt-10">
-    
-        
-        
-        <div class="basis-1/4">
-            <a class="shadow-lg bg-white m-2 p-5 bg-blue-50 rounded-lg mb-5 block h-[350px] text-gray-700" href="/blog/mount-kadalu-volume">
-                <div class="font-semibold text-xl mb-2 text-black">Mount a Kadalu Storage Volume</div>
-                <div class="text-gray-500 text-sm mb-7">Posted on <strong>Nov 15, 2022</strong> by <strong>Aravinda Vishwanathapura</strong></div>
-                <p class="text-sm text-gray-600">Kadalu Storage Volumes can be accessed via Fuse mount, NFS Ganesha, Samba and GFAPI bindings. This blog post describes how to mount a Kadalu Storage Volume using Fuse mount....</p>
-            </a>
-        </div>
-    
-        
-        
-        <div class="basis-1/4">
-            <a class="shadow-lg bg-white m-2 p-5 bg-blue-50 rounded-lg mb-5 block h-[350px] text-gray-700" href="/blog/500-stars">
-                <div class="font-semibold text-xl mb-2 text-black">500+ Stars: A major milestone for the project</div>
-                <div class="text-gray-500 text-sm mb-7">Posted on <strong>Oct 21, 2022</strong> by <strong>Amar Tumballi</strong></div>
-                <p class="text-sm text-gray-600">As of today, the kadalu project has 505 GitHub stars, 505 commits, 48 releases, and 38 contributors....</p>
-            </a>
-        </div>
-    
-        
-        
-        <div class="basis-1/4">
-            <a class="shadow-lg bg-white m-2 p-5 bg-blue-50 rounded-lg mb-5 block h-[350px] text-gray-700" href="/blog/persistent-storage-ports">
-                <div class="font-semibold text-xl mb-2 text-black">Persistent Storage Ports and Happy Admins</div>
-                <div class="text-gray-500 text-sm mb-7">Posted on <strong>Sep 12, 2022</strong> by <strong>Aravinda Vishwanathapura</strong></div>
-                <p class="text-sm text-gray-600">Kadalu Storage decided to solve the fluctuating Storage unit ports issue and make the Admins happy. When a Kadalu Storage Volume is created, ports are allocated for each storage unit. Whenever the Volume is restarted or nodes are rebooted the storage units always use the same ports that are assigned to them....</p>
-            </a>
-        </div>
-    
-        
-        
-        <div class="basis-1/4">
-            <a class="shadow-lg bg-white m-2 p-5 bg-blue-50 rounded-lg mb-5 block h-[350px] text-gray-700" href="/blog/happy-independence-day-2022">
-                <div class="font-semibold text-xl mb-2 text-black">Happy 75th Independence Day - India</div>
-                <div class="text-gray-500 text-sm mb-7">Posted on <strong>Aug 15, 2022</strong> by <strong>Aravinda Vishwanathapura</strong></div>
-                <p class="text-sm text-gray-600">Happy 75th Independence Day to all Kadalu Storage users in India....</p>
-            </a>
-        </div>
-    
-        
-        
-        <div class="basis-1/4">
-            <a class="shadow-lg bg-white m-2 p-5 bg-blue-50 rounded-lg mb-5 block h-[350px] text-gray-700" href="/blog/announcing-kadalu-storage-1.0-beta">
-                <div class="font-semibold text-xl mb-2 text-black">Announcing Kadalu Storage 1.0 Beta release</div>
-                <div class="text-gray-500 text-sm mb-7">Posted on <strong>Aug 8, 2022</strong> by <strong>Aravinda Vishwanathapura</strong></div>
-                <p class="text-sm text-gray-600">We are happy to announce the beta release of Kadalu Storage 1.0. This release includes many features from GlusterFS along with many improvements....</p>
-            </a>
-        </div>
-    
-        
-        
-        <div class="basis-1/4">
-            <a class="shadow-lg bg-white m-2 p-5 bg-blue-50 rounded-lg mb-5 block h-[350px] text-gray-700" href="/blog/try-kadalu-storage">
-                <div class="font-semibold text-xl mb-2 text-black">Try Kadalu Storage!</div>
-                <div class="text-gray-500 text-sm mb-7">Posted on <strong>Jul 22, 2022</strong> by <strong>Aravinda Vishwanathapura</strong></div>
-                <p class="text-sm text-gray-600">If you have a few spare VMs or machines, then you can easily set up Kadalu Storage and check  if it fits your needs. Kadalu Storage team has created ready to use containers that can be started to behave as Storage nodes....</p>
-            </a>
-        </div>
-    
-        
-        
-        <div class="basis-1/4">
-            <a class="shadow-lg bg-white m-2 p-5 bg-blue-50 rounded-lg mb-5 block h-[350px] text-gray-700" href="/blog/hello-world">
-                <div class="font-semibold text-xl mb-2 text-black">Hello World! - Kadalu Technologies</div>
-                <div class="text-gray-500 text-sm mb-7">Posted on <strong>Apr 15, 2022</strong> by <strong>Aravinda Vishwanathapura</strong></div>
-                <p class="text-sm text-gray-600">Kadalu Open Source project was started in 2019 with the idea to integrate Gluster natively with Kubernetes APIs without using Glusterd(Gluster's management layer). Later the idea was extended for non-Kubernetes use cases by creating a modern storage manager....</p>
-            </a>
-        </div>
-    
-</div>
+    <a role="button" class="navbar-burger" aria-label="menu" :class="showing ? 'is-active' : ''" aria-expanded="false" @click="showing = !showing">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
 
+  <div class="navbar-end" x-show="showing">
+      <a class="navbar-item" href="/blog">
+          Blog
+      </a>
+      <a class="navbar-item" href="/about">
+          About Us
+      </a>
+  </div>
+</nav>
+
+            <div class="p-4 container" id="blog-list">
+                <h1 class="title has-text-centered">List of Blog Posts</h1>
+                <div class="py-6">
+                    <div class="columns is-multiline">
+    
+        
+        
+        <div class="column is-4">
+            <div class="card" style="height: 350px">
+                <a href="/blog/mount-kadalu-volume">
+                    <div class="card-content has-text-grey-dark">
+                        <p class="title is-4">
+                            Mount a Kadalu Storage Volume
+                        </p>
+                        <p class="subtitle is-6 has-text-grey">
+                            Posted on <em>Nov 15, 2022</em> by <em>Aravinda Vishwanathapura</em>
+                        </p>
+                        <div class="content">
+                            Kadalu Storage Volumes can be accessed via Fuse mount, NFS Ganesha, Samba and GFAPI bindings. This blog post describes how to mount a Kadalu Storage Volume using Fuse mount....
+                        </div>
+                    </div>
+                </a>
             </div>
-            <div class="min-h-[50vh] py-10 px-10 bg-[#007ca3] text-white  underline-offset-8">
-    <div class="flex flex-row flex-wrap">
-        <div class="p-5 footer-column">
-            <h2 class="text-xl underline py-2">Company</h2>
-            <a href="/about">About Us</a>
-            <a href="/blog">Blog Posts</a>
         </div>
-        <div class="p-5 footer-column">
-            <h2 class="text-xl underline py-2">Resources</h2>
-            <a href="/support">Support</a>
-            <a href="/security">Security</a>
-            <a href="/gluster-vs-kadalu">Gluster vs Kadalu</a>
-            <a href="/storage/quick-start">Kadalu Storage Quick start</a>
+    
+        
+        
+        <div class="column is-4">
+            <div class="card" style="height: 350px">
+                <a href="/blog/500-stars">
+                    <div class="card-content has-text-grey-dark">
+                        <p class="title is-4">
+                            500+ Stars: A major milestone for the project
+                        </p>
+                        <p class="subtitle is-6 has-text-grey">
+                            Posted on <em>Oct 21, 2022</em> by <em>Amar Tumballi</em>
+                        </p>
+                        <div class="content">
+                            As of today, the kadalu project has 505 GitHub stars, 505 commits, 48 releases, and 38 contributors....
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
-        <div class="p-5 footer-column">
-            <h2 class="text-xl underline py-2">Community</h2>
-            <a target="_blank" href="https://join.slack.com/t/kadalu/shared_invite/enQtNzg1ODQ0MDA5NTM2LWMzMTc5ZTJmMjk4MzI0YWVhOGFlZTJjZjY5MDNkZWI0Y2VjMDBlNzVkZmI1NWViN2U3MDNlNDJhNjE5OTBlOGU">Community Slack</a>
-            <a target="_blank" href="https://github.com/kadalu">Github</a>
+    
+        
+        
+        <div class="column is-4">
+            <div class="card" style="height: 350px">
+                <a href="/blog/persistent-storage-ports">
+                    <div class="card-content has-text-grey-dark">
+                        <p class="title is-4">
+                            Persistent Storage Ports and Happy Admins
+                        </p>
+                        <p class="subtitle is-6 has-text-grey">
+                            Posted on <em>Sep 12, 2022</em> by <em>Aravinda Vishwanathapura</em>
+                        </p>
+                        <div class="content">
+                            Kadalu Storage decided to solve the fluctuating Storage unit ports issue and make the Admins happy. When a Kadalu Storage Volume is created, ports are allocated for each storage unit. Whenever the Volume is restarted or nodes are rebooted the storage units always use the same ports that are assigned to them....
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    
+        
+        
+        <div class="column is-4">
+            <div class="card" style="height: 350px">
+                <a href="/blog/happy-independence-day-2022">
+                    <div class="card-content has-text-grey-dark">
+                        <p class="title is-4">
+                            Happy 75th Independence Day - India
+                        </p>
+                        <p class="subtitle is-6 has-text-grey">
+                            Posted on <em>Aug 15, 2022</em> by <em>Aravinda Vishwanathapura</em>
+                        </p>
+                        <div class="content">
+                            Happy 75th Independence Day to all Kadalu Storage users in India....
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    
+        
+        
+        <div class="column is-4">
+            <div class="card" style="height: 350px">
+                <a href="/blog/announcing-kadalu-storage-1.0-beta">
+                    <div class="card-content has-text-grey-dark">
+                        <p class="title is-4">
+                            Announcing Kadalu Storage 1.0 Beta release
+                        </p>
+                        <p class="subtitle is-6 has-text-grey">
+                            Posted on <em>Aug 8, 2022</em> by <em>Aravinda Vishwanathapura</em>
+                        </p>
+                        <div class="content">
+                            We are happy to announce the beta release of Kadalu Storage 1.0. This release includes many features from GlusterFS along with many improvements....
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    
+        
+        
+        <div class="column is-4">
+            <div class="card" style="height: 350px">
+                <a href="/blog/try-kadalu-storage">
+                    <div class="card-content has-text-grey-dark">
+                        <p class="title is-4">
+                            Try Kadalu Storage!
+                        </p>
+                        <p class="subtitle is-6 has-text-grey">
+                            Posted on <em>Jul 22, 2022</em> by <em>Aravinda Vishwanathapura</em>
+                        </p>
+                        <div class="content">
+                            If you have a few spare VMs or machines, then you can easily set up Kadalu Storage and check  if it fits your needs. Kadalu Storage team has created ready to use containers that can be started to behave as Storage nodes....
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    
+        
+        
+        <div class="column is-4">
+            <div class="card" style="height: 350px">
+                <a href="/blog/hello-world">
+                    <div class="card-content has-text-grey-dark">
+                        <p class="title is-4">
+                            Hello World! - Kadalu Technologies
+                        </p>
+                        <p class="subtitle is-6 has-text-grey">
+                            Posted on <em>Apr 15, 2022</em> by <em>Aravinda Vishwanathapura</em>
+                        </p>
+                        <div class="content">
+                            Kadalu Open Source project was started in 2019 with the idea to integrate Gluster natively with Kubernetes APIs without using Glusterd(Gluster's management layer). Later the idea was extended for non-Kubernetes use cases by creating a modern storage manager....
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    
+</div>
+
+                </div>
+            </div>
+            <div class="footer has-background-primary has-text-white mt-6">
+    <div class="columns">
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Company</h2>
+            <a class="is-block has-text-white" href="/about">About Us</a>
+            <a class="is-block has-text-white" href="/blog">Blog Posts</a>
+        </div>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Resources</h2>
+            <a class="is-block has-text-white" href="/support">Support</a>
+            <a class="is-block has-text-white" href="/security">Security</a>
+            <a class="is-block has-text-white" href="/gluster-vs-kadalu">Gluster vs Kadalu</a>
+            <a class="is-block has-text-white" href="/storage/quick-start">Kadalu Storage Quick start</a>
+        </div>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Community</h2>
+            <a class="is-block has-text-white" target="_blank" href="https://join.slack.com/t/kadalu/shared_invite/enQtNzg1ODQ0MDA5NTM2LWMzMTc5ZTJmMjk4MzI0YWVhOGFlZTJjZjY5MDNkZWI0Y2VjMDBlNzVkZmI1NWViN2U3MDNlNDJhNjE5OTBlOGU">Community Slack</a>
+            <a class="is-block has-text-white" target="_blank" href="https://github.com/kadalu">Github</a>
         </div>
 
-        <div class="p-5 footer-column">
-            <h2 class="text-xl underline py-2">Contact Us</h2>
-            <a href="mailto:hello@kadalu.tech">Email to hello@kadalu.tech</a>
-            <a href="https://twitter.com/kadalu_tech">Twitter</a>
-            <a href="https://linkedin.com/kadalu_tech">Linkedin</a>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Contact Us</h2>
+            <a class="is-block has-text-white" href="mailto:hello@kadalu.tech">Email to hello@kadalu.tech</a>
+            <a class="is-block has-text-white" href="https://twitter.com/kadalu_tech">Twitter</a>
+            <a class="is-block has-text-white" href="https://linkedin.com/kadalu_tech">Linkedin</a>
         </div>
     </div>
-    <div class="text-center mt-20">
+    <div class="has-text-centered mt-6">
         Copyright &copy; 2022 Kadalu Technologies Private Limited.
     </div>
 </div>

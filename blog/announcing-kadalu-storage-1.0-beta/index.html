@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width"/>
     <meta charSet="utf-8"/>
     <title>Announcing Kadalu Storage 1.0 Beta release</title>
+    <link rel="stylesheet" href="/bulma-0.9.4.min.css">
     <link rel="stylesheet" href="/stylesheet.css">
     <link rel="stylesheet" href="/syntax-highlight-emacs.css">
+    <script defer src="/alpinejs-3.10.5.min.js"></script>
 
     <meta name="generator" content="Nanoc 4.12.7">
     
@@ -41,30 +43,50 @@
 
     <body>
         <div id="main">
-            <div class="px-10 py-5 bg-white md:flex flex-row">
-    <div class="basis-2/12">
-        <a href="/"><img src="/images/logo.svg" class="h-16"/></a>
-    </div>
-    <nav class="text-right block basis-10/12 py-2 top-bar">
-        <a class="block md:inline-block" href="/blog">Blog</a>
-        <a class="block md:inline-block" href="/about">About Us</a>
-        
-    </nav>
-</div>
+            <nav class="navbar px-4" role="navigation" aria-label="main navigation" x-data="{showing: false}">
+  <div class="navbar-brand has-text-left">
+      <a class="navbar-item" href="/">
+          <img src="/images/logo.svg" alt="Kadalu Technologies" width="300">
+    </a>
 
-            <div class="py-10 px-10" id="content">
-                <div class="md:grid grid-cols-12">
-                    <div class="col-span-9">
-                        <div class="pr-10">
-                            <h1>Announcing Kadalu Storage 1.0 Beta release</h1>
-                            <div class="text-gray-500 text-sm mb-1">
-                                Posted on <strong>Aug 8, 2022</strong> by <strong>Aravinda Vishwanathapura</strong>
-                            </div>
-                            <div class="text-gray-600 text-sm mb-7">
-                                <svg class="w-6 h-6 inline-block mr-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
-                                1 minute read.
-                            </div>
-                            <div class="paragraph">
+    <a role="button" class="navbar-burger" aria-label="menu" :class="showing ? 'is-active' : ''" aria-expanded="false" @click="showing = !showing">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-end" x-show="showing">
+      <a class="navbar-item" href="/blog">
+          Blog
+      </a>
+      <a class="navbar-item" href="/about">
+          About Us
+      </a>
+  </div>
+</nav>
+
+            <div class="container is-max-desktop px-4" id="content">
+                <div class="has-text-centered py-6">
+                    <a href="/">
+                        <figure class="image is-64x64" style="margin: auto">
+                            <img class="is-rounded" src="https://github.com/aravindavk.png?size=300px">
+                        </figure>
+                        <p class="has-text-grey pb-6 is-size-6 is-uppercase">Aravinda Vishwanathapura</p>
+                    </a>
+                </div>
+
+                <div class="">
+                    <h1 class="title is-1 has-text-centered">Announcing Kadalu Storage 1.0 Beta release</h1>
+                    <div class="has-text-grey mb-1 has-text-centered">
+                        Posted on <strong>Aug 8, 2022</strong> by <strong>Aravinda Vishwanathapura</strong>
+                    </div>
+                    <p class="has-text-centered">
+                        <svg class="mr-1 icon is-inline-block" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                        1 minute read.
+                    </p>
+                    <div class="content py-6">
+                        <div class="paragraph">
 <p>Kadalu Storage is a modern storage solution based on GlusterFS. It uses core file system layer from GlusterFS and provides a modern management interface, ReST APIs, and many features.</p>
 </div>
 <div class="imageblock">
@@ -110,56 +132,55 @@
 </ul>
 </div>
 </div>
-                        </div>
-                    </div>
-                    <div class="col-span-3 mt-20 md:mt-0 bg-blue-50">
-                        <div class="text-center py-5">
-                            <img class="rounded-full mb-5 mx-auto" style="width:150px;height:150px" src="https://github.com/aravindavk.png?size=300px"/>
-                            <h2 class="font-semibold text-center">Aravinda Vishwanathapura</h2>
-                            
-                            <p>Co-Founder, CTO - Kadalu Technologies</p>
-                            
-                            <p>
-                                
-                                <a class="mr-2 text-indigo-600" href="https://aravindavk.in">Website</a>|
-                                
-                                
-                                <a class="mx-2 text-indigo-600" href="https://twitter.com/aravindavk">Twitter</a>|
-                                
-                                <a class="ml-2 text-indigo-600" href="https://github.com/aravindavk">Github</a>
-                            </p>
-                        </div>
                     </div>
                 </div>
+
+                <div class="has-text-centered mb-6 notification is-light">
+                    <p class="has-text-grey is-uppercase is-size-5 pb-2">About Aravinda Vishwanathapura</p>
+                    
+                    <p>Co-Founder, CTO - Kadalu Technologies</p>
+                    
+                    <p>
+                        
+                        <a class="mr-2" href="https://aravindavk.in">Website</a>|
+                        
+                        
+                        <a class="mx-2" href="https://twitter.com/aravindavk">Twitter</a>|
+                        
+                        <a class="ml-2" href="https://github.com/aravindavk">Github</a>
+                    </p>
+                </div>
             </div>
-            <div class="min-h-[50vh] py-10 px-10 bg-[#007ca3] text-white  underline-offset-8">
-    <div class="flex flex-row flex-wrap">
-        <div class="p-5 footer-column">
-            <h2 class="text-xl underline py-2">Company</h2>
-            <a href="/about">About Us</a>
-            <a href="/blog">Blog Posts</a>
+
         </div>
-        <div class="p-5 footer-column">
-            <h2 class="text-xl underline py-2">Resources</h2>
-            <a href="/support">Support</a>
-            <a href="/security">Security</a>
-            <a href="/gluster-vs-kadalu">Gluster vs Kadalu</a>
-            <a href="/storage/quick-start">Kadalu Storage Quick start</a>
+        <div class="footer has-background-primary has-text-white mt-6">
+    <div class="columns">
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Company</h2>
+            <a class="is-block has-text-white" href="/about">About Us</a>
+            <a class="is-block has-text-white" href="/blog">Blog Posts</a>
         </div>
-        <div class="p-5 footer-column">
-            <h2 class="text-xl underline py-2">Community</h2>
-            <a target="_blank" href="https://join.slack.com/t/kadalu/shared_invite/enQtNzg1ODQ0MDA5NTM2LWMzMTc5ZTJmMjk4MzI0YWVhOGFlZTJjZjY5MDNkZWI0Y2VjMDBlNzVkZmI1NWViN2U3MDNlNDJhNjE5OTBlOGU">Community Slack</a>
-            <a target="_blank" href="https://github.com/kadalu">Github</a>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Resources</h2>
+            <a class="is-block has-text-white" href="/support">Support</a>
+            <a class="is-block has-text-white" href="/security">Security</a>
+            <a class="is-block has-text-white" href="/gluster-vs-kadalu">Gluster vs Kadalu</a>
+            <a class="is-block has-text-white" href="/storage/quick-start">Kadalu Storage Quick start</a>
+        </div>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Community</h2>
+            <a class="is-block has-text-white" target="_blank" href="https://join.slack.com/t/kadalu/shared_invite/enQtNzg1ODQ0MDA5NTM2LWMzMTc5ZTJmMjk4MzI0YWVhOGFlZTJjZjY5MDNkZWI0Y2VjMDBlNzVkZmI1NWViN2U3MDNlNDJhNjE5OTBlOGU">Community Slack</a>
+            <a class="is-block has-text-white" target="_blank" href="https://github.com/kadalu">Github</a>
         </div>
 
-        <div class="p-5 footer-column">
-            <h2 class="text-xl underline py-2">Contact Us</h2>
-            <a href="mailto:hello@kadalu.tech">Email to hello@kadalu.tech</a>
-            <a href="https://twitter.com/kadalu_tech">Twitter</a>
-            <a href="https://linkedin.com/kadalu_tech">Linkedin</a>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Contact Us</h2>
+            <a class="is-block has-text-white" href="mailto:hello@kadalu.tech">Email to hello@kadalu.tech</a>
+            <a class="is-block has-text-white" href="https://twitter.com/kadalu_tech">Twitter</a>
+            <a class="is-block has-text-white" href="https://linkedin.com/kadalu_tech">Linkedin</a>
         </div>
     </div>
-    <div class="text-center mt-20">
+    <div class="has-text-centered mt-6">
         Copyright &copy; 2022 Kadalu Technologies Private Limited.
     </div>
 </div>
