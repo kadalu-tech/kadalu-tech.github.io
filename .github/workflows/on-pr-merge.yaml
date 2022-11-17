@@ -20,10 +20,6 @@ jobs:
       with:
         ruby-version: 3.0 # Not needed with a .ruby-version file
         bundler-cache: true # runs 'bundle install' and caches installed gems automatically
-    - name: Use Node.js 14.x
-      uses: actions/setup-node@v1
-      with:
-        node-version: 14.x
     - name: Install Build deps
       run: |
         sudo apt install -y libyaml-dev

@@ -2,60 +2,89 @@
 title: Kadalu Storage - Kadalu Technologies
 ---
 
-<div class="bg-[#007ca3]">
-    <div style="background: url(/images/pattern.png)">
-        <h1 class="mx-auto w-3/4 py-20 text-center text-4xl text-white font-semibold">A Modern Distributed Storage solution for all your storage needs</h1>
-        <div class="md:flex md:flex-row px-10 pb-20 gap-10">
-            <div class="basis-1/3">
-                <div class="p-2 text-white relative border-b md:border-b-0">
-                    <h1 class="text-3xl text-center mb-5">Kadalu Storage</h1>
-                    <p>100% Open Source, distributed storage solution based on GlusterFS. Kadalu Storage provides a modern storage manager with ReST APIs.</p>
-                    <!-- <div class="text-center mt-10 md:absolute bottom-10 w-full">
-                         <a href="/storage" class="bg-[#F6D359] text-black px-5 py-1 rounded-lg text-xl font-semibold">Learn more</a>
-                         </div> -->
-                </div>
-            </div>
-            <div class="basis-1/3">
-                <div class="p-2 text-white relative border-b md:border-b-0">
-                    <h1 class="text-3xl text-center mb-5">Feature development</h1>
-                    <p>We design, prototype, and implement GlusterFS / Kadalu Storage tools, applications, and features for your Company.</p>
-                    <!-- <div class="text-center mt-10 md:absolute bottom-10 w-full">
-                         <a href="/feature-development" class="bg-[#F6D359] text-black px-5 py-1 rounded-lg text-xl font-semibold">Learn more</a>
-                         </div> -->
-                </div>
-            </div>
-            <div class="basis-1/3">
-                <div class="p-2 text-white relative">
-                    <h1 class="text-3xl text-center mb-5">Consultancy</h1>
-                    <p>With our experience with GlusterFS / Kadalu Storage, we can help get your Storage deployments on the right track from the start.</p>
-                    <!-- <div class="text-center mt-10 md:absolute bottom-10 w-full">
-                         <a href="/consultancy" class="bg-[#F6D359] text-black px-5 py-1 rounded-lg text-xl font-semibold">Learn more</a>
-                         </div> -->
+<section class="hero is-primary" style="background-image: url(/images/pattern.png)">
+  <div class="hero-body has-text-centered">
+    <p class="title">
+        Kadalu Storage
+    </p>
+    <p class="subtitle">
+        100% Open Source, distributed storage solution based on GlusterFS. Kadalu Storage provides a modern storage manager with ReST APIs.
+    </p>
+  </div>
+</section>
+
+<div class="has-background-primary p-4" style="background-image: url(/images/pattern.png)">
+    <div class="columns">
+        <div class="column is-4">
+            <div class="card has-background-primary-light">
+                <div class="card-content">
+                    <p class="title">
+                        Kadalu Storage
+                    </p>
+                    <div class="content">
+                        100% Open Source, distributed storage solution based on GlusterFS. Kadalu Storage provides a modern storage manager with ReST APIs.
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="text-center">
-            <p class="text-white mb-1 pb-10">We are happy to connect with you. For queries related to Kadalu Storage product sales/demo/consultancy please write an email to us at <a href="mailto:hello@kadalu.tech">hello@kadalu.tech</a></p>
+
+        <div class="column is-4">
+            <div class="card has-background-primary-light">
+                <div class="card-content">
+                    <p class="title">
+                        Feature development
+                    </p>
+                    <div class="content">
+                        We design, prototype, and implement GlusterFS / Kadalu Storage tools, applications, and features for your Company.                        
+                    </div>
+                </div>
+            </div>
         </div>
+
+        <div class="column is-4">
+            <div class="card has-background-primary-light">
+                <div class="card-content">
+                    <p class="title">
+                        Consultancy
+                    </p>
+                    <div class="content">
+                        With our experience with GlusterFS / Kadalu Storage, we can help get your Storage deployments on the right track from the start.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="has-text-centered has-text-white">
+        <p class="mb-4">We are happy to connect with you. For queries related to Kadalu Storage product sales/demo/consultancy please write an email to us at <a class="has-text-white" href="mailto:hello@kadalu.tech">hello@kadalu.tech</a></p>
     </div>
 </div>
 
-<div class="min-h-[80vh] py-10 px-10 underline-offset-8">
-    <h2 class="text-center font-semibold text-3xl mb-5">WHAT'S NEW</h2>
-    <div class="md:flex flex-row flex-wrap">
+<div class="py-6 px-4">
+    <h2 class="has-text-centered has-text-weight-semibold is-size-4 mb-5">WHAT'S NEW</h2>
+    <div class="columns">
         <% sort_blog_posts(@items.find_all('/blog/*'))[0, 3].each do |post| %>
         <% author = author_data(post[:author].to_sym) %>
         <% slug, created_at = slug_and_created_at(post) %>
-        <div class="basis-1/3">
-            <a class="shadow-lg bg-blue-50 m-2 p-5 rounded-lg mb-5 block h-[350px]" href="/blog/<%= slug %>">
-                <div class="font-semibold text-xl mb-2"><%= post[:title] %></div>
-                <div class="text-gray-500 text-sm mb-7">Posted on <strong><%= get_pretty_date(created_at) %></strong> by <strong><%= author[:name] %></strong></div>
-                <p class="text-sm"><%= post[:description] %>...</p>
-            </a>
+        <div class="column is-4">
+            <div class="card" style="height: 350px">
+                <a href="/blog/<%= slug %>">
+                    <div class="card-content has-text-grey-dark">
+                        <p class="title is-4">
+                            <%= post[:title] %>
+                        </p>
+                        <p class="subtitle is-6 has-text-grey">
+                            Posted on <em><%= get_pretty_date(created_at) %></em> by <em><%= author[:name] %></em>
+                        </p>
+                        <div class="content">
+                            <%= post[:description] %>...
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
         <% end %>
     </div>
-    <div class="text-center mt-20">
-        <a href="/blog" class="bg-[#007ca3] px-5 py-2 rounded-lg ml-2 text-white">All blog posts</a>
+    <div class="has-text-centered mt-6">
+        <a href="/blog" class="button">All blog posts</a>
     </div>
 </div>
