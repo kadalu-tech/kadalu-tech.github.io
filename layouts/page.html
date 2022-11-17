@@ -4,9 +4,11 @@
     <body>
         <div id="main">
             <%= render '/top_bar.*' %>
-            <div class="py-10 px-10 w-full md:w-3/4" id="content">
-                <h1><%= @item[:title] %></h1>
-                <%= yield %>
+            <div class="p-4 container is-max-desktop" id="content">
+                <h1 class="title has-text-centered"><%= @item[:title] %></h1>
+                <div class="content">
+                    <%= yield %>
+                </div>
             </div>
             <%= render '/footer.*' %>
         </div>

@@ -1,10 +1,22 @@
-<div class="px-10 py-5 bg-white md:flex flex-row">
-    <div class="basis-2/12">
-        <a href="/"><img src="/images/logo.svg" class="h-16"/></a>
-    </div>
-    <nav class="text-right block basis-10/12 py-2 top-bar">
-        <a class="block md:inline-block" href="/blog">Blog</a>
-        <a class="block md:inline-block" href="/about">About Us</a>
-        
-    </nav>
-</div>
+<nav class="navbar px-4" role="navigation" aria-label="main navigation" x-data="{showing: false}">
+  <div class="navbar-brand has-text-left">
+      <a class="navbar-item" href="/">
+          <img src="/images/logo.svg" alt="Kadalu Technologies" width="300">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" :class="showing ? 'is-active' : ''" aria-expanded="false" @click="showing = !showing">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-end" x-show="showing">
+      <a class="navbar-item" href="/blog">
+          Blog
+      </a>
+      <a class="navbar-item" href="/about">
+          About Us
+      </a>
+  </div>
+</nav>

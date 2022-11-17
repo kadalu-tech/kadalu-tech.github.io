@@ -1,16 +1,26 @@
 ---
 title: List of Blog Posts
 ---
-<div class="md:flex flex-row flex-wrap pb-10 mt-10">
+<div class="columns is-multiline">
     <% sort_blog_posts(@items.find_all('/blog/*')).each do |post| %>
         <% author = author_data(post[:author].to_sym) %>
         <% slug, created_at = slug_and_created_at(post) %>
-        <div class="basis-1/4">
-            <a class="shadow-lg bg-white m-2 p-5 bg-blue-50 rounded-lg mb-5 block h-[350px] text-gray-700" href="/blog/<%= slug %>">
-                <div class="font-semibold text-xl mb-2 text-black"><%= post[:title] %></div>
-                <div class="text-gray-500 text-sm mb-7">Posted on <strong><%= get_pretty_date(created_at) %></strong> by <strong><%= author[:name] %></strong></div>
-                <p class="text-sm text-gray-600"><%= post[:description] %>...</p>
-            </a>
+        <div class="column is-4">
+            <div class="card" style="height: 350px">
+                <a href="/blog/<%= slug %>">
+                    <div class="card-content has-text-grey-dark">
+                        <p class="title is-4">
+                            <%= post[:title] %>
+                        </p>
+                        <p class="subtitle is-6 has-text-grey">
+                            Posted on <em><%= get_pretty_date(created_at) %></em> by <em><%= author[:name] %></em>
+                        </p>
+                        <div class="content">
+                            <%= post[:description] %>...
+                        </div>
+                    </div>
+                </a>
+            </div>
         </div>
     <% end %>
 </div>
