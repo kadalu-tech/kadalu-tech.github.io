@@ -1,5 +1,6 @@
 ---
 title: Kadalu Storage - Quick Start Guide
+image: /images/kadalu-storage-release-1.0-beta.1.png
 ---
 
 == Introduction
@@ -14,8 +15,8 @@ This guide assumes you will create a replica 3 (1x3) cluster using three nodes. 
 +
 [source]
 ----
-curl -sL --compressed "https://kadalu.tech/pkgs/1/ubuntu/20.04/KEY.gpg" | sudo apt-key add -
-sudo curl -sL --compressed -o /etc/apt/sources.list.d/kadalu_storage.list "https://kadalu.tech/pkgs/1/ubuntu/20.04/sources.list"
+echo 'deb https://kadalu.tech/pkgs/1/ubuntu/22.04 /' | sudo tee /etc/apt/sources.list.d/kadalu.list
+curl -fsSL https://kadalu.tech/pkgs/1/ubuntu/22.04/KEY.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kadalu.gpg > /dev/null
 sudo apt update
 ----
 +
