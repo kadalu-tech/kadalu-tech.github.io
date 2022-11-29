@@ -54,7 +54,9 @@ Login
 ----
 $ kadalu user login admin
 Password:
-Login successful. Details saved in `/root/.kadalu/session`. Delete this file or run `kadalu logout` command to delete the session.
+Login successful. Details saved in `/root/.kadalu/session`.
+Delete this file or run `kadalu logout`
+command to delete the session.
 ----
 
 == Create a pool and add storage nodes
@@ -134,7 +136,8 @@ And the steps to create pool and node addition can be skipped.
 [source,console]
 ----
 $ sudo mkdir /mnt/kadalu_vol
-$ sudo mount -t kadalu vm1:DEV/Test-Vol /mnt/kadalu_vol/
+$ sudo kadalu user login admin
+$ sudo mount -t kadalu DEV/Test-Vol /mnt/kadalu_vol/
 $ df -h /mnt/kadalu_vol/
 Filesystem           Size  Used Avail Use% Mounted on
 kadalu:/Test-Vol   30G  554M   30G   2% /mnt/kadalu_vol
