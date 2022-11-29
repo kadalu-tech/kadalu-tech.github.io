@@ -147,7 +147,9 @@ User admin created successfully</span></code></pre>
 <div class="content">
 <pre class="rouge highlight"><code data-lang="console"><span class="gp">$</span><span class="w"> </span>kadalu user login admin
 <span class="go">Password:
-Login successful. Details saved in `/root/.kadalu/session`. Delete this file or run `kadalu logout` command to delete the session.</span></code></pre>
+Login successful. Details saved in `/root/.kadalu/session`.
+Delete this file or run `kadalu logout`
+command to delete the session.</span></code></pre>
 </div>
 </div>
 </div>
@@ -247,7 +249,8 @@ DEV/Test-Vol  59a726ad-0010-4a4f-ac4d-b11e54e722d7  Started  Replicate  50.0GiB 
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="console"><span class="gp">$</span><span class="w"> </span><span class="nb">sudo mkdir</span> /mnt/kadalu_vol
-<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>mount <span class="nt">-t</span> kadalu vm1:DEV/Test-Vol /mnt/kadalu_vol/
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>kadalu user login admin
+<span class="gp">$</span><span class="w"> </span><span class="nb">sudo </span>mount <span class="nt">-t</span> kadalu DEV/Test-Vol /mnt/kadalu_vol/
 <span class="gp">$</span><span class="w"> </span><span class="nb">df</span> <span class="nt">-h</span> /mnt/kadalu_vol/
 <span class="go">Filesystem           Size  Used Avail Use% Mounted on
 kadalu:/Test-Vol   30G  554M   30G   2% /mnt/kadalu_vol</span></code></pre>
