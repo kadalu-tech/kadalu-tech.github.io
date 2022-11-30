@@ -1,0 +1,63 @@
+---
+title: Kadalu Storage 1.0 release - What to expect?
+author: aravindavk
+image: /images/kadalu-storage-release-1.0.0.png
+description: "We are happy to announce the first major release of Kadalu Storage. A huge thanks to all the awesome people who made this release possible."
+---
+We are happy to announce the first major release(`1.0.0`) of Kadalu Storage. A huge thanks to all the awesome people who made this release possible.
+
+Kadalu Storage is an opinionated distributed storage solution based on GlusterFS. Kadalu Storage project was started as a lightweight project to integrate with Kubernetes without using the management layer Glusterd. For non-kubernetes use cases, we realized that a modern alternative to Glusterd is required. We started working on Kadalu Storage manager, which is a lightweight and modern approach to manage all the file system resources. It provides ReST APIs, CLI and also Web UI based Storage management.
+
+++++
+<div class="has-text-centered my-6">
+<a class="button is-primary is-light mt-2" href="/storage/quick-start">Quick Start Guide</a>
+<a class="button is-primary is-light mt-2 ml-4" href="https://github.com/kadalu/kadalu/blob/devel/doc/quick-start.adoc">Quick Start Guide - Kubernetes</a>
+</div>
+++++
+
+A few highlights of the release are:
+
+* Support managing multiple Storage pools
+* Distribute, Replica/Mirror, Arbiter [.tag.is-danger.is-light.is-normal]#beta# and Disperse [.tag.is-danger.is-light.is-normal]#beta# Volume types
+* Kubernetes native Storage - Natively integrated with Kubernetes APIs without using Glusterd or Kadalu Storage manager. Subdirectories from Kadalu Volumes are exported as PVs of required size. Usage is controlled by using a Simple Quota feature.
+* Persistent Storage units (Bricks) Ports - Port is assigned on Kadalu Volume creation, and it will be persisted throughout the life cycle of the Volume. It is also possible to manually assign the required ports to these Storage units.
+* ReST APIs - Kadalu Storage provides ReST APIs for all the Storage management operations.
+* SDKs [.tag.is-danger.is-light.is-normal]#beta# - Programming language SDKs are available for Python, JavaScript and Crystal. In the future, more languages will be added to the list.
+* Cloud hosted console - Zero setup web UI for managing Kadalu Storage. Manage your local and production Kadalu Storage instances easily.
+* Content Addressable Storage [.tag.is-danger.is-light.is-normal]#beta# - Similar to IPFS or S3, access the files from Kadalu Storage Volumes as objects. This is currently a beta feature, that allows to access the files using its content address (hash) similar to IPFS. Files are stored efficiently to handle de-duplication and provides ReST APIs to upload or download files. Expect more features and SDKs in the upcoming releases.
+
+`1.0` release is a very big milestone for us. Feel free to contact us to discuss our priorities and the Roadmap. See the detailed https://github.com/kadalu/moana/blob/main/CHANGELOG.adoc[release notes] for additional information.
+
+== Release Plan
+
+Minor releases are once in every three months. After the `1.0` release in November, `1.1` release will be in Feb and `1.2` in May.
+
+Maintenance or patch release(`1.0.x`) once every month or based on the criticality of the fixes. This only includes fixes to the existing features. Patch releases are planned for the last two minor releases along with the current released version.
+
+Upgrading from `1.x` to `1.x+1` should be easy since no breaking changes between `1.x` and `1.x+1`. If any breaking changes, then it will be clearly mentioned in the upgrade notes or we will provide the automated scripts.
+
+<% contributors = JSON.parse(File.read("lib/contributors_1.0.0.json")) %>
+
+== Contributors to Kadalu Storage 1.0 (<%= contributors.size %>)
+
+// https://api.github.com/repos/kadalu/kadalu/contributors?anon=1&per_page=100
+
+++++
+<% contributors.each do |contributor| %>
+<a href="https://github.com/<%= contributor["login"] %>">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="<%= contributor["login"]? contributor["login"] : contributor["name"] %>">
+        <% if contributor["avatar_url"] %>
+        <img class="is-rounded" src="<%= contributor["avatar_url"] %>"/>
+        <% else %>
+        <img class="is-rounded" src="http://www.gravatar.com/avatar/?d=identicon"/>
+        <% end %>
+    </figure>
+</a>
+<% end %>
+++++
+
+== Kadalu Storage vs Gluster or Red Hat Gluster Storage (RHGS)
+
+Kadalu Storage is a modern alternative to GlusterFS or Red Hat Gluster Storage. Migrating from Gluster/Red Hat Gluster Storage to Kadalu Storage is possible without migrating any data, since the backend file system layer is unchanged. Previously we wrote about importing Gluster Volumes without moving the data, you can read about it https://kadalu.tech/blog/importing-a-gluster-volume-to-kadalu-storage/[here]
+
+To know more about the difference between Gluster/Red Hat Storage and Kadalu Storage are documented https://kadalu.tech/gluster-vs-kadalu[here].
