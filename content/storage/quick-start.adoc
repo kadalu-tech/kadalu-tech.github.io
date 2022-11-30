@@ -1,11 +1,12 @@
 ---
 title: Kadalu Storage - Quick Start Guide
-image: /images/kadalu-storage-release-1.0-beta.1.png
+image: /images/kadalu-storage-release-1.0.0.png
+description: Kadalu Storage is a distributed filesystem management system. At its core, at present, Kadalu uses the GlusterFS filesystem.
 ---
 
 == Introduction
 
-Kadalu Storage is a distributed filesystem management system. At its core, Kadalu uses the GlusterFS filesystem.
+Kadalu Storage is a distributed filesystem management system. At its core, at present, Kadalu uses the GlusterFS filesystem.
 
 == Installation
 
