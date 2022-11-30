@@ -1,0 +1,563 @@
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charSet="utf-8"/>
+    <title>Kadalu Storage 1.0 release - What to expect?</title>
+    <link rel="stylesheet" href="/bulma-0.9.4.min.css">
+    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="/syntax-highlight-emacs.css">
+    <script defer src="/alpinejs-3.10.5.min.js"></script>
+
+    <meta name="generator" content="Nanoc 4.12.7">
+    
+<link href="/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/favicon.ico" />
+<meta name="generator" content="Nanoc 4.12.7">
+<meta property="og:title" content="Kadalu Storage 1.0 release - What to expect?"/>
+<meta name="author" content="aravindavk"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="description" content="We are happy to announce the first major release of Kadalu Storage. A huge thanks to all the awesome people who made this release possible."/>
+<meta property="og:description" content="We are happy to announce the first major release of Kadalu Storage. A huge thanks to all the awesome people who made this release possible."/>
+<link rel="canonical" href="/blog/kadalu-storage-1.0.0/"/>
+<meta property="og:url" content="/blog/kadalu-storage-1.0.0/"/>
+<meta property="og:site_name" content="Kadalu"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2022-11-30"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kadalu.tech/images/kadalu-storage-release-1.0.0.png"/>
+<meta property="og:image" content="https://kadalu.tech/images/kadalu-storage-release-1.0.0.png"/>
+
+<meta name="twitter:site" content="https://kadalu.tech"/>
+<meta name="twitter:title" content="Kadalu Storage 1.0 release - What to expect?"/>
+<meta name="twitter:description" content="We are happy to announce the first major release of Kadalu Storage. A huge thanks to all the awesome people who made this release possible."/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <script defer data-domain="kadalu.tech" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+    <body>
+        <div id="main">
+            <nav class="navbar px-4" role="navigation" aria-label="main navigation" x-data="{showing: false}">
+  <div class="navbar-brand has-text-left">
+      <a class="navbar-item" href="/">
+          <img src="/images/logo.svg" alt="Kadalu Technologies" width="300">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" :class="showing ? 'is-active' : ''" aria-expanded="false" @click="showing = !showing">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-end" x-show="showing">
+      <a class="navbar-item" href="/blog">
+          Blog
+      </a>
+      <a class="navbar-item" href="/about">
+          About Us
+      </a>
+  </div>
+  <div class="navbar-end is-hidden-touch">
+      <a class="navbar-item" href="/blog">
+          Blog
+      </a>
+      <a class="navbar-item" href="/about">
+          About Us
+      </a>
+  </div>
+</nav>
+
+            <div class="container is-max-desktop px-4" id="content">
+                <div class="has-text-centered py-6">
+                    <a href="/">
+                        <figure class="image is-64x64" style="margin: auto">
+                            <img class="is-rounded" src="https://github.com/aravindavk.png?size=300px">
+                        </figure>
+                        <p class="has-text-grey pb-6 is-size-6 is-uppercase">Aravinda Vishwanathapura</p>
+                    </a>
+                </div>
+
+                <div class="">
+                    <h1 class="title is-1 has-text-centered">Kadalu Storage 1.0 release - What to expect?</h1>
+                    <div class="has-text-grey mb-1 has-text-centered">
+                        Posted on <strong>Nov 30, 2022</strong> by <strong>Aravinda Vishwanathapura</strong>
+                    </div>
+                    <p class="has-text-centered">
+                        <span class="icon-text">
+                            <svg class="mr-1 icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                            <span><strong>3 minutes</strong> read.</span>
+                        </span>
+                    </p>
+                    <div class="content py-6">
+                        <div class="paragraph">
+<p>We are happy to announce the first major release(<code>1.0.0</code>) of Kadalu Storage. A huge thanks to all the awesome people who made this release possible.</p>
+</div>
+<div class="paragraph">
+<p>Kadalu Storage is an opinionated distributed storage solution based on GlusterFS. Kadalu Storage project was started as a lightweight project to integrate with Kubernetes without using the management layer Glusterd. For non-kubernetes use cases, we realized that a modern alternative to Glusterd is required. We started working on Kadalu Storage manager, which is a lightweight and modern approach to manage all the file system resources. It provides ReST APIs, CLI and also Web UI based Storage management.</p>
+</div>
+<div class="has-text-centered my-6">
+<a class="button is-primary is-light mt-2" href="/storage/quick-start">Quick Start Guide</a>
+<a class="button is-primary is-light mt-2 ml-4" href="https://github.com/kadalu/kadalu/blob/devel/doc/quick-start.adoc">Quick Start Guide - Kubernetes</a>
+</div>
+<div class="paragraph">
+<p>A few highlights of the release are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Support managing multiple Storage pools</p>
+</li>
+<li>
+<p>Distribute, Replica/Mirror, Arbiter <span class="tag is-danger is-light is-normal">beta</span> and Disperse <span class="tag is-danger is-light is-normal">beta</span> Volume types</p>
+</li>
+<li>
+<p>Kubernetes native Storage - Natively integrated with Kubernetes APIs without using Glusterd or Kadalu Storage manager. Subdirectories from Kadalu Volumes are exported as PVs of required size. Usage is controlled by using a Simple Quota feature.</p>
+</li>
+<li>
+<p>Persistent Storage units (Bricks) Ports - Port is assigned on Kadalu Volume creation, and it will be persisted throughout the life cycle of the Volume. It is also possible to manually assign the required ports to these Storage units.</p>
+</li>
+<li>
+<p>ReST APIs - Kadalu Storage provides ReST APIs for all the Storage management operations.</p>
+</li>
+<li>
+<p>SDKs <span class="tag is-danger is-light is-normal">beta</span> - Programming language SDKs are available for Python, JavaScript and Crystal. In the future, more languages will be added to the list.</p>
+</li>
+<li>
+<p>Cloud hosted console - Zero setup web UI for managing Kadalu Storage. Manage your local and production Kadalu Storage instances easily.</p>
+</li>
+<li>
+<p>Content Addressable Storage <span class="tag is-danger is-light is-normal">beta</span> - Similar to IPFS or S3, access the files from Kadalu Storage Volumes as objects. This is currently a beta feature, that allows to access the files using its content address (hash) similar to IPFS. Files are stored efficiently to handle de-duplication and provides ReST APIs to upload or download files. Expect more features and SDKs in the upcoming releases.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><code>1.0</code> release is a very big milestone for us. Feel free to contact us to discuss our priorities and the Roadmap. See the detailed <a href="https://github.com/kadalu/moana/blob/main/CHANGELOG.adoc">release notes</a> for additional information.</p>
+</div>
+<div class="sect1">
+<h2 id="_release_plan">Release Plan</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Minor releases are once in every three months. After the <code>1.0</code> release in November, <code>1.1</code> release will be in Feb and <code>1.2</code> in May.</p>
+</div>
+<div class="paragraph">
+<p>Maintenance or patch release(<code>1.0.x</code>) once every month or based on the criticality of the fixes. This only includes fixes to the existing features. Patch releases are planned for the last two minor releases along with the current released version.</p>
+</div>
+<div class="paragraph">
+<p>Upgrading from <code>1.x</code> to <code>1.x+1</code> should be easy since no breaking changes between <code>1.x</code> and <code>1.x+1</code>. If any breaking changes, then it will be clearly mentioned in the upgrade notes or we will provide the automated scripts.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_contributors_to_kadalu_storage_1_0_42">Contributors to Kadalu Storage 1.0 (42)</h2>
+<div class="sectionbody">
+<a href="https://github.com/amarts">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="amarts">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/624969?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/aravindavk">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="aravindavk">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/338230?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/leelavg">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="leelavg">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/37169113?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/vatsa287">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="vatsa287">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/53152913?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/hunter86bg">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="hunter86bg">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/22281444?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/Timoses">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="Timoses">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/6923843?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/papanito">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="papanito">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/15034009?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/fastlorenzo">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="fastlorenzo">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/768639?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/sac">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="sac">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/414248?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/dependabot[bot]">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="dependabot[bot]">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/in/29110?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="Alan Clucas">
+
+        <img class="is-rounded" src="http://www.gravatar.com/avatar/?d=identicon"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/Joibel">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="Joibel">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/1827156?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/tili41">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="tili41">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/21191167?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/sankarshanmukhopadhyay">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="sankarshanmukhopadhyay">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/1469458?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/iutx">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="iutx">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/31346321?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/bholmgren">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="bholmgren">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/5518590?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/bdudelsack">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="bdudelsack">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/3631456?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/blampe">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="blampe">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/848843?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/chuegel">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="chuegel">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/6955465?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/johalaoui">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="johalaoui">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/22944000?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/robojones">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="robojones">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/21033651?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/Ornias1993">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="Ornias1993">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/7613738?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="Leela Venkaiah G">
+
+        <img class="is-rounded" src="http://www.gravatar.com/avatar/?d=identicon"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/Madhu-1">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="Madhu-1">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/18114231?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/manav-7">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="manav-7">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/74670042?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/skrobul">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="skrobul">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/183976?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/MatteoManzoni">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="MatteoManzoni">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/35832688?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/sputnik13">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="sputnik13">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/447317?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/gnossen">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="gnossen">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/1644595?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/Santobert">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="Santobert">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/15657682?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="Sashank Agarwal">
+
+        <img class="is-rounded" src="http://www.gravatar.com/avatar/?d=identicon"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/schmitch">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="schmitch">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/1641401?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/sunnyku">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="sunnyku">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/30228910?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/ook">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="ook">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/559?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/dereulenspiegel">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="dereulenspiegel">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/103365?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/magicaljellybeans">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="magicaljellybeans">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/25112739?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="Yaniv Kaul">
+
+        <img class="is-rounded" src="http://www.gravatar.com/avatar/?d=identicon"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="esara">
+
+        <img class="is-rounded" src="http://www.gravatar.com/avatar/?d=identicon"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="fs-system">
+
+        <img class="is-rounded" src="http://www.gravatar.com/avatar/?d=identicon"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/rafis">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="rafis">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/3502395?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/vherrlein">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="vherrlein">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/24614045?v=4"/>
+
+    </figure>
+</a>
+
+<a href="https://github.com/yugyama">
+    <figure class="image is-48x48 is-rounded is-inline-block mr-1" style="margin: 0" title="yugyama">
+
+        <img class="is-rounded" src="https://avatars.githubusercontent.com/u/84759615?v=4"/>
+
+    </figure>
+</a>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_kadalu_storage_vs_gluster_or_red_hat_gluster_storage_rhgs">Kadalu Storage vs Gluster or Red Hat Gluster Storage (RHGS)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kadalu Storage is a modern alternative to GlusterFS or Red Hat Gluster Storage. Migrating from Gluster/Red Hat Gluster Storage to Kadalu Storage is possible without migrating any data, since the backend file system layer is unchanged. Previously we wrote about importing Gluster Volumes without moving the data, you can read about it <a href="https://kadalu.tech/blog/importing-a-gluster-volume-to-kadalu-storage/">here</a></p>
+</div>
+<div class="paragraph">
+<p>To know more about the difference between Gluster/Red Hat Storage and Kadalu Storage are documented <a href="https://kadalu.tech/gluster-vs-kadalu">here</a>.</p>
+</div>
+</div>
+</div>
+                    </div>
+                </div>
+
+                <div class="has-text-centered mb-6 notification is-light">
+                    <p class="has-text-grey is-uppercase is-size-5 pb-2">About Aravinda Vishwanathapura</p>
+                    
+                    <p>Co-Founder, CTO - Kadalu Technologies</p>
+                    
+                    <p>
+                        
+                        <a class="mr-2" href="https://aravindavk.in">Website</a>|
+                        
+                        
+                        <a class="mx-2" href="https://twitter.com/aravindavk">Twitter</a>|
+                        
+                        <a class="ml-2" href="https://github.com/aravindavk">Github</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer has-background-primary has-text-white mt-6">
+    <div class="columns">
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Company</h2>
+            <a class="is-block has-text-white" href="/about">About Us</a>
+            <a class="is-block has-text-white" href="/blog">Blog Posts</a>
+        </div>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Resources</h2>
+            <a class="is-block has-text-white" href="/support">Support</a>
+            <a class="is-block has-text-white" href="/security">Security</a>
+            <a class="is-block has-text-white" href="/gluster-vs-kadalu">Gluster vs Kadalu</a>
+            <a class="is-block has-text-white" href="/storage/quick-start">Kadalu Storage Quick start</a>
+        </div>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Community</h2>
+            <a class="is-block has-text-white" target="_blank" href="https://join.slack.com/t/kadalu/shared_invite/enQtNzg1ODQ0MDA5NTM2LWMzMTc5ZTJmMjk4MzI0YWVhOGFlZTJjZjY5MDNkZWI0Y2VjMDBlNzVkZmI1NWViN2U3MDNlNDJhNjE5OTBlOGU">Community Slack</a>
+            <a class="is-block has-text-white" target="_blank" href="https://github.com/kadalu">Github</a>
+        </div>
+
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Contact Us</h2>
+            <a class="is-block has-text-white" href="mailto:hello@kadalu.tech">Email to hello@kadalu.tech</a>
+            <a class="is-block has-text-white" href="https://twitter.com/kadalu_tech">Twitter</a>
+            <a class="is-block has-text-white" href="https://linkedin.com/kadalu_tech">Linkedin</a>
+        </div>
+    </div>
+    <div class="has-text-centered mt-6">
+        Copyright &copy; 2022 Kadalu Technologies Private Limited.
+    </div>
+</div>
+
+        </div>
+    </body>
+</html>
