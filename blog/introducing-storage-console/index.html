@@ -5,7 +5,7 @@
     <head>
     <meta name="viewport" content="width=device-width"/>
     <meta charSet="utf-8"/>
-    <title>Happy 75th Independence Day - India</title>
+    <title>Introducing Kadalu Storage Console</title>
     <link rel="stylesheet" href="/bulma-0.9.4.min.css">
     <link rel="stylesheet" href="/stylesheet.css">
     <link rel="stylesheet" href="/syntax-highlight-emacs.css">
@@ -16,24 +16,24 @@
 <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="apple-touch-icon" href="/favicon.ico" />
 <meta name="generator" content="Nanoc 4.12.7">
-<meta property="og:title" content="Happy 75th Independence Day - India"/>
+<meta property="og:title" content="Introducing Kadalu Storage Console"/>
 <meta name="author" content="aravindavk"/>
 <meta property="og:locale" content="en_US"/>
-<meta name="description" content="Happy 75th Independence Day to all Kadalu Storage users in India."/>
-<meta property="og:description" content="Happy 75th Independence Day to all Kadalu Storage users in India."/>
-<link rel="canonical" href="/blog/happy-independence-day-2022/"/>
-<meta property="og:url" content="/blog/happy-independence-day-2022/"/>
+<meta name="description" content="Kadalu Storage provides intuitive CLI for managing the Pools, Volumes and other resources. Many users enquired about the availability of GUI for ease of managing Kadalu Storage pools and volumes."/>
+<meta property="og:description" content="Kadalu Storage provides intuitive CLI for managing the Pools, Volumes and other resources. Many users enquired about the availability of GUI for ease of managing Kadalu Storage pools and volumes."/>
+<link rel="canonical" href="/blog/introducing-storage-console/"/>
+<meta property="og:url" content="/blog/introducing-storage-console/"/>
 <meta property="og:site_name" content="Kadalu"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2022-08-15"/>
+<meta property="article:published_time" content="2022-12-02"/>
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://kadalu.tech/images/kadalu_independence_day.png"/>
-<meta property="og:image" content="https://kadalu.tech/images/kadalu_independence_day.png"/>
+<meta name="twitter:image" content="https://kadalu.tech/images/storage-console-volumes.png"/>
+<meta property="og:image" content="https://kadalu.tech/images/storage-console-volumes.png"/>
 
 <meta name="twitter:site" content="https://kadalu.tech"/>
-<meta name="twitter:title" content="Happy 75th Independence Day - India"/>
-<meta name="twitter:description" content="Happy 75th Independence Day to all Kadalu Storage users in India."/>
+<meta name="twitter:title" content="Introducing Kadalu Storage Console"/>
+<meta name="twitter:description" content="Kadalu Storage provides intuitive CLI for managing the Pools, Volumes and other resources. Many users enquired about the availability of GUI for ease of managing Kadalu Storage pools and volumes."/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
@@ -85,49 +85,110 @@
                 </div>
 
                 <div class="">
-                    <h1 class="title is-1 has-text-centered">Happy 75th Independence Day - India</h1>
+                    <h1 class="title is-1 has-text-centered">Introducing Kadalu Storage Console</h1>
                     <div class="has-text-grey mb-1 has-text-centered">
-                        Posted on <strong>Aug 15, 2022</strong> by <strong>Aravinda Vishwanathapura</strong>
+                        Posted on <strong>Dec 2, 2022</strong> by <strong>Aravinda Vishwanathapura</strong>
                     </div>
                     <p class="has-text-centered">
                         <span class="icon-text">
                             <svg class="mr-1 icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
-                            <span><strong>1 minute</strong> read.</span>
+                            <span><strong>3 minutes</strong> read.</span>
                         </span>
                     </p>
                     <div class="content py-6">
                         <div class="paragraph">
-<p>Happy 75th Independence Day to all Kadalu Storage users in India.</p>
+<p>Kadalu Storage provides intuitive CLI for managing the Pools, Volumes and other resources. Many users enquired about the availability of GUI for ease of managing Kadalu Storage pools and volumes.</p>
+</div>
+<div class="has-text-centered my-6">
+<a class="button is-large is-primary is-light" href="https://console.kadalu.tech">console.kadalu.tech</a>
+</div>
+<div class="paragraph">
+<p>Today we are very happy to introduce <a href="https://console.kadalu.tech">Kadalu Storage Console</a>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="/images/kadalu_independence_day.png" alt="Independence day">
+<img src="/images/storage-console-volumes.png" alt="List of Volumes">
 </div>
 </div>
 <div class="paragraph">
-<p>Kadalu Storage is a 100% Open Source project providing distributed Storage solution to enterprise needs. Kadalu Storage project was started and actively maintained by the Bengaluru (India) based company. The project uses the core file system layer from GlusterFS project and built a new ecosystem around it.</p>
-</div>
-<div class="paragraph">
-<p>A few highlights on how Kadalu Storage helps to achieve independence from vendor lockins.</p>
+<p>A few interesting features of the Console are:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Open Source - All development and discussion related to the project is in public.</p>
+<p><strong>Static website</strong> - Kadalu Storage instance details are stored in Local Storage of the browser, and API calls are initiated by the browser itself. Storage Console uses Alpine JS to add reactivity to the app.</p>
 </li>
 <li>
-<p>Kadalu Storage supports any file system(xfs/zfs/ext4..) that has xattr support to use as storage units. This is a huge positive for users since data will be accessible always and readable even if at some point Kadalu stops support or if user wants to move out the data from Kadalu Storage.</p>
+<p><strong>Zero install</strong> - Storage Console is hosted by us. No need to download and install in your setup.</p>
 </li>
 <li>
-<p>Petabytes of Storage with commodity hardware and manage easily in local data centers.</p>
+<p><strong>Easily manage the Kadalu Storage running behind firewall</strong> - Since the API calls initiated from the browser you are running to the configured Kadalu Storage instances, all it needs is connectivity to your Cluster from the machine where you opened the console. To access the Kadalu Storage instance from an external node or mobile, use any proxy service for Storage manager URL and Port.</p>
 </li>
 <li>
-<p>Cloud friendly Storage, securely host Kadalu Storage Volumes in the cloud provider of your choice based on your requirements.</p>
+<p><strong>Secured and Privacy focused</strong> - Once the web page is opened, no details about API calls are shared to our server. All API calls are internal, and it is only between the browser and the Cluster.</p>
 </li>
 <li>
-<p>Local packages repositories - If your business depends on usage of the Software that is available from the data centers inside India, then we have covered it. Based on the request, we will set up local packages repositories.</p>
+<p>Easily manage <strong>multiple Kadalu Storage instances</strong>.</p>
+</li>
+<li>
+<p><strong>Responsive view</strong> for both desktop and mobile.</p>
 </li>
 </ul>
+</div>
+<div class="paragraph">
+<p>Why wait? Just spin off an <strong>Ubuntu 22.04 VM</strong>, install and start the Kadalu Storage service and open the Console to proceed further.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Add Kadalu Storage repo</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>echo 'deb https://kadalu.tech/pkgs/1.0.x/ubuntu/22.04 /' | sudo tee /etc/apt/sources.list.d/kadalu.list
+curl -fsSL https://kadalu.tech/pkgs/1.0.x/ubuntu/22.04/KEY.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kadalu.gpg &gt; /dev/null
+sudo apt update</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Install Kadalu Storage packages and Start the Storage manager</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>sudo apt install kadalu-storage
+sudo systemctl enable kadalu-mgr
+sudo systemctl start kadalu-mgr</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now Open the Storage console and register the instance and start managing.</p>
+<div class="has-text-centered my-6">
+<a class="button is-large is-primary is-light" href="https://console.kadalu.tech">console.kadalu.tech</a>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>After adding the instance (For example: <a href="http://localhost:3000" class="bare">http://localhost:3000</a>), it will redirect to user create page if not created. If the user exists, it opens the login page. We will work on the Console documentation or video walkthrough soon.</p>
+</div>
+<div class="paragraph">
+<p>Limitations:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Console is not yet capable of installing and starting the Kadalu Storage packages. Manually install and start the Kadalu Storage in all the required nodes.</p>
+</li>
+<li>
+<p>No Storage units provisioning - Storage units or Bricks should be pre-provisioned to use for Volume creation from the web console.</p>
+</li>
+<li>
+<p>Missing features - Storage Console is very new, not all the features from APIs/CLI are supported. More features will be added in upcoming releases.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Happy to enhance the Storage Console to cover the essential features. Feel free to open new issues <a href="https://github.com/kadalu-tech/console/issues">here</a>.</p>
 </div>
                     </div>
                 </div>
