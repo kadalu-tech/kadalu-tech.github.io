@@ -1,0 +1,67 @@
+---
+title: Introducing Kadalu Storage Console
+author: aravindavk
+image: /images/storage-console-volumes.png
+description: Kadalu Storage provides intuitive CLI for managing the Pools, Volumes and other resources. Many users enquired about the availability of GUI for ease of managing Kadalu Storage pools and volumes.
+---
+
+Kadalu Storage provides intuitive CLI for managing the Pools, Volumes and other resources. Many users enquired about the availability of GUI for ease of managing Kadalu Storage pools and volumes.
+
+++++
+<div class="has-text-centered my-6">
+<a class="button is-large is-primary is-light" href="https://console.kadalu.tech">console.kadalu.tech</a>
+</div>
+++++
+
+Today we are very happy to introduce https://console.kadalu.tech[Kadalu Storage Console].
+
+image::/images/storage-console-volumes.png[List of Volumes]
+
+A few interesting features of the Console are:
+
+* **Static website** - Kadalu Storage instance details are stored in Local Storage of the browser, and API calls are initiated by the browser itself. Storage Console uses Alpine JS to add reactivity to the app.
+* **Zero install** - Storage Console is hosted by us. No need to download and install in your setup.
+* **Easily manage the Kadalu Storage running behind firewall** - Since the API calls initiated from the browser you are running to the configured Kadalu Storage instances, all it needs is connectivity to your Cluster from the machine where you opened the console. To access the Kadalu Storage instance from an external node or mobile, use any proxy service for Storage manager URL and Port.
+* **Secured and Privacy focused** - Once the web page is opened, no details about API calls are shared to our server. All API calls are internal, and it is only between the browser and the Cluster.
+* Easily manage **multiple Kadalu Storage instances**.
+* **Responsive view** for both desktop and mobile.
+
+Why wait? Just spin off an **Ubuntu 22.04 VM**, install and start the Kadalu Storage service and open the Console to proceed further.
+
+* Add Kadalu Storage repo
++
+[source]
+----
+echo 'deb https://kadalu.tech/pkgs/1.0.x/ubuntu/22.04 /' | sudo tee /etc/apt/sources.list.d/kadalu.list
+curl -fsSL https://kadalu.tech/pkgs/1.0.x/ubuntu/22.04/KEY.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kadalu.gpg > /dev/null
+sudo apt update
+----
++
+* Install Kadalu Storage packages and Start the Storage manager
++
+[source]
+----
+sudo apt install kadalu-storage
+sudo systemctl enable kadalu-mgr
+sudo systemctl start kadalu-mgr
+----
++
+* Now Open the Storage console and register the instance and start managing.
++
+++++
+<div class="has-text-centered my-6">
+<a class="button is-large is-primary is-light" href="https://console.kadalu.tech">console.kadalu.tech</a>
+</div>
+++++
+
+After adding the instance (For example: http://localhost:3000), it will redirect to user create page if not created. If the user exists, it opens the login page. We will work on the Console documentation or video walkthrough soon.
+
+Limitations:
+
+* Console is not yet capable of installing and starting the Kadalu Storage packages. Manually install and start the Kadalu Storage in all the required nodes.
+* No Storage units provisioning - Storage units or Bricks should be pre-provisioned to use for Volume creation from the web console.
+* Missing features - Storage Console is very new, not all the features from APIs/CLI are supported. More features will be added in upcoming releases.
+
+
+Happy to enhance the Storage Console to cover the essential features. Feel free to open new issues https://github.com/kadalu-tech/console/issues[here].
+
