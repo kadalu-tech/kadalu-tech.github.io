@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charSet="utf-8"/>
+    <title>Content based addressing for Kadalu Storage</title>
+    <link rel="stylesheet" href="/bulma-0.9.4.min.css">
+    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="/syntax-highlight-emacs.css">
+    <script defer src="/alpinejs-3.10.5.min.js"></script>
+
+    <meta name="generator" content="Nanoc 4.12.7">
+    
+<link href="/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/favicon.ico" />
+<meta name="generator" content="Nanoc 4.12.7">
+<meta property="og:title" content="Content based addressing for Kadalu Storage"/>
+<meta name="author" content="aravindavk"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="description" content="Similar to IPFS or S3, access the files from Kadalu Storage Volumes as objects. This is currently a beta feature, that allows to access the files using its content address (hash) similar to IPFS. Files are stored efficiently to handle de-duplication and provides ReST APIs to upload or download files."/>
+<meta property="og:description" content="Similar to IPFS or S3, access the files from Kadalu Storage Volumes as objects. This is currently a beta feature, that allows to access the files using its content address (hash) similar to IPFS. Files are stored efficiently to handle de-duplication and provides ReST APIs to upload or download files."/>
+<link rel="canonical" href="/blog/content-addressable-storage/"/>
+<meta property="og:url" content="/blog/content-addressable-storage/"/>
+<meta property="og:site_name" content="Kadalu"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2022-12-08"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kadalu.tech/images/kadalu-access-protocols.png"/>
+<meta property="og:image" content="https://kadalu.tech/images/kadalu-access-protocols.png"/>
+
+<meta name="twitter:site" content="https://kadalu.tech"/>
+<meta name="twitter:title" content="Content based addressing for Kadalu Storage"/>
+<meta name="twitter:description" content="Similar to IPFS or S3, access the files from Kadalu Storage Volumes as objects. This is currently a beta feature, that allows to access the files using its content address (hash) similar to IPFS. Files are stored efficiently to handle de-duplication and provides ReST APIs to upload or download files."/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <script defer data-domain="kadalu.tech" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+    <body>
+        <div id="main">
+            <nav class="navbar px-4" role="navigation" aria-label="main navigation" x-data="{showing: false}">
+  <div class="navbar-brand has-text-left">
+      <a class="navbar-item" href="/">
+          <img src="/images/logo.svg" alt="Kadalu Technologies" width="300">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" :class="showing ? 'is-active' : ''" aria-expanded="false" @click="showing = !showing">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-end" x-show="showing">
+      <a class="navbar-item" href="/blog">
+          Blog
+      </a>
+      <a class="navbar-item" href="/about">
+          About Us
+      </a>
+  </div>
+  <div class="navbar-end is-hidden-touch">
+      <a class="navbar-item" href="/blog">
+          Blog
+      </a>
+      <a class="navbar-item" href="/about">
+          About Us
+      </a>
+  </div>
+</nav>
+
+            <div class="container is-max-desktop px-4" id="content">
+                <div class="has-text-centered py-6">
+                    <a href="/">
+                        <figure class="image is-64x64" style="margin: auto">
+                            <img class="is-rounded" src="https://github.com/aravindavk.png?size=300px">
+                        </figure>
+                        <p class="has-text-grey pb-6 is-size-6 is-uppercase">Aravinda Vishwanathapura</p>
+                    </a>
+                </div>
+
+                <div class="">
+                    <h1 class="title is-1 has-text-centered">Content based addressing for Kadalu Storage</h1>
+                    <div class="has-text-grey mb-1 has-text-centered">
+                        Posted on <strong>Dec 8, 2022</strong> by <strong>Aravinda Vishwanathapura</strong>
+                    </div>
+                    <p class="has-text-centered">
+                        <span class="icon-text">
+                            <svg class="mr-1 icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                            <span><strong>5 minutes</strong> read.</span>
+                        </span>
+                    </p>
+                    <div class="content py-6">
+                        <div class="paragraph">
+<p>Kadalu Storage volumes are accessible as <a href="/blog/mount-kadalu-volume">Fuse mount</a>, NFS(NFS Ganesha) or using GFAPIs (Since Kadalu Storage is based on GlusterFS, GFAPI works with Kadalu Storage without any changes).</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Content-addressable storage (CAS), also referred to as content-addressed storage or fixed-content storage, is a way to store information so it can be retrieved based on its content, not its name or location. It has been used for high-speed storage and retrieval of fixed content, such as documents stored for compliance with government regulations. (<a href="https://en.wikipedia.org/wiki/Content-addressable_storage">Wikipedia</a>)</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Many attempts have been made to provide object storage using GlusterFS, but none of them are actively maintained. We have started a new project(<a href="https://github.com/kadalu/kadalu-cas">github/kadalu/kadalu-cas</a>) to provide a content addressable access and object storage for Kadalu Storage. This project can be used with Kadalu Storage/GlusterFS or any directory backend that supports hard links.</p>
+</div>
+<div class="paragraph">
+<p>Similar to <strong>IPFS</strong> or <strong>S3</strong>, access the files from Kadalu Storage Volumes as objects. This is currently a <span class="tag is-danger is-light">beta</span> feature, that allows to access the files using its content address (hash) similar to IPFS. Files are stored efficiently to handle de-duplication and provides ReST APIs to upload or download files. <strong>S3 API</strong> compatibility is not available with the current release, but it can be added in future on need basis.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/kadalu-access-protocols.png" alt="Access Protocols">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_why_another_layer_when_kadalu_storage_can_be_mounted_and_used">Why another layer when Kadalu Storage can be mounted and used?</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Kadalu Storage clients are not available for many devices, for example mobile devices, Windows apps or embedded devices.</p>
+</li>
+<li>
+<p>Very easy to <strong>integrate</strong> with other web applications or CLI without needing any other dependencies.</p>
+</li>
+<li>
+<p><strong>Security</strong> - Instead of providing access to the servers from the external Gluster clients, host CAS in one of the managed node and provide API access on need basis.</p>
+</li>
+<li>
+<p><strong>Hybrid Volume access</strong> - Only a part of Kadalu Storage Volume can be exposed as Content addressable Storage.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_features">Features</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Bucket level authentication</strong> - Buckets are top level directories. Three types of roles are available - admin, writer, and reader.</p>
+</li>
+<li>
+<p><strong>Buckets access controls</strong> are maintained in config file itself. In the future, this will be moved to xattrs to avoid additional Storage to persist the meta details.</p>
+</li>
+<li>
+<p><strong>De-duplication</strong> - While creating the file, a hash is constructed based on the content of the file. If the hash already exists, then it will not create the file again.</p>
+</li>
+<li>
+<p><strong>Content based addressing</strong> - If you know the hash of the file, then access the file content using that hash without knowing the full path of the file (This again depends on the access available for the respective bucket).</p>
+</li>
+<li>
+<p><strong>Inbuilt web server</strong> to make any bucket to serve Static files or single page applications.</p>
+</li>
+<li>
+<p><strong>Version support</strong> (Future versions)</p>
+</li>
+<li>
+<p><strong>SDKs</strong> in Python, JS, Ruby (Future versions)</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Many more features are planned with the upcoming releases. Please let us know if you need a specific feature to be implemented.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_install_kadalu_storage_and_kadalu_cas_packages">Install Kadalu Storage and Kadalu CAS packages</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Follow this <a href="/storage/quick-start">quick start guide</a> to install Kadalu Storage.</p>
+</li>
+<li>
+<p>Install Kadalu CAS server by running the following command</p>
+<div class="listingblock">
+<div class="content">
+<pre>curl -fsSL https://github.com/kadalu/kadalu-cas/releases/latest/download/install.sh | sudo bash -x</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Create and mount a Kadalu Storage Volume</p>
+<div class="listingblock">
+<div class="content">
+<pre>kadalu volume create PROD/vol1   \
+    mirror server1:/data/vol1/s1 \
+           server2:/data/vol1/s2 \
+           server3:/data/vol1/s3
+mkdir /mnt/vol1
+chattr +i /mnt/vol1
+mount -t kadalu PROD/vol1 /mnt/vol1</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Now create the configuration file based on your requirements. (Bucket configurations will be handled by APIs itself in the future, for now configure manually till the buckets APIs are available). All hash values used in the configuration file below are sha256 hash of secrets (Ex: <code>echo -n "secret" | sha256sum</code>).</p>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code data-lang="yaml"><span class="na">port</span><span class="pi">:</span> <span class="m">4001</span>
+<span class="na">global_admins</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="s">e12e115acf4552b2568b55e93cbd39394c4ef81c82447fafc997882a02d23677</span>
+<span class="na">rootdir</span><span class="pi">:</span> <span class="s2">"</span><span class="s">/mnt/vol1"</span>
+<span class="na">buckets</span><span class="pi">:</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">app</span>
+    <span class="na">public</span><span class="pi">:</span> <span class="no">true</span>
+  <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">photos</span>
+    <span class="na">admins</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">a665a45920422f9d417e4867efdc4fb8a04a1f3fff1fa07e998e86f7f7a27ae3</span>
+    <span class="na">readers</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">b3a8e0e1f9ab1bfe3a36f231f676f78bb30a519d2b21e6c530c0eee8ebb4a5d0</span></code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>Start the CAS server by running,</p>
+<div class="listingblock">
+<div class="content">
+<pre>kadalu-cas kadalu.cas.vol1.yml</pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Upload file example</div>
+<div class="content">
+<pre>$ curl -i -XPOST -H "Authorization: Bearer 3dfdf4b9-3130-4264-ba2e-570afe74dd08" \
+    http://localhost:4001/photos/hello.png -F "data=@/tmp/hello.png"
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json
+Content-Length: 75
+
+{"hash":"e67413efc0bb83f7f1e46179448d4f586567949d4d6496928950ded66a7d7f08"}</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Download a file by hash</div>
+<div class="content">
+<pre>$ curl -i -XGET -H "Authorization: Bearer 3dfdf4b9-3130-4264-ba2e-570afe74dd08" \
+    http://localhost:4001/photos/e67413efc0bb83f7f1e46179448d4f586567949d4d6496928950ded66a7d7f08
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/octet-stream
+Accept-Ranges: bytes
+X-Content-Type-Options: nosniff
+Content-Length: 2550
+
+Warning: Binary output can mess up your terminal. Use "--output -" to tell
+Warning: curl to output it to your terminal anyway, or consider "--output
+Warning: &lt;FILE&gt;" to save to a file.</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Download example: By file path</div>
+<div class="content">
+<pre>$ curl -i -XGET -H "Authorization: Bearer 3dfdf4b9-3130-4264-ba2e-570afe74dd08" \
+    http://localhost:4001/photos/hello.png
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: image/png
+Accept-Ranges: bytes
+X-Content-Type-Options: nosniff
+Content-Length: 2550
+
+Warning: Binary output can mess up your terminal. Use "--output -" to tell
+Warning: curl to output it to your terminal anyway, or consider "--output
+Warning: &lt;FILE&gt;" to save to a file.</pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example of using an image from public bucket in HTML</div>
+<div class="content">
+<pre class="rouge highlight"><code data-lang="html"><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="nt">&lt;html&gt;</span>
+    <span class="nt">&lt;head&gt;</span>
+        <span class="nt">&lt;meta</span> <span class="na">charset=</span><span class="s">"utf-8"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/head&gt;</span>
+    <span class="nt">&lt;body&gt;</span>
+        <span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"http://localhost:4001/app/e67413efc0bb83f7f1e46179448d4f586567949d4d6496928950ded66a7d7f08"</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/body&gt;</span>
+<span class="nt">&lt;/html&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please provide your valuable feedback and feel free to open issues with feature requests or bug reports (<a href="https://github.com/kadalu/kadalu-cas/issues">Github Issues</a>)</p>
+</div>
+</div>
+</div>
+                    </div>
+                </div>
+
+                <div class="has-text-centered mb-6 notification is-light">
+                    <p class="has-text-grey is-uppercase is-size-5 pb-2">About Aravinda Vishwanathapura</p>
+                    
+                    <p class="mb-4">Co-Founder, CTO - Kadalu Technologies</p>
+                    
+                    <p>
+                        
+                        <a class="mr-2" href="https://aravindavk.in">Website</a>|
+                        
+                        
+                        <a class="mx-2" href="https://twitter.com/aravindavk">Twitter</a>|
+                        
+                        <a class="ml-2" href="https://github.com/aravindavk">Github</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer has-background-primary has-text-white pt-6">
+    <div class="columns">
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Company</h2>
+            <a class="is-block has-text-white" href="/about">About Us</a>
+            <a class="is-block has-text-white" href="/blog">Blog Posts</a>
+        </div>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Resources</h2>
+            <a class="is-block has-text-white" href="/support">Support</a>
+            <a class="is-block has-text-white" href="/security">Security</a>
+            <a class="is-block has-text-white" href="/gluster-vs-kadalu">Gluster vs Kadalu</a>
+            <a class="is-block has-text-white" href="/storage/quick-start">Kadalu Storage Quick start</a>
+        </div>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Community</h2>
+            <a class="is-block has-text-white" target="_blank" href="https://join.slack.com/t/kadalu/shared_invite/enQtNzg1ODQ0MDA5NTM2LWMzMTc5ZTJmMjk4MzI0YWVhOGFlZTJjZjY5MDNkZWI0Y2VjMDBlNzVkZmI1NWViN2U3MDNlNDJhNjE5OTBlOGU">Community Slack</a>
+            <a class="is-block has-text-white" target="_blank" href="https://github.com/kadalu">Github</a>
+        </div>
+
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Contact Us</h2>
+            <a class="is-block has-text-white" href="mailto:hello@kadalu.tech">Email to hello@kadalu.tech</a>
+            <a class="is-block has-text-white" href="https://twitter.com/kadalu_tech">Twitter</a>
+            <a class="is-block has-text-white" href="https://linkedin.com/kadalu_tech">Linkedin</a>
+        </div>
+    </div>
+    <div class="has-text-centered mt-6">
+        Copyright &copy; 2022 Kadalu Technologies Private Limited.
+    </div>
+</div>
+
+        </div>
+    </body>
+</html>
