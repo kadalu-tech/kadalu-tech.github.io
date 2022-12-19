@@ -43,6 +43,7 @@ compile '/blog/*.adoc' do
 end
 
 compile '/**/*.adoc' do
+  filter :erb
   filter :asciidoctor, :standalone => false, :attributes => [
            'last-update-label!=', # Do not show last updated label in every page
            'source-highlighter=rouge',
