@@ -12,18 +12,24 @@
   </div>
 
   <div class="navbar-end" x-show="showing">
-      <a class="navbar-item" href="/blog">
+      <a class="navbar-item <% if @item.path == "/pricing/" %>is-underlined<% end %>" href="/pricing">
+          Pricing
+      </a>
+      <a class="navbar-item <% if @item.path == "/blog/" %>is-underlined<% end %>" href="/blog">
           Blog
       </a>
-      <a class="navbar-item" href="/about">
+      <a class="navbar-item <% if @item.path == "/about/" %>is-underlined<% end %>" href="/about">
           About Us
       </a>
   </div>
   <div class="navbar-end is-hidden-touch">
-      <a class="navbar-item" href="/blog">
+      <a class="navbar-item <% if @item.path == "/pricing/" %>is-underlined<% end %>" href="/pricing">
+          Pricing
+      </a>
+      <a class="navbar-item <% if @item.path == "/blog/" %>is-underlined<% end %>" href="/blog">
           Blog
       </a>
-      <a class="navbar-item" href="/about">
+      <a class="navbar-item <% if @item.path == "/about/" %>is-underlined<% end %>" href="/about">
           About Us
       </a>
   </div>
