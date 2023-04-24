@@ -1,0 +1,108 @@
+---
+title: Kadalu Storage 1.1.0 released!
+author: aravindavk
+description: "We are happy to announce the Kadalu Storage release 1.1.0 with several bugfixes and improvements. Below, we list a few important features that landed in this release."
+image: /images/kadalu-storage-intro.png
+---
+
+We are happy to announce the Kadalu Storage release **1.1.0** with several bugfixes and improvements. Below, we list a few important features that landed in this release.
+
+Kadalu Storage is an opinionated distributed storage solution based on GlusterFS. Kadalu Storage project was started as a lightweight project to integrate with Kubernetes without using the management layer GlusterD. For non-kubernetes use cases, we realized that a modern alternative to GlusterD is required. We started working on Kadalu Storage manager, which is a lightweight and modern approach to manage all the file system resources. It provides ReST APIs, CLI and Web UI based Storage management.
+
+++++
+<div class="has-text-centered my-6">
+<a class="button is-primary is-light mt-2" href="/storage/quick-start">Quick Start Guide</a>
+<a class="button is-primary is-light mt-2 ml-4" href="https://github.com/kadalu/kadalu/blob/devel/doc/quick-start.adoc">Quick Start Guide - Kubernetes</a>
+</div>
+++++
+
+== Storage Pool
+The previous version defines a pool as just a namespace, and the collection of storage from multiple nodes were called Volumes. This added a lot of confusion, especially when used with Kubernetes (Persistent Volumes(PVs) and Kadalu Volumes) and usability issues.
+
+With this release, the collection of nodes is called Cluster and the collection of storage/directories from multiple servers is called Storage Pool. If you are familiar with GlusterFS, the Kadalu Storage pool is equivalent to a GlusterFS volume.
+
+[source]
+----
+$ kadalu pool create pool1 --auto-add-nodes             \
+    mirror server1:/data1 server2:/data2 server3:/data3
+----
+
+== New Volgen library
+Kadalu Storage uses template-based Volfile generation. The previous version used YAML templates with Kadalu Storage Manager (non-Kubernetes) and Jinja templates when integrated with Kubernetes. We realized these templates are not flexible, and very difficult to add/customize the options. With this release, both Kubernetes integration and the Storage manager uses the new Volgen library. The new volgen library uses a hybrid approach that uses Jinja templates as a base and post-processes the templates to apply and customize the options.
+
+== Volfile Server
+Kadalu Storage uses only the core filesystem layer from Gluster. The Kadalu Storage manager can't be used as the volfile server since it is ReST API based and the Storage clients (Mounts, gfapi clients) use different RPC. We enhanced the Storage unit processes (Brick processes in Gluster) to serve the volfiles instead of recreating the RPC server in the Storage manager. Serving volfiles from the Storage unit processes added a few more benefits, like high availability of the Volfile data (Backup volfile servers) or a selected number of nodes to update when a Pool configuration changes. For example, if a Cluster contains 100 nodes and the Pool consists of only three nodes, then update only those three nodes when a volfile changes instead of updating all nodes.
+
+== NFS access to Kadalu Storage pools
+Kadalu Storage uses the GlusterFS core file system layer, and the applications using Gluster APIs(GFAPIs) work as is with Kadalu Storage. Kadalu Storage can adapt Gluster FSAL (NFS Ganesha Gluster plugin) with a few changes since it is GFAPI based. Volfile server port is hard coded as 24007 in Gluster FSAL since Glusterd in all nodes will use the same port. But in Kadalu Storage, Volfile serving is delegated to storage unit processes of respective storage pools. Volfile server port can't be the same for all Storage pools. Hardcoded port value was a blocker to adding NFS access to Kadalu Storage pools. We enhanced Gluster FSAL to understand the Volfile server port and multiple volfile servers (Backup volfile servers). Install the NFS Ganesha Kadalu plugin by running the following command (Ubuntu 22.04).
+
+[source]
+----
+echo 'deb https://kadalu.tech/pkgs/1.1.x/ubuntu/22.04 /' | sudo tee /etc/apt/sources.list.d/kadalu.list
+curl -fsSL https://kadalu.tech/pkgs/1.1.x/ubuntu/22.04/KEY.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kadalu.gpg > /dev/null
+sudo apt update
+sudo apt install kadalu-storage nfs-ganesha-kadalu
+----
+
+== Port reservations clean up after a pool delete
+A separate table in the DB stores the details of the storage-unit ports. Deleting a pool didn't clear the ports used. Due to this, it was not possible to recreate a Pool using the same ports. With this release, Port reservations are cleaned up after the pool delete.
+
+== Pool expansion and Rebalance
+To increase the pool size, add more distribute groups. New storage units should be multiples of existing distribute group size. For example, if the existing Pool type is Mirror 3, then add 3, 6, 9… Storage units to increase the distribute groups.
+
+After adding new distribute groups, run rebalance to re-distribute the files among the distribute groups (new and existing).
+
+With this release, Kadalu Storage manager now handles pool expansion and rebalance.
+
+== systemd based service management
+The Storage manager starts and manages many other processes like fsd, shd etc. The goal is to make the filesystem layer available even when the Storage manager goes down or is upgraded. With this release, the Kadalu Storage manager creates the systemd unit files when it needs to start the fsd, shd or any other processes.
+
+== Distributed pool warning
+If the workload is to create small volumes from the Storage pool, creating a bigger pool may degrade the performance of small volumes. Each volume's layout has to be maintained in all the distribute groups of the Pool and files are distributed between the distribute groups (from multiple nodes) even though all files of a Volume can be saved in a single distributed group. Alternatively, create multiple pools without enabling the distribution and assign the volume to a pool. For the home directory use case below,
+
+- 150 users, each user needs a 100G home directory.
+- 6 nodes, each node with 2 4TiB drives.
+- Type of pool required: Replica/Mirror 3
+
+**Option 1**: Create one big pool with 4 distribution groups
+
+**Option 2**: Create four pools without distribution groups
+
+Option 2 is the better solution for the use case mentioned above. All files belonging to a Volume (one user's home directory) will be stored in one distribution group. Also, no rebalance is required when new users joined the company. Keep some buffer in the Pool while provisioning users or migrate selected Volumes (users) to the new pool if storage needs to be increased for existing users (Option 1 requires full Pool rebalance if more storage is added).
+
+This release adds a warning when a user tries to create a distributed Pool. Use the `--distribute` flag or `--mode=script` to override this behaviour.
+
+Example output:
+
+[source]
+----
+$ kadalu pool create pool1 replica 3                                     \
+    server1:/data1 server2:/data2 server3:/data3                         \
+    server4:/data4 server5:/data5 server6:/data6
+Using a distributed pool for small-volume claims may degrade
+the performance of the volume. Consider creating multiple
+Storage pools without distribution enabled if it suits your needs.
+
+Are you sure you want to create a distributed pool? [y/N]:
+----
+
+== Logging improvements
+Previously, the access logs were only printed in stdout. Now it is printed in log files when configured. Also, access logs now include additional details like the remote IP address.
+
+== Disperse pool fixes
+Fixed the issues while generating the Volfiles of disperse pools.
+
+== Fix the calculation to find available space in the Storage pool (k8s integration)
+Earlier PV create was failing because of the wrong calculation of available space. With this release, PV create will succeed if the space available in the respective storage pool.
+
+== Heal info commands execute from Server pods
+With the new volgen library and volfile server, volfiles are not available in CSI provisioner pods. Heal info commands are now executed from server pods, since the client volfiles are available there.
+
+== Arbiter Pool support (k8s only)
+Arbiter pool is a variant of the Replica/Mirror type. Two storage units of the Arbiter pool store the actual data and metadata, and the third storage unit only stores metadata and the layout (Empty files). The advantage of this type is less storage needed to get the same high availability of Replica/Mirror 3 type.
+
+++++
+<hr/>
+++++
+
+A huge thanks to all the awesome people who made this release possible. Kadalu Storage is 100% Open Source. To maintain and increase the development pace, sponsorships are essential. [.tag.has-background-success-light.is-size-6]#**https://github.com/sponsors/kadalu[Github Sponsor]**# and [.tag.has-background-success-light.is-size-6]#**https://opencollective.com/kadalu/[OpenCollective]**# are available. Reach out to hello@kadalu.tech if you’d like to become a direct sponsor or find other ways to support Kadalu Storage. We thank you in advance!
