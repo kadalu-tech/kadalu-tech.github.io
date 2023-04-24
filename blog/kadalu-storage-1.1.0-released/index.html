@@ -1,0 +1,341 @@
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charSet="utf-8"/>
+    <title>Kadalu Storage 1.1.0 released!</title>
+    <link rel="stylesheet" href="/bulma-0.9.4.min.css">
+    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="/syntax-highlight-emacs.css">
+    <script defer src="/alpinejs-3.10.5.min.js"></script>
+
+    <meta name="generator" content="Nanoc 4.12.7">
+    
+<link href="/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/favicon.ico" />
+<meta name="generator" content="Nanoc 4.12.7">
+<meta property="og:title" content="Kadalu Storage 1.1.0 released!"/>
+<meta name="author" content="aravindavk"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="description" content="We are happy to announce the Kadalu Storage release 1.1.0 with several bugfixes and improvements. Below, we list a few important features that landed in this release."/>
+<meta property="og:description" content="We are happy to announce the Kadalu Storage release 1.1.0 with several bugfixes and improvements. Below, we list a few important features that landed in this release."/>
+<link rel="canonical" href="/blog/kadalu-storage-1.1.0-released/"/>
+<meta property="og:url" content="/blog/kadalu-storage-1.1.0-released/"/>
+<meta property="og:site_name" content="Kadalu"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2023-04-24"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kadalu.tech/images/kadalu-storage-intro.png"/>
+<meta property="og:image" content="https://kadalu.tech/images/kadalu-storage-intro.png"/>
+
+<meta name="twitter:site" content="https://kadalu.tech"/>
+<meta name="twitter:title" content="Kadalu Storage 1.1.0 released!"/>
+<meta name="twitter:description" content="We are happy to announce the Kadalu Storage release 1.1.0 with several bugfixes and improvements. Below, we list a few important features that landed in this release."/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <script defer data-domain="kadalu.tech" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+    <body>
+        <div id="main">
+            <nav class="navbar px-4" role="navigation" aria-label="main navigation" x-data="{showing: false}">
+  <div class="navbar-brand has-text-left">
+      <a class="navbar-item" href="/">
+          <img src="/images/logo.svg" alt="Kadalu Technologies" width="300">
+    </a>
+
+    <a role="button" class="navbar-burger" aria-label="menu" :class="showing ? 'is-active' : ''" aria-expanded="false" @click="showing = !showing">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div class="navbar-end" x-show="showing">
+      <a class="navbar-item " href="/pricing">
+          Pricing
+      </a>
+      <a class="navbar-item " href="/blog">
+          Blog
+      </a>
+      <a class="navbar-item " href="/about">
+          About Us
+      </a>
+  </div>
+  <div class="navbar-end is-hidden-touch">
+      <a class="navbar-item " href="/pricing">
+          Pricing
+      </a>
+      <a class="navbar-item " href="/blog">
+          Blog
+      </a>
+      <a class="navbar-item " href="/about">
+          About Us
+      </a>
+  </div>
+</nav>
+
+            <div class="container is-max-desktop px-4" id="content">
+                <div class="has-text-centered py-6">
+                    <a href="/">
+                        <figure class="image is-64x64" style="margin: auto">
+                            <img class="is-rounded" src="https://github.com/aravindavk.png?size=300px">
+                        </figure>
+                        <p class="has-text-grey pb-6 is-size-6 is-uppercase">Aravinda Vishwanathapura</p>
+                    </a>
+                </div>
+
+                <div class="">
+                    <h1 class="title is-1 has-text-centered">Kadalu Storage 1.1.0 released!</h1>
+                    <div class="has-text-grey mb-1 has-text-centered">
+                        Posted on <strong>Apr 24, 2023</strong> by <strong>Aravinda Vishwanathapura</strong>
+                    </div>
+                    <p class="has-text-centered">
+                        <span class="icon-text">
+                            <svg class="mr-1 icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                            <span><strong>9 minutes</strong> read.</span>
+                        </span>
+                    </p>
+                    <div class="content py-6">
+                        <div class="paragraph">
+<p>We are happy to announce the Kadalu Storage release <strong>1.1.0</strong> with several bugfixes and improvements. Below, we list a few important features that landed in this release.</p>
+</div>
+<div class="paragraph">
+<p>Kadalu Storage is an opinionated distributed storage solution based on GlusterFS. Kadalu Storage project was started as a lightweight project to integrate with Kubernetes without using the management layer GlusterD. For non-kubernetes use cases, we realized that a modern alternative to GlusterD is required. We started working on Kadalu Storage manager, which is a lightweight and modern approach to manage all the file system resources. It provides ReST APIs, CLI and Web UI based Storage management.</p>
+</div>
+<div class="has-text-centered my-6">
+<a class="button is-primary is-light mt-2" href="/storage/quick-start">Quick Start Guide</a>
+<a class="button is-primary is-light mt-2 ml-4" href="https://github.com/kadalu/kadalu/blob/devel/doc/quick-start.adoc">Quick Start Guide - Kubernetes</a>
+</div>
+<div class="sect1">
+<h2 id="_storage_pool">Storage Pool</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The previous version defines a pool as just a namespace, and the collection of storage from multiple nodes were called Volumes. This added a lot of confusion, especially when used with Kubernetes (Persistent Volumes(PVs) and Kadalu Volumes) and usability issues.</p>
+</div>
+<div class="paragraph">
+<p>With this release, the collection of nodes is called Cluster and the collection of storage/directories from multiple servers is called Storage Pool. If you are familiar with GlusterFS, the Kadalu Storage pool is equivalent to a GlusterFS volume.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>$ kadalu pool create pool1 --auto-add-nodes             \
+    mirror server1:/data1 server2:/data2 server3:/data3</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_new_volgen_library">New Volgen library</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kadalu Storage uses template-based Volfile generation. The previous version used YAML templates with Kadalu Storage Manager (non-Kubernetes) and Jinja templates when integrated with Kubernetes. We realized these templates are not flexible, and very difficult to add/customize the options. With this release, both Kubernetes integration and the Storage manager uses the new Volgen library. The new volgen library uses a hybrid approach that uses Jinja templates as a base and post-processes the templates to apply and customize the options.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_volfile_server">Volfile Server</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kadalu Storage uses only the core filesystem layer from Gluster. The Kadalu Storage manager can&#8217;t be used as the volfile server since it is ReST API based and the Storage clients (Mounts, gfapi clients) use different RPC. We enhanced the Storage unit processes (Brick processes in Gluster) to serve the volfiles instead of recreating the RPC server in the Storage manager. Serving volfiles from the Storage unit processes added a few more benefits, like high availability of the Volfile data (Backup volfile servers) or a selected number of nodes to update when a Pool configuration changes. For example, if a Cluster contains 100 nodes and the Pool consists of only three nodes, then update only those three nodes when a volfile changes instead of updating all nodes.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_nfs_access_to_kadalu_storage_pools">NFS access to Kadalu Storage pools</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Kadalu Storage uses the GlusterFS core file system layer, and the applications using Gluster APIs(GFAPIs) work as is with Kadalu Storage. Kadalu Storage can adapt Gluster FSAL (NFS Ganesha Gluster plugin) with a few changes since it is GFAPI based. Volfile server port is hard coded as 24007 in Gluster FSAL since Glusterd in all nodes will use the same port. But in Kadalu Storage, Volfile serving is delegated to storage unit processes of respective storage pools. Volfile server port can&#8217;t be the same for all Storage pools. Hardcoded port value was a blocker to adding NFS access to Kadalu Storage pools. We enhanced Gluster FSAL to understand the Volfile server port and multiple volfile servers (Backup volfile servers). Install the NFS Ganesha Kadalu plugin by running the following command (Ubuntu 22.04).</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>echo 'deb https://kadalu.tech/pkgs/1.1.x/ubuntu/22.04 /' | sudo tee /etc/apt/sources.list.d/kadalu.list
+curl -fsSL https://kadalu.tech/pkgs/1.1.x/ubuntu/22.04/KEY.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kadalu.gpg &gt; /dev/null
+sudo apt update
+sudo apt install kadalu-storage nfs-ganesha-kadalu</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_port_reservations_clean_up_after_a_pool_delete">Port reservations clean up after a pool delete</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A separate table in the DB stores the details of the storage-unit ports. Deleting a pool didn&#8217;t clear the ports used. Due to this, it was not possible to recreate a Pool using the same ports. With this release, Port reservations are cleaned up after the pool delete.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_pool_expansion_and_rebalance">Pool expansion and Rebalance</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To increase the pool size, add more distribute groups. New storage units should be multiples of existing distribute group size. For example, if the existing Pool type is Mirror 3, then add 3, 6, 9… Storage units to increase the distribute groups.</p>
+</div>
+<div class="paragraph">
+<p>After adding new distribute groups, run rebalance to re-distribute the files among the distribute groups (new and existing).</p>
+</div>
+<div class="paragraph">
+<p>With this release, Kadalu Storage manager now handles pool expansion and rebalance.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_systemd_based_service_management">systemd based service management</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Storage manager starts and manages many other processes like fsd, shd etc. The goal is to make the filesystem layer available even when the Storage manager goes down or is upgraded. With this release, the Kadalu Storage manager creates the systemd unit files when it needs to start the fsd, shd or any other processes.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_distributed_pool_warning">Distributed pool warning</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If the workload is to create small volumes from the Storage pool, creating a bigger pool may degrade the performance of small volumes. Each volume&#8217;s layout has to be maintained in all the distribute groups of the Pool and files are distributed between the distribute groups (from multiple nodes) even though all files of a Volume can be saved in a single distributed group. Alternatively, create multiple pools without enabling the distribution and assign the volume to a pool. For the home directory use case below,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>150 users, each user needs a 100G home directory.</p>
+</li>
+<li>
+<p>6 nodes, each node with 2 4TiB drives.</p>
+</li>
+<li>
+<p>Type of pool required: Replica/Mirror 3</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Option 1</strong>: Create one big pool with 4 distribution groups</p>
+</div>
+<div class="paragraph">
+<p><strong>Option 2</strong>: Create four pools without distribution groups</p>
+</div>
+<div class="paragraph">
+<p>Option 2 is the better solution for the use case mentioned above. All files belonging to a Volume (one user&#8217;s home directory) will be stored in one distribution group. Also, no rebalance is required when new users joined the company. Keep some buffer in the Pool while provisioning users or migrate selected Volumes (users) to the new pool if storage needs to be increased for existing users (Option 1 requires full Pool rebalance if more storage is added).</p>
+</div>
+<div class="paragraph">
+<p>This release adds a warning when a user tries to create a distributed Pool. Use the <code>--distribute</code> flag or <code>--mode=script</code> to override this behaviour.</p>
+</div>
+<div class="paragraph">
+<p>Example output:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="rouge highlight"><code>$ kadalu pool create pool1 replica 3                                     \
+    server1:/data1 server2:/data2 server3:/data3                         \
+    server4:/data4 server5:/data5 server6:/data6
+Using a distributed pool for small-volume claims may degrade
+the performance of the volume. Consider creating multiple
+Storage pools without distribution enabled if it suits your needs.
+
+Are you sure you want to create a distributed pool? [y/N]:</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_logging_improvements">Logging improvements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Previously, the access logs were only printed in stdout. Now it is printed in log files when configured. Also, access logs now include additional details like the remote IP address.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_disperse_pool_fixes">Disperse pool fixes</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Fixed the issues while generating the Volfiles of disperse pools.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fix_the_calculation_to_find_available_space_in_the_storage_pool_k8s_integration">Fix the calculation to find available space in the Storage pool (k8s integration)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Earlier PV create was failing because of the wrong calculation of available space. With this release, PV create will succeed if the space available in the respective storage pool.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_heal_info_commands_execute_from_server_pods">Heal info commands execute from Server pods</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With the new volgen library and volfile server, volfiles are not available in CSI provisioner pods. Heal info commands are now executed from server pods, since the client volfiles are available there.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_arbiter_pool_support_k8s_only">Arbiter Pool support (k8s only)</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Arbiter pool is a variant of the Replica/Mirror type. Two storage units of the Arbiter pool store the actual data and metadata, and the third storage unit only stores metadata and the layout (Empty files). The advantage of this type is less storage needed to get the same high availability of Replica/Mirror 3 type.</p>
+</div>
+<hr/>
+<div class="paragraph">
+<p>A huge thanks to all the awesome people who made this release possible. Kadalu Storage is 100% Open Source. To maintain and increase the development pace, sponsorships are essential. <span class="tag has-background-success-light is-size-6"><strong><a href="https://github.com/sponsors/kadalu">Github Sponsor</a></strong></span> and <span class="tag has-background-success-light is-size-6"><strong><a href="https://opencollective.com/kadalu/">OpenCollective</a></strong></span> are available. Reach out to <a href="mailto:hello@kadalu.tech">hello@kadalu.tech</a> if you’d like to become a direct sponsor or find other ways to support Kadalu Storage. We thank you in advance!</p>
+</div>
+</div>
+</div>
+                    </div>
+                </div>
+
+                <div class="has-text-centered mb-6 notification is-light">
+                    <p class="has-text-grey is-uppercase is-size-5 pb-2">About Aravinda Vishwanathapura</p>
+                    
+                    <p class="mb-4">Co-Founder, CTO - Kadalu Technologies</p>
+                    
+                    <p>
+                        
+                        <a class="mr-2" href="https://aravindavk.in">Website</a>|
+                        
+                        
+                        <a class="mx-2" href="https://twitter.com/aravindavk">Twitter</a>|
+                        
+                        <a class="ml-2" href="https://github.com/aravindavk">Github</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer has-background-primary has-text-white pt-6">
+    <div class="columns">
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Company</h2>
+            <a class="is-block has-text-white" href="/about">About Us</a>
+            <a class="is-block has-text-white" href="/blog">Blog Posts</a>
+        </div>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Resources</h2>
+            <a class="is-block has-text-white" href="/support">Support</a>
+            <a class="is-block has-text-white" href="/security">Security</a>
+            <a class="is-block has-text-white" href="/gluster-vs-kadalu">Gluster vs Kadalu</a>
+            <a class="is-block has-text-white" href="/storage/quick-start">Kadalu Storage Quick start</a>
+        </div>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Community</h2>
+            <a class="is-block has-text-white" target="_blank" href="https://join.slack.com/t/kadalu/shared_invite/enQtNzg1ODQ0MDA5NTM2LWMzMTc5ZTJmMjk4MzI0YWVhOGFlZTJjZjY5MDNkZWI0Y2VjMDBlNzVkZmI1NWViN2U3MDNlNDJhNjE5OTBlOGU">Community Slack</a>
+            <a class="is-block has-text-white" target="_blank" href="https://github.com/kadalu">Github</a>
+        </div>
+
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Contact Us</h2>
+            <a class="is-block has-text-white" href="mailto:hello@kadalu.tech">Email to hello@kadalu.tech</a>
+            <a class="is-block has-text-white" href="https://twitter.com/kadalu_tech">Twitter</a>
+            <a class="is-block has-text-white" href="https://linkedin.com/kadalu_tech">Linkedin</a>
+        </div>
+    </div>
+    <div class="has-text-centered mt-6">
+        Copyright &copy; 2022 Kadalu Technologies Private Limited.
+    </div>
+</div>
+
+        </div>
+    </body>
+</html>
