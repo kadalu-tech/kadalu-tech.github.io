@@ -1,5 +1,13 @@
 #!/usr/bin/env ruby
 
+compile '/gluster.html' do
+  if item.identifier =~ '**/index.*'
+    write item.identifier.to_s
+  else
+    write item.identifier.without_ext + '/index.html'
+  end
+end
+
 compile '/**/*.html' do
   filter :erb
   layout '/plain.*'
