@@ -16,8 +16,8 @@ This guide assumes you will create a replica 3 (1x3) cluster using three nodes. 
 +
 [source]
 ----
-echo 'deb https://kadalu.tech/pkgs/1.1.x/ubuntu/22.04 /' | sudo tee /etc/apt/sources.list.d/kadalu.list
-curl -fsSL https://kadalu.tech/pkgs/1.1.x/ubuntu/22.04/KEY.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kadalu.gpg > /dev/null
+echo 'deb https://kadalu.tech/pkgs/1.2.x/ubuntu/22.04 /' | sudo tee /etc/apt/sources.list.d/kadalu.list
+curl -fsSL https://kadalu.tech/pkgs/1.2.x/ubuntu/22.04/KEY.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kadalu.gpg > /dev/null
 sudo apt update
 ----
 +
