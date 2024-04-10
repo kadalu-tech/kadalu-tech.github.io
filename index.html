@@ -3,18 +3,18 @@
     <head>
     <meta name="viewport" content="width=device-width"/>
     <meta charSet="utf-8"/>
-    <title>Kadalu Storage - Kadalu Technologies</title>
-    <link rel="stylesheet" href="/bulma-0.9.4.min.css">
+    <title></title>
+    <link rel="stylesheet" href="/bulma@1.0.0.min.css">
     <link rel="stylesheet" href="/stylesheet.css">
     <link rel="stylesheet" href="/syntax-highlight-emacs.css">
     <script defer src="/alpinejs-3.10.5.min.js"></script>
 
-    <meta name="generator" content="Nanoc 4.12.7">
+    <meta name="generator" content="Nanoc 4.12.20">
     
 <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="apple-touch-icon" href="/favicon.ico" />
-<meta name="generator" content="Nanoc 4.12.7">
-<meta property="og:title" content="Kadalu Storage - Kadalu Technologies"/>
+<meta name="generator" content="Nanoc 4.12.20">
+<meta property="og:title" content=""/>
 <meta name="author" content=""/>
 <meta property="og:locale" content="en_US"/>
 <meta name="description" content=""/>
@@ -30,7 +30,7 @@
 <meta property="og:image" content="https://kadalu.tech/images/logo-icon-spaced.png"/>
 
 <meta name="twitter:site" content="https://kadalu.tech"/>
-<meta name="twitter:title" content="Kadalu Storage - Kadalu Technologies"/>
+<meta name="twitter:title" content=""/>
 <meta name="twitter:description" content=""/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -41,165 +41,275 @@
 
     <body>
         <div id="main">
-            <nav class="navbar px-4" role="navigation" aria-label="main navigation" x-data="{showing: false}">
-  <div class="navbar-brand has-text-left">
-      <a class="navbar-item" href="/">
-          <img src="/images/logo.svg" alt="Kadalu Technologies" width="300">
-    </a>
+            <nav class="navbar" role="navigation" aria-label="main navigation" x-data="{showing: false}">
+    <div class="navbar-brand" style="min-height: 70px">
+        <a class="navbar-item" href="/">
+            <img src="/images/logo.svg" style="max-height: 50px"/>
+        </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" :class="showing ? 'is-active' : ''" aria-expanded="false" @click="showing = !showing">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" :class="showing ? 'is-active' : ''" @click="showing = !showing" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
 
-  <div class="navbar-end" x-show="showing">
-      <a class="navbar-item " href="/pricing">
-          Pricing
-      </a>
-      <a class="navbar-item " href="/blog">
-          Blog
-      </a>
-      <a class="navbar-item " href="/about">
-          About Us
-      </a>
-  </div>
-  <div class="navbar-end is-hidden-touch">
-      <a class="navbar-item " href="/pricing">
-          Pricing
-      </a>
-      <a class="navbar-item " href="/blog">
-          Blog
-      </a>
-      <a class="navbar-item " href="/about">
-          About Us
-      </a>
-  </div>
+    <div id="navbarBasicExample" class="navbar-menu" :class="showing ? 'is-active' : ''">
+        <div class="navbar-end">
+            <a class="navbar-item" href="/blog">
+                Blog
+            </a>
+
+            <a class="navbar-item" href="/pricing">
+                Pricing
+            </a>
+
+            <a class="navbar-item" href="/about">
+                About Us
+            </a>
+        </div>
+    </div>
+    </div>
 </nav>
 
-            <section class="hero is-primary" style="background-image: url(/images/pattern.png)">
-  <div class="hero-body has-text-centered">
-    <p class="title">
-        Kadalu Storage
-    </p>
-    <p class="subtitle">
-        100% Open Source, distributed storage solution based on GlusterFS. Kadalu Storage provides a modern storage manager with ReST APIs.
-    </p>
-  </div>
+            <title>Gluster FS premium packages and support by Kadalu Technologies</title>
+<style>
+ .blog-posts .card-content {
+     height: 320px;
+     overflow: hidden;
+     padding-bottom:  20px;
+ }
+</style>
+
+<section class="hero is-medium has-background-info-25 has-text-centered pt-6">
+    <div class="hero-body">
+        <p class="title has-text-light is-size-1">Gluster FS Premium packages and Support subscriptions</p>
+        <p class="subtitle pt-4 has-text-light">We help startups and enterprises adopt and run Gluster FS in production.</p>
+        <a href="/pricing" class="button has-background-info-10 has-text-light is-large">See plans</a>
+    </div>
+</section>
+<section class="has-background-info-25">
+    <div class="container px-6 pb-6" style="max-width:800px">
+        <div class="columns">
+            <div class="column content">
+                <h4 class="has-text-light has-text-left">Gluster FS Premium packages</h4>
+                <p class="has-text-light">Production-ready GlusterFS packages for most Linux distributions with improved documentation. Bug fixes and security updates will be provided for 1-3 years.</p>
+            </div>
+            <div class="column content">
+                <h4 class="has-text-light">Gluster FS Support subscriptions</h4>
+                <p class="has-text-light">Working jointly with your team, we provide guidance around hardware, configuration, production issues and high availability options to get your Cluster up and running with GlusterFS.</p>
+            </div>
+        </div>
+    </div>
 </section>
 
-<div class="has-background-primary p-4" style="background-image: url(/images/pattern.png)">
-    <div class="columns mb-6">
-        <div class="column is-4">
-            <div class="has-text-white">
-                <p class="title has-text-white">
-                    Kadalu Storage
-                </p>
-                <div class="content">
-                    100% Open Source, distributed storage solution based on GlusterFS. Kadalu Storage provides a modern storage manager with ReST APIs.
-                </div>
-            </div>
+<div class="container content p-6">
+    <div class="columns is-multiline">
+        <div class="column is-6">
+            <h1 class="has-text-left is-size-1">Why us?</h1>
+            <p>Reasons why the companies love to use Gluster Premium packages and Support subscriptions from us.</p>
         </div>
+        <div class="column is-6">
+            <div class="columns is-multiline">
+                <div class="column is-6">
+                    <h4>Production ready</h4>
+                    <p>Packages are tested for production workloads.</p>
+                </div>
 
-        <div class="column is-4">
-            <div class="has-text-white">
-                <p class="title has-text-white">
-                    Feature development
-                </p>
-                <div class="content">
-                    We design, prototype, and implement GlusterFS / Kadalu Storage tools, applications, and features for your Company.
+                <div class="column is-6">
+                    <h4>Bug fixes and security updates</h4>
+                    <p>Bug fixes and security updates for 1-3 years.</p>
                 </div>
-            </div>
-        </div>
 
-        <div class="column is-4">
-            <div class="has-text-white">
-                <p class="title has-text-white">
-                    Consultancy
-                </p>
-                <div class="content">
-                    With our experience with GlusterFS / Kadalu Storage, we can help get your Storage deployments on the right track from the start.
+                <div class="column is-6">
+                    <h4>Custom releases on request</h4>
+                    <p>Custom releases on request to include the critical bug fixes or blocker issues.</p>
                 </div>
+
+                <div class="column is-6">
+                    <h4>Access to troubleshooting guides and Solutions portal.</h4>
+                    <p>Searchable self-help portal to resolve or find the workarounds for the known issues.</p>
+                </div>
+
+                <div class="column is-6">
+                    <h4>Part of Gluster FS core team</h4>
+                    <p>We are part of the Gluster FS core team and we have built and maintain many Open Source Gluster FS projects, such as Glusterd Plus, Metrics exporter, Gdash etc.</p>
+                </div>
+
+                <div class="column is-6">
+                    <h4>Interactive documentation</h4>
+                    <p>Our documentation includes interactive tools that can be used to generate the commands specific to your setup.</p>
+                </div>
+                
             </div>
         </div>
-    </div>
-    <div class="has-text-centered has-text-white mt-6">
-        <p class="mb-4">We are happy to connect with you. For queries related to Kadalu Storage product sales/demo/consultancy please write an email to us at <a class="has-text-white" href="mailto:hello@kadalu.tech">hello@kadalu.tech</a></p>
     </div>
 </div>
 
-<div class="py-6 px-4 has-background-primary-light">
-    <h2 class="has-text-centered has-text-weight-semibold is-size-4 mb-5">WHAT'S NEW</h2>
-    <div class="columns">
-        
-        
-        
-        <div class="column is-4">
-            <div class="card" style="height: 350px">
-                <a href="/blog/kadalu-storage-1.1.0-released">
-                    <div class="card-content has-text-grey-dark">
-                        <p class="title is-4">
-                            Kadalu Storage 1.1.0 released!
-                        </p>
-                        <p class="subtitle is-6 has-text-grey">
-                            Posted on <em>Apr 24, 2023</em> by <em>Aravinda Vishwanathapura</em>
-                        </p>
-                        <div class="content">
-                            We are happy to announce the Kadalu Storage release 1.1.0 with several bugfixes and improvements. Below, we list a few important features that landed in this release....
-                        </div>
+
+<div class="has-background-info-light" style="min-height:90vh">
+    <div class="container content p-6">
+        <div class="columns is-multiline">
+            <div class="column is-6 is-hidden-desktop">
+                    <h1 class="has-text-left is-size-1">What is GlusterFS?</h1>
+                    <p>Follow this guide to get started with GlusterFS in minutes.</p>
+                    <p class="">
+                        <a class="button is-info" href="/storage/quick-start">Get Started</a>
+                    </p>
+            </div>
+            <div class="column is-6">
+                <div class="columns is-multiline">
+                    <div class="column is-6">
+                        <h4>Open Source</h4>
+                        <p>Gluster FS project is dual licensed under GPLv2 and LGPLv3.</p>
                     </div>
-                </a>
+                    
+                    <div class="column is-6">
+                        <h4>Easy to use</h4>
+                        <p>Gluster FS is very easy to use and get started with it in minutes.</p>
+                    </div>
+                    
+                    <div class="column is-6">
+                        <h4>No metadata server</h4>
+                        <p>Gluster FS doesn't need a seperate server to store file system metadata. Instead, it stores both data and metadata in respective files or directories.</p>
+                    </div>
+
+                    <div class="column is-6">
+                        <h4>POSIX compatible</h4>
+                        <p>Gluster FS provides a POSIX compliant file system that helps your applications to use the file system without changing.</p>
+                    </div>
+
+                    <div class="column is-6">
+                        <h4>No vendor lockin</h4>
+                        <p>Works with any filesystem backends (XFS, ZFS, EXT4 ...) that supports extended attributes.</p>
+                    </div>
+
+                    <div class="column is-6">
+                        <h4>Multiple access protocols</h4>
+                        <p>Easily access the data using Fuse, NFS, SMB or GFAPI access protocols.</p>
+                    </div>
+
+                    <div class="column is-6">
+                        <h4>Volume Types</h4>
+                        <p>Gluster FS supports multiple volume types for different use cases.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-6 is-hidden-touch">
+                <div class="px-6">
+                    <h1 class="has-text-left is-size-1">What is GlusterFS?</h1>
+                    <p>Follow this guide to get started with GlusterFS in minutes.</p>
+                    <p class="">
+                        <a class="button is-info" href="/storage/quick-start">Get Started</a>
+                    </p>
+                </div>
             </div>
         </div>
-        
-        
-        
-        <div class="column is-4">
-            <div class="card" style="height: 350px">
-                <a href="/blog/content-addressable-storage">
-                    <div class="card-content has-text-grey-dark">
-                        <p class="title is-4">
-                            Content based addressing for Kadalu Storage
-                        </p>
-                        <p class="subtitle is-6 has-text-grey">
-                            Posted on <em>Dec 8, 2022</em> by <em>Aravinda Vishwanathapura</em>
-                        </p>
-                        <div class="content">
-                            Similar to IPFS or S3, access the files from Kadalu Storage Volumes as objects. This is currently a beta feature, that allows to access the files using its content address (hash) similar to IPFS. Files are stored efficiently to handle de-duplication and provides ReST APIs to upload or download files....
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        
-        
-        
-        <div class="column is-4">
-            <div class="card" style="height: 350px">
-                <a href="/blog/introducing-storage-console">
-                    <div class="card-content has-text-grey-dark">
-                        <p class="title is-4">
-                            Introducing Kadalu Storage Console
-                        </p>
-                        <p class="subtitle is-6 has-text-grey">
-                            Posted on <em>Dec 2, 2022</em> by <em>Aravinda Vishwanathapura</em>
-                        </p>
-                        <div class="content">
-                            Kadalu Storage provides intuitive CLI for managing the Pools, Volumes and other resources. Many users enquired about the availability of GUI for ease of managing Kadalu Storage pools and volumes....
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-        
-    </div>
-    <div class="has-text-centered mt-6">
-        <a href="/blog" class="button">All blog posts</a>
     </div>
 </div>
 
-            <div class="footer has-background-primary has-text-white pt-6">
+<section class="py-6 blog-posts" style="min-height: 70vh">
+    <div class="container">
+        <div class="columns mx-4">
+            <div class="column is-4">
+                <h1 class="has-text-left is-size-1">What's New?</h1>
+                <p>Latest blog posts from Kadalu Technologies</p>
+                <div class="has-text-left">
+                    <a href="/blog" class="button has-background-info-35 has-text-light mt-4">All blog posts</a>
+                </div>
+            </div>
+            <div class="column is-8">
+                <div class="columns is-multiline">
+
+                    
+                    
+                    
+                    <div class="column is-6">
+                        <div class="card" style="height: 350px">
+                            <a href="/blog/kadalu-storage-1.1.0-released">
+                                <div class="card-content has-text-grey-dark">
+                                    <p class="title is-4">
+                                        Kadalu Storage 1.1.0 released!
+                                    </p>
+                                    <p class="subtitle is-6 has-text-grey">
+                                        Posted on <em>Apr 24, 2023</em> by <em>Aravinda VK</em>
+                                    </p>
+                                    <div class="content">
+                                        We are happy to announce the Kadalu Storage release 1.1.0 with several bugfixes and improvements. Below, we list a few important features that landed in this release....
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="column is-6">
+                        <div class="card" style="height: 350px">
+                            <a href="/blog/content-addressable-storage">
+                                <div class="card-content has-text-grey-dark">
+                                    <p class="title is-4">
+                                        Content based addressing for Kadalu Storage
+                                    </p>
+                                    <p class="subtitle is-6 has-text-grey">
+                                        Posted on <em>Dec 8, 2022</em> by <em>Aravinda VK</em>
+                                    </p>
+                                    <div class="content">
+                                        Similar to IPFS or S3, access the files from Kadalu Storage Volumes as objects. This is currently a beta feature, that allows to access the files using its content address (hash) similar to IPFS. Files are stored efficiently to handle de-duplication and provides ReST APIs to upload or download files....
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="column is-6">
+                        <div class="card" style="height: 350px">
+                            <a href="/blog/introducing-storage-console">
+                                <div class="card-content has-text-grey-dark">
+                                    <p class="title is-4">
+                                        Introducing Kadalu Storage Console
+                                    </p>
+                                    <p class="subtitle is-6 has-text-grey">
+                                        Posted on <em>Dec 2, 2022</em> by <em>Aravinda VK</em>
+                                    </p>
+                                    <div class="content">
+                                        Kadalu Storage provides intuitive CLI for managing the Pools, Volumes and other resources. Many users enquired about the availability of GUI for ease of managing Kadalu Storage pools and volumes....
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    <div class="column is-6">
+                        <div class="card" style="height: 350px">
+                            <a href="/blog/kadalu-storage-1.0.0">
+                                <div class="card-content has-text-grey-dark">
+                                    <p class="title is-4">
+                                        Kadalu Storage 1.0 release - What to expect?
+                                    </p>
+                                    <p class="subtitle is-6 has-text-grey">
+                                        Posted on <em>Nov 30, 2022</em> by <em>Aravinda VK</em>
+                                    </p>
+                                    <div class="content">
+                                        We are happy to announce the first major release of Kadalu Storage. A huge thanks to all the awesome people who made this release possible....
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+            <div class="footer has-background-info-25 has-text-white pt-6">
     <div class="columns">
         <div class="column">
             <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Company</h2>
@@ -210,8 +320,7 @@
             <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Resources</h2>
             <a class="is-block has-text-white" href="/support">Support</a>
             <a class="is-block has-text-white" href="/security">Security</a>
-            <a class="is-block has-text-white" href="/gluster-vs-kadalu">Gluster vs Kadalu</a>
-            <a class="is-block has-text-white" href="/storage/quick-start">Kadalu Storage Quick start</a>
+            <a class="is-block has-text-white" href="/storage/quick-start">Gluster FS Quick start</a>
         </div>
         <div class="column">
             <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Community</h2>
@@ -227,7 +336,7 @@
         </div>
     </div>
     <div class="has-text-centered mt-6">
-        Copyright &copy; 2022 Kadalu Technologies Private Limited.
+        Copyright &copy; 2019-2024 Kadalu Technologies Private Limited.
     </div>
 </div>
 

@@ -4,16 +4,16 @@
     <meta name="viewport" content="width=device-width"/>
     <meta charSet="utf-8"/>
     <title>About Us</title>
-    <link rel="stylesheet" href="/bulma-0.9.4.min.css">
+    <link rel="stylesheet" href="/bulma@1.0.0.min.css">
     <link rel="stylesheet" href="/stylesheet.css">
     <link rel="stylesheet" href="/syntax-highlight-emacs.css">
     <script defer src="/alpinejs-3.10.5.min.js"></script>
 
-    <meta name="generator" content="Nanoc 4.12.7">
+    <meta name="generator" content="Nanoc 4.12.20">
     
 <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="apple-touch-icon" href="/favicon.ico" />
-<meta name="generator" content="Nanoc 4.12.7">
+<meta name="generator" content="Nanoc 4.12.20">
 <meta property="og:title" content="About Us"/>
 <meta name="author" content=""/>
 <meta property="og:locale" content="en_US"/>
@@ -41,55 +41,56 @@
 
     <body>
         <div id="main">
-            <nav class="navbar px-4" role="navigation" aria-label="main navigation" x-data="{showing: false}">
-  <div class="navbar-brand has-text-left">
-      <a class="navbar-item" href="/">
-          <img src="/images/logo.svg" alt="Kadalu Technologies" width="300">
-    </a>
+            <nav class="navbar" role="navigation" aria-label="main navigation" x-data="{showing: false}">
+    <div class="navbar-brand" style="min-height: 70px">
+        <a class="navbar-item" href="/">
+            <img src="/images/logo.svg" style="max-height: 50px"/>
+        </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" :class="showing ? 'is-active' : ''" aria-expanded="false" @click="showing = !showing">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" :class="showing ? 'is-active' : ''" @click="showing = !showing" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
 
-  <div class="navbar-end" x-show="showing">
-      <a class="navbar-item " href="/pricing">
-          Pricing
-      </a>
-      <a class="navbar-item " href="/blog">
-          Blog
-      </a>
-      <a class="navbar-item is-underlined" href="/about">
-          About Us
-      </a>
-  </div>
-  <div class="navbar-end is-hidden-touch">
-      <a class="navbar-item " href="/pricing">
-          Pricing
-      </a>
-      <a class="navbar-item " href="/blog">
-          Blog
-      </a>
-      <a class="navbar-item is-underlined" href="/about">
-          About Us
-      </a>
-  </div>
+    <div id="navbarBasicExample" class="navbar-menu" :class="showing ? 'is-active' : ''">
+        <div class="navbar-end">
+            <a class="navbar-item" href="/blog">
+                Blog
+            </a>
+
+            <a class="navbar-item" href="/pricing">
+                Pricing
+            </a>
+
+            <a class="navbar-item" href="/about">
+                About Us
+            </a>
+        </div>
+    </div>
+    </div>
 </nav>
 
             <div class="p-4 container is-max-desktop" id="content">
                 <h1 class="title has-text-centered">About Us</h1>
-                <div class="content">
+                <div class="content" style="min-height: 70vh">
                     <div class="paragraph">
-<p>Kadalu Technologies was started by the core team members of GlusterFS to provide Enterprise support to Kadalu Storage, Gluster feature development, and Consultancy services.</p>
+<p><strong>Kadalu Technologies</strong> is a Indian tech company dedicated to make <strong>Gluster FS</strong> easily accessible for all. We help startups and enterprises adopt and run Gluster FS in production.</p>
 </div>
 <div class="paragraph">
-<p>We provide enterprise support for Kadalu Storage. We also develop Gluster features and provide Consultancy based on the client’s needs. Write to us at <a href="mailto:hello@kadalu.tech">hello@kadalu.tech</a> if you have any questions about our offerings.</p>
+<p>We are part of Gluster FS core team and Kadalu Technologies is one of the major contributor to Gluster.</p>
+</div>
+<div class="paragraph">
+<p>We provide enterprise support for GlusterFS. We also develop Gluster features and provide Consultancy based on the client’s needs. Write to us at <a href="mailto:hello@kadalu.tech">hello@kadalu.tech</a> if you have any questions about our offerings.</p>
+</div>
+<div class="paragraph">
+<p>Our small but uniquely experienced team has more than 40 years of combined GlusterFS experience.</p>
 </div>
                 </div>
             </div>
-            <div class="footer has-background-primary has-text-white pt-6">
+            <div class="footer has-background-info-25 has-text-white pt-6">
     <div class="columns">
         <div class="column">
             <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Company</h2>
@@ -100,8 +101,7 @@
             <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Resources</h2>
             <a class="is-block has-text-white" href="/support">Support</a>
             <a class="is-block has-text-white" href="/security">Security</a>
-            <a class="is-block has-text-white" href="/gluster-vs-kadalu">Gluster vs Kadalu</a>
-            <a class="is-block has-text-white" href="/storage/quick-start">Kadalu Storage Quick start</a>
+            <a class="is-block has-text-white" href="/storage/quick-start">Gluster FS Quick start</a>
         </div>
         <div class="column">
             <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Community</h2>
@@ -117,7 +117,7 @@
         </div>
     </div>
     <div class="has-text-centered mt-6">
-        Copyright &copy; 2022 Kadalu Technologies Private Limited.
+        Copyright &copy; 2019-2024 Kadalu Technologies Private Limited.
     </div>
 </div>
 

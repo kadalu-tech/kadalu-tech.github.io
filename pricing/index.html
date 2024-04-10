@@ -4,16 +4,16 @@
     <meta name="viewport" content="width=device-width"/>
     <meta charSet="utf-8"/>
     <title>Pricing</title>
-    <link rel="stylesheet" href="/bulma-0.9.4.min.css">
+    <link rel="stylesheet" href="/bulma@1.0.0.min.css">
     <link rel="stylesheet" href="/stylesheet.css">
     <link rel="stylesheet" href="/syntax-highlight-emacs.css">
     <script defer src="/alpinejs-3.10.5.min.js"></script>
 
-    <meta name="generator" content="Nanoc 4.12.7">
+    <meta name="generator" content="Nanoc 4.12.20">
     
 <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="apple-touch-icon" href="/favicon.ico" />
-<meta name="generator" content="Nanoc 4.12.7">
+<meta name="generator" content="Nanoc 4.12.20">
 <meta property="og:title" content="Pricing"/>
 <meta name="author" content=""/>
 <meta property="og:locale" content="en_US"/>
@@ -41,385 +41,87 @@
 
     <body>
         <div id="main">
-            <nav class="navbar px-4" role="navigation" aria-label="main navigation" x-data="{showing: false}">
-  <div class="navbar-brand has-text-left">
-      <a class="navbar-item" href="/">
-          <img src="/images/logo.svg" alt="Kadalu Technologies" width="300">
-    </a>
+            <nav class="navbar" role="navigation" aria-label="main navigation" x-data="{showing: false}">
+    <div class="navbar-brand" style="min-height: 70px">
+        <a class="navbar-item" href="/">
+            <img src="/images/logo.svg" style="max-height: 50px"/>
+        </a>
 
-    <a role="button" class="navbar-burger" aria-label="menu" :class="showing ? 'is-active' : ''" aria-expanded="false" @click="showing = !showing">
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-      <span aria-hidden="true"></span>
-    </a>
-  </div>
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" :class="showing ? 'is-active' : ''" @click="showing = !showing" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
 
-  <div class="navbar-end" x-show="showing">
-      <a class="navbar-item is-underlined" href="/pricing">
-          Pricing
-      </a>
-      <a class="navbar-item " href="/blog">
-          Blog
-      </a>
-      <a class="navbar-item " href="/about">
-          About Us
-      </a>
-  </div>
-  <div class="navbar-end is-hidden-touch">
-      <a class="navbar-item is-underlined" href="/pricing">
-          Pricing
-      </a>
-      <a class="navbar-item " href="/blog">
-          Blog
-      </a>
-      <a class="navbar-item " href="/about">
-          About Us
-      </a>
-  </div>
+    <div id="navbarBasicExample" class="navbar-menu" :class="showing ? 'is-active' : ''">
+        <div class="navbar-end">
+            <a class="navbar-item" href="/blog">
+                Blog
+            </a>
+
+            <a class="navbar-item" href="/pricing">
+                Pricing
+            </a>
+
+            <a class="navbar-item" href="/about">
+                About Us
+            </a>
+        </div>
+    </div>
+    </div>
 </nav>
 
             <div class="p-4 container is-max-desktop" id="content">
                 <h1 class="title has-text-centered">Pricing</h1>
-                <div class="content">
-                    <div class="paragraph">
-<p>Kadalu Storage is 100% Open Source licensed under GPLv3. For stable, long term supported version Kadalu Storage commercial license is available. Following table shows the features and available plans.</p>
-</div>
-<div x-data="data">
-    <div class="modal" :class="showContactSales ? 'is-active' : ''">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-            <header class="modal-card-head">
-                <p class="modal-card-title has-text-centered" x-text="formData.plan"></p>
-                <button class="delete" aria-label="close" @click="resetAndCloseForm()" @keyup.escape.window="resetAndCloseForm()"></button>
-            </header>
-            <section class="modal-card-body">
-                <div x-show="message != ''" class="notification is-success" x-text="message"></div>
-                <div x-show="error != ''" class="notification is-danger is-light" x-text="error"></div>
-                <div class="field">
-                    <label class="label">Name</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder="Name" x-model="formData.name">
+                <div class="content" style="min-height: 70vh">
+                     <section class="" id="pricing" style="min-height: 100vh">
+            <div class="container py-6">
+                <div class="columns has-text-centered">
+                    <div class="column">
+                        <div class="card has-background-light m-4">
+                            <div class="card-content" style="min-height: 500px">
+                                <p class="is-size-4">Premium packages</p>
+                                <p class="title">$499 per year</p>
+                                <ul class="has-text-left" style="list-style-type: square;list-style-position: inside;">
+                                    <li>Packages for all major Linux distributions</li>
+                                    <li>Unlimited nodes/volumes/clusters</li>
+                                    <li>Stable and tested packages</li>
+                                    <li>Production ready</li>
+                                    <li>Updates and security fixes for 1-3 years</li>
+                                    <li>$915 for two years (8.33% discount)</li>
+                                    <li>$1332 for three years (11% discount)</li>
+                                </ul>
+                                <a href='mailto:hello@kadalu.tech?subject="Premium packages"' class="button is-large mt-6 has-background-info-35 has-text-light">Contact us</a>
+                                <p class="py-2 has-text-grey">Contact us at hello@kadalu.tech to know more about the Premium packages.</p>
+                            </div>
+                        </div>
                     </div>
-                    <p x-show="error != '' && formData.name == ''" class="help is-danger">Invalid name</p>
-                </div>
-                <div class="field">
-                    <label class="label">Email</label>
-                    <div class="control">
-                        <input class="input" type="email" placeholder="Email" x-model="formData.email">
+                    <div class="column">
+                        <div class="card has-background-light m-4">
+                            <div class="card-content" style="min-height:500px">
+                                <p class="is-size-4">Premium Email Support</p>
+                                <p class="title">$1999 per year</p>
+                                <ul class="has-text-left" style="list-style-type: square;list-style-position: inside;">
+                                    <li>Upto 4 incidents per month</li>
+                                    <li>Unlimited nodes/volumes/clusters</li>
+                                    <li>Unlimited access to troubleshooting guides or solutions portal</li>
+                                    <li>Response in one business day. Resolution estimate will be provided in the first response</li>
+                                    <li>Access to the interactive documentation</li>
+                                    <li>Special access to the tools maintained by Kadalu Technologies</li>
+                                </ul>
+                                <a href='mailto:hello@kadalu.tech?subject="Premium Email support"' class="button is-large mt-6 has-background-info-35 has-text-light">Contact us</a>
+                                <p class="py-2 has-text-grey">Contact us at hello@kadalu.tech to know more about the Premium email support.</p>
+                            </div>
+                        </div>
                     </div>
-                    <p x-show="error != '' && formData.email == ''" class="help is-danger">Invalid email</p>
-                </div>
-                <div class="field">
-                    <label class="label">Company</label>
-                    <div class="control">
-                        <input class="input" type="text" placeholder=""  x-model="formData.company">
-                    </div>
-                </div>
-                <div class="field">
-                    <label class="label">Message</label>
-                    <div class="control">
-                        <textarea class="textarea" placeholder="Message" x-model="formData.message"></textarea>
-                    </div>
-                    <p x-show="error != '' && formData.message == ''" class="help is-danger">Message is required</p>
-                </div>
-            </section>
-            <footer class="modal-card-foot">
-                <button class="button is-primary" @click="sendMessage" :disabled="submitting" x-text="submitting ? 'Sending..' : 'Send'"></button>
-            </footer>
-        </div>
-    </div>
-
-    <div class="has-text-centered mt-6">
-        <span class="mr-4">MONTHLY</span>
-        <span style="display: inline-block; position: relative; width: 50px;height: 20px" class="is-clickable" @click="yearly = !yearly">
-            <span style="display: inline-block; position: absolute;width: 50px; height: 14px;border-radius: 5px;top: 8px; left:0px" class="has-background-grey-light"></span>
-            <span style="display: inline-block; position:absolute;width:30px; height:30px; border-radius: 15px; right: 1px;" :style="{right: yearly ? '1px' : 'auto', left: yearly ? 'auto' : '1px'}" class="has-background-primary"></span>
-        </span>
-        <span class="ml-4">YEARLY <span class="tag is-warning is-small">2 months <strong class="mx-1">free</strong></span></span>
-    </div>
-    <div class="columns mt-2 py-6 is-gapless has-text-centered">
-        <template x-for="(plan, idx) in plans">
-            <div class="column" :style="{'margin-top': plan.focus ? '-1rem' : 0, 'margin-bottom': plan.focus ? '1rem' : '2rem'}">
-                <div class="box mx-1" :class="plan.focus ? 'has-background-primary-light' : 'has-background-success-light'"
-                     :style="{'padding-top': plan.focus ? '2.25rem' : '1.25rem', 'min-height': plan.focus ? 'calc(760px + 1rem)' : '760px'}"> <!-- Default padding 1.25 + reverse 1rem -->
-                    <p class="has-text-grey-dark is-size-4 font-medium mb-2 has-text-centered" x-text="plan.name">
-                    </p>
-
-                    <p class="has-text-grey-dark is-size-2 has-text-weight-bold has-text-centered">
-                        <span class="has-text-grey is-size-4 is-block has-text-weight-light" x-html="oldPriceHtml(plan)">
-                        </span>
-                        <span x-show="plan.price != 'FREE'"><span class="is-size-5">$</span><span x-text="plan.price * (yearly ? 10 : 1)"></span></span>
-                        <span x-show="plan.price == 'FREE'">FREE</span>
-                        <span class="has-text-grey-light text-gray-300 is-size-6 is-block" x-text="plan.pricingText(yearly)">
-                        </span>
-                    </p>
-
-                    <p class="has-text-grey-dark is-size-7 mt-2 mb-6" x-text="plan.summary">
-                    </p>
-
-                    <a :href="plan.paymentLink(yearly)" x-show="plan.price != 'FREE'" class="button is-primary mb-6">Contact sales</a>
-                    <a x-show="plan.price == 'FREE'" :href="plan.paymentLink(yearly)" class="button is-primary mb-6">Get started</a>
-
-                    <template x-for="(highlight, idx) in plan.highlights">
-                        <p class="has-text-grey-dark is-size-6 mb-3 has-text-left">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 icon has-text-success mr-2 is-small">
-                                <path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
-                            </svg>
-                            <span x-text="highlight"></span>
-                        </p>
-                    </template>
                 </div>
             </div>
-        </template>
-    </div>
-
-    <div class="columns mt-6 py-6 is-gapless has-text-centered">
-        <div class="column"></div>
-        <template x-for="(plan, idx) in otherPlans">
-            <div class="column mb-4">
-            <div class="box mx-1 has-background-primary-light"
-                 style="min-height: 930px;">
-                <p class="has-text-grey-dark is-size-4 font-medium mb-2 has-text-centered" x-text="plan.name" style="height: 5rem">
-                </p>
-
-                <p class="has-text-grey-dark is-size-2 has-text-weight-bold has-text-centered">
-                    <span class="has-text-grey is-size-4 is-block has-text-weight-light" x-html="oldPriceHtml(plan, true)">
-                    </span>
-                    <span x-show="plan.price"><span class="is-size-5">$</span><span x-text="plan.price"></span></span>
-                    <span x-show="plan.price" class="has-text-grey-light text-gray-300 is-size-6 is-block" x-html="plan.pricingText">
-                    </span>
-                    <span x-show="!plan.price">&nbsp;</span>
-                    <span x-show="!plan.price" class="has-text-grey-light text-gray-300 is-size-6 is-block">
-                        &nbsp;
-                    </span>
-                </p>
-
-                <p class="has-text-grey-dark is-size-7 mt-2 mb-6" x-text="plan.summary">
-                </p>
-
-                <button class="button is-primary mb-6" @click="showForm(plan)">Contact sales</button>
-
-                <template x-for="(highlight, idx) in plan.highlights">
-                    <p class="has-text-grey-dark is-size-6 mb-3 has-text-left">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 icon has-text-success mr-2 is-small">
-                        <path fill-rule="evenodd" d="M8.603 3.799A4.49 4.49 0 0112 2.25c1.357 0 2.573.6 3.397 1.549a4.49 4.49 0 013.498 1.307 4.491 4.491 0 011.307 3.497A4.49 4.49 0 0121.75 12a4.49 4.49 0 01-1.549 3.397 4.491 4.491 0 01-1.307 3.497 4.491 4.491 0 01-3.497 1.307A4.49 4.49 0 0112 21.75a4.49 4.49 0 01-3.397-1.549 4.49 4.49 0 01-3.498-1.306 4.491 4.491 0 01-1.307-3.498A4.49 4.49 0 012.25 12c0-1.357.6-2.573 1.549-3.397a4.49 4.49 0 011.307-3.497 4.49 4.49 0 013.497-1.307zm7.007 6.387a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z" clip-rule="evenodd" />
-                    </svg>
-                    <span x-text="highlight"></span>
-                </p>
-                </template>
-            </div>
-        </div>
-        </template>
-        <div class="column"></div>
-    </div>
-</div>
-<script>
- document.addEventListener('alpine:init', () => {
-     Alpine.data('data', () => ({
-         plans: [
-             {
-                 name: "Open Source",
-                 price: "FREE",
-                 pricingText(yearly) { return "-"},
-                 paymentLink(yearly) {
-                     return "https://docs.kadalu.tech"
-                 },
-                 focus: false,
-                 summary: "GPLv3. Open Source license.",
-                 highlights: [
-                     "Interactive documentation",
-                     "Community support (Slack and Github issues)",
-                     "Support for the current release",
-                     "No SLA"
-                 ]
-             },
-             {
-                 name: "Self Support",
-                 price: 23,
-                 oldPrice: 29,
-                 pricingText(yearly) { return `per node per ${yearly ? 'year' : 'month'}`},
-                 paymentLink(yearly) {
-                     if (yearly) {
-                         return "https://buy.stripe.com/00g7vo6ur1UqdLq4gh"
-                     }
-                     return "https://buy.stripe.com/14k2b47yv56C0YE9AA"
-                 },
-                 focus: false,
-                 summary: "Commercial license.",
-                 highlights: [
-                     "Interactive documentation",
-                     "Community support (Slack and Github issues)",
-                     "1 year long term support",
-                     "SLA < 48 hours. Only for packaging related issues (Business hours 9am - 9pm IST)"
-                 ]
-             },
-             {
-                 name: "Standard",
-                 price: 199,
-                 oldPrice: 249,
-                 pricingText(yearly) { return `per node per ${yearly ? 'year' : 'month'}`},
-                 paymentLink(yearly) {
-                     if (yearly) {
-                         return "https://buy.stripe.com/8wMeXQ7yv8iO36M8wz"
-                     }
-                     return "https://buy.stripe.com/7sI170bOLbv00YE5km"
-                 },
-                 focus: true,
-                 summary: "Commercial license.",
-                 highlights: [
-                     "Interactive documentation",
-                     "1 Year Long term support",
-                     "Knowledge Portal",
-                     "SLA < 48 hours (Business hours 9am - 9pm IST)"
-                 ]
-             },
-             {
-                 name: "Premium",
-                 price: 279,
-                 oldPrice: 349,
-                 pricingText(yearly) { return `per node per ${yearly ? 'year' : 'month'}`},
-                 paymentLink(yearly) {
-                     if (yearly) {
-                         return "https://buy.stripe.com/cN23f8cSP42y0YE149"
-                     }
-
-                     return "https://buy.stripe.com/cN29Dw5qnbv036M148"
-                 },
-                 focus: false,
-                 summary: "Commercial license.",
-                 highlights: [
-                     "Interactive documentation",
-                     "3 Years Long term support",
-                     "Knowledge Portal",
-                     "SLA < 4 hours (Business hours 9am - 9pm IST)",
-                     "Upgrade assistence"
-                 ]
-             }
-         ],
-         otherPlans: [
-             {
-                 name: "Consultancy",
-                 price: 119,
-                 oldPrice: 149,
-                 pricingText: "per hour",
-                 focus: false,
-                 summary: "Kadalu Storage/GlusterFS",
-                 highlights: [
-                     "Email support",
-                     "Dedicated Slack channel (Business hours 9am - 9pm IST)",
-                 ]
-             },
-             {
-                 name: "Feature development",
-                 pricingText: "&nbsp;",
-                 focus: false,
-                 summary: "Kadalu Storage/GlusterFS",
-                 highlights: [
-                     "Meeting to understand the requirements",
-                     "Proposal before starting the project",
-                     "Detailed design documentation",
-                     "3 months free support",
-                     "User documentation",
-                     "Development and Testing",
-                 ]
-             }
-         ],
-         oldPriceHtml(obj, oneTime) {
-             var m = oneTime ? 1 : 12
-             if (obj.oldPrice) {
-                 return `<strike class="has-text-danger"><span class="is-size-6 has-text-grey">$</span><span class="has-text-grey">${obj.oldPrice * (this.yearly ? m : 1)}</span></strike><span class="ml-2 tag is-info is-small">${Math.round(this.off(obj, oneTime))}% off</span>`
-             }
-
-             return '&nbsp;'
-         },
-         message: "",
-         error: "",
-         showContactSales: false,
-         submitting: false,
-         formData: {
-             plan: "",
-             name: "",
-             email: "",
-             company: "",
-             message: ""
-         },
-         showForm(obj) {
-             this.formData.plan = obj.name
-             this.showContactSales = true;
-         },
-         resetFormData() {
-             this.formData.plan = ""
-             this.formData.name = ""
-             this.formData.email = ""
-             this.formData.company = ""
-             this.formData.message = ""
-         },
-         resetAndCloseForm() {
-             this.resetFormData()
-             this.showContactSales = false;
-         },
-         sendMessage() {
-             var dataObj = this;
-             dataObj.submitting = true;
-
-             if (dataObj.formData.plan === "") {
-                 dataObj.error = "Plan is not selected";
-                 dataObj.submitting = false;
-                 return;
-             }
-
-             if (dataObj.formData.name === "") {
-                 dataObj.error = "Customer name is required";
-                 dataObj.submitting = false;
-                 return;
-             }
-             if (dataObj.formData.email === "") {
-                 dataObj.error = "Customer email is required";
-                 dataObj.submitting = false;
-                 return;
-             }
-             if (dataObj.formData.message === "") {
-                 dataObj.error = "Message is required";
-                 dataObj.submitting = false;
-                 return;
-             }
-
-             fetch("https://submit-form.com/mz01V79Q",
-                   {
-                       method: 'POST',
-                       headers: {
-                           "Content-Type": "application/json",
-                           Accept: "application/json",
-                       },
-                       body: JSON.stringify(dataObj.formData)
-                   }
-             )
-                 .then((resp) => {
-                     dataObj.message = "Thanks for the message, some one from Kadalu Technologies will contact you soon.";
-                     dataObj.submitting = false;
-                     dataObj.resetFormData();
-                 })
-                 .catch((err) => {
-                     dataObj.error = 'Failed to send message to Kadalu Team. Please send email to <a href="mailto:hello@kadalu.tech">hello@kadalu.tech</a>'
-                     dataObj.submitting = false;
-                     dataObj.resetFormData();
-                 })
-         },
-         yearly: false,
-         off(obj, oneTime) {
-             var m = oneTime ? 1 : 12
-             if (this.yearly) {
-                 return (obj.oldPrice * m - obj.price * (m == 12 ? 10 : 1)) * 100 / (obj.oldPrice * m)
-             }
-
-             return (obj.oldPrice - obj.price) * 100 / obj.oldPrice
-         }
-     }))
- });
-</script>
+        </section>
                 </div>
             </div>
-            <div class="footer has-background-primary has-text-white pt-6">
+            <div class="footer has-background-info-25 has-text-white pt-6">
     <div class="columns">
         <div class="column">
             <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Company</h2>
@@ -430,8 +132,7 @@
             <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Resources</h2>
             <a class="is-block has-text-white" href="/support">Support</a>
             <a class="is-block has-text-white" href="/security">Security</a>
-            <a class="is-block has-text-white" href="/gluster-vs-kadalu">Gluster vs Kadalu</a>
-            <a class="is-block has-text-white" href="/storage/quick-start">Kadalu Storage Quick start</a>
+            <a class="is-block has-text-white" href="/storage/quick-start">Gluster FS Quick start</a>
         </div>
         <div class="column">
             <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Community</h2>
@@ -447,7 +148,7 @@
         </div>
     </div>
     <div class="has-text-centered mt-6">
-        Copyright &copy; 2022 Kadalu Technologies Private Limited.
+        Copyright &copy; 2019-2024 Kadalu Technologies Private Limited.
     </div>
 </div>
 
