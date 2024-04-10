@@ -2,6 +2,6 @@
 title: Support
 ---
 
-Community support of Kadalu Storage is available for all users within the Kadalu Slack and Github issues.
+Community support of Gluster FS is available for all users within the Github issues and discussions.
 
 If you need SLAs, guaranteed response times, and enterprise-level services, or have account management issues, please contact us at the support@kadalu.tech email address.

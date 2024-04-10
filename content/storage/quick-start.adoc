@@ -1,31 +1,21 @@
 ---
-title: Kadalu Storage - Quick Start Guide
+title: Gluster FS - Quick Start Guide
 image: /images/kadalu-storage-intro.png
-description: Kadalu Storage is a distributed filesystem management system. At its core, at present, Kadalu uses the GlusterFS filesystem.
+description: Gluster is a free and open source software scalable network filesystem.
 ---
 
 == Introduction
-
-Kadalu Storage is a distributed filesystem management system. At its core, at present, Kadalu uses the GlusterFS filesystem.
+Gluster is a free and open source software scalable network filesystem.
 
 == Installation
 
-This guide assumes you will create a replica 3 (1x3) cluster using three nodes. The steps are the same if you plan to use a single node.
+This guide assumes you will create a replica 3 (1x3) volume using three nodes. The steps are the same if you plan to use a single node.
 
-- Add Kadalu Storage repository using the below commands.
-+
-[source]
-----
-echo 'deb https://kadalu.tech/pkgs/1.2.x/ubuntu/22.04 /' | sudo tee /etc/apt/sources.list.d/kadalu.list
-curl -fsSL https://kadalu.tech/pkgs/1.2.x/ubuntu/22.04/KEY.gpg | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kadalu.gpg > /dev/null
-sudo apt update
-----
-+
-- Install the latest Kadalu Storage packages on all the nodes.
-+
+Install the latest Gluster FS packages on all the nodes.
+
 [source, console]
 ----
-$ sudo apt install kadalu-storage
+$ sudo apt install glusterfs-server
 ----
 
 == Service Setup
@@ -34,94 +24,56 @@ Enable and start the kadalu-mgr service on all the storage nodes.
 
 [source,console]
 ----
-$ sudo systemctl enable kadalu-mgr
-$ sudo systemctl start kadalu-mgr
-----
-
-== Create a user and login
-
-Users can be created in any one of the storage nodes or in any dedicated node other than the storage nodes.
-
-[source,console]
-----
-$ kadalu user create admin
-Password: 
-User admin created successfully
-----
-
-Login
-
-[source,console]
-----
-$ kadalu user login admin
-Password:
-Login successful. Details saved in `/root/.kadalu/session`.
-Delete this file or run `kadalu logout`
-command to delete the session.
+$ sudo systemctl enable glusterd
+$ sudo systemctl start glusterd
 ----
 
 == Add storage nodes
-The following commands are run from the storage manager (which can be one of the storage nodes or any separate node) which was chosen in the previous step.
-
-**Note**: The below steps can be skipped and can be done as part of pool create by passing `--auto-add-nodes` during pool create command.
-
-=== Step 1:
-
-Add nodes to the cluster
+The following commands are run from any one storage node. Login to one node and add other two nodes to the Cluster.
 
 [source,console]
 ----
-$ kadalu node add vm1
-Node vm1 added successfully
-ID: 710acd83-d3aa-4292-b362-543599d12edf
-$
-$ kadalu node add vm2
-Node vm2 added successfully
-ID: dfed8210-53d4-44e6-8a8b-7abe3fddb145
-$
-$ kadalu node add vm3
-Node vm3 added successfully
-ID: 9ac5d869-9542-4dac-9c88-97cfb11a5738
-$ kadalu node list
-Name   ID                                    Endpoint
-vm3    9ac5d869-9542-4dac-9c88-97cfb11a5738  http://vm3:3000
-vm2    dfed8210-53d4-44e6-8a8b-7abe3fddb145  http://vm2:3000
-vm1    710acd83-d3aa-4292-b362-543599d12edf  http://vm1:3000
+vm1 # gluster peer probe vm2
+vm1 # gluster peer probe vm3
+
+vm1 # gluster pool list
+UUID                                    Hostname        State
+9ac5d869-9542-4dac-9c88-97cfb11a5738    localhost       Connected
+dfed8210-53d4-44e6-8a8b-7abe3fddb145    vm2             Connected 
+710acd83-d3aa-4292-b362-543599d12edf    vm3             Connected
 ----
 
-== Create a storage pool
-Now create a directory to use as a storage unit and create a Kadalu Storage Pool.
+== Create a Gluster FS Volume
+Now create a directory to use as a storage unit(Brick) and create a Gluster FS Volume.
 
 [source,console]
 ----
-$ sudo mkdir /data/t2     (Run on all the storage nodes)
-$
-$ kadalu pool create Test-Pool replica 3 vm1:/data/t2 vm2:/data/t2 vm3:/data/t2
-Pool Test-Pool created successfully
-ID: 59a726ad-0010-4a4f-ac4d-b11e54e722d7
-$
-$ kadalu pool list
-Name          ID                                    State    Type          Size  Inodes
-Test-Pool     59a726ad-0010-4a4f-ac4d-b11e54e722d7  Started  Replicate  50.0GiB   26.2M
+# mkdir /data/t2     (Run on all the storage nodes)
+#
+# gluster volume create Test-Vol replica 3 vm1:/data/t2 vm2:/data/t2 vm3:/data/t2
+Volume Test-Vol created successfully
+#
+# gluster volume info
+Volume Name: Test-Vol
+Type: Replicate
+Volume ID: 6e2e447d-550d-44e4-85be-33b35933de3c
+Status: Started
+Snap Volume: no
+Number of Bricks: 1 x 3 = 3
+Transport-type: tcp
+Bricks:
+Brick1: vm1:/data/t2 
+Brick2: vm2:/data/t2 
+Brick3: vm3:/data/t2 
 ----
 
-**Note**: The above command can be written as:
+== Mount the volume
 
 [source,console]
 ----
-$ kadalu pool create Test-Pool replica 3 vm1:/data/t2 vm2:/data/t2 vm3:/data/t2 --auto-add-nodes
-----
-
-And the steps to create pool and node addition can be skipped.
-
-== Mount the pool
-
-[source,console]
-----
-$ sudo mkdir /mnt/kadalu_pool
-$ sudo kadalu user login admin
-$ sudo mount -t kadalu Test-Pool /mnt/kadalu_pool/
-$ df -h /mnt/kadalu_pool/
+# mkdir /mnt/test-vol
+# mount -t glusterfs Test-Vol /mnt/test-vol/
+# df -h /mnt/test-vol/
 Filesystem           Size  Used Avail Use% Mounted on
-kadalu:/Test-Pool     30G  554M   30G   2% /mnt/kadalu_pool
+glusterfs:/Test-Vol  30G  554M   30G   2% /mnt/test-vol
 ----
