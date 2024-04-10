@@ -2,6 +2,10 @@
 title: About Us
 ---
 
-Kadalu Technologies was started by the core team members of GlusterFS to provide Enterprise support to Kadalu Storage, Gluster feature development, and Consultancy services.
+**Kadalu Technologies** is a Indian tech company dedicated to make **Gluster FS** easily accessible for all. We help startups and enterprises adopt and run Gluster FS in production.
 
-We provide enterprise support for Kadalu Storage. We also develop Gluster features and provide Consultancy based on the client’s needs. Write to us at hello@kadalu.tech if you have any questions about our offerings.
+We are part of Gluster FS core team and Kadalu Technologies is one of the major contributor to Gluster.
+
+We provide enterprise support for GlusterFS. We also develop Gluster features and provide Consultancy based on the client’s needs. Write to us at link:mailto:hello@kadalu.tech[hello@kadalu.tech] if you have any questions about our offerings.
+
+Our small but uniquely experienced team has more than 40 years of combined GlusterFS experience.

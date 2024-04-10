@@ -6,7 +6,7 @@
             <%= render '/top_bar.*' %>
             <div class="p-4 container is-max-desktop" id="content">
                 <h1 class="title has-text-centered"><%= @item[:title] %></h1>
-                <div class="content">
+                <div class="content" style="min-height: 70vh">
                     <%= yield %>
                 </div>
             </div>

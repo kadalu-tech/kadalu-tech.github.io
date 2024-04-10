@@ -47,7 +47,7 @@ AUTHORS = {
   },
   :aravindavk => {
     :bio => "Co-Founder, CTO - Kadalu Technologies",
-    :name => "Aravinda Vishwanathapura",
+    :name => "Aravinda VK",
     :site => "https://aravindavk.in",
     :twitter => "aravindavk"
   },
