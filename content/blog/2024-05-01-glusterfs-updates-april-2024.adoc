@@ -1,0 +1,34 @@
+---
+title: Gluster FS updates - April 2024
+author: aravindavk
+description: Gluster FS updates from Kadalu Technologies. Premium packages, Gluster FS support, new project updates and much more.
+---
+
+== Premium packages
+
+We asked users a few questions related to premium packages and the distributions. Based on the responses, we started creating the packages and testing for the production use cases. If you haven't participated, the survey is still open. Please provide your feedback. **Participants of the Gluster Premium packages survey can get the packages with a 40% discount for the first year once the packages are available.**.
+
+++++
+<div class="has-text-centered pt-2 pb-6">
+<a href="https://forms.gle/xUzZUPxMcdBzNjqGA" class="button has-background-warning-45 has-text-white">Premium Packages survey</a>
+</div>
+++++
+
+We are running thousands of automated tests to make sure Gluster FS will not break when used in production. We are using https://github.com/kadalu/binnacle[Kadalu Binnacle] for provisioning the resources and running the tests. Kadalu Binnacle is a simple imperative tool for tests and infrastructure automation.
+
+== Gluster FS support
+We are now offering Premium Gluster FS Email support. Tutorials, interactive documentation and access to troubleshooting documentation are included in the plan. link:/pricing[See here] for the Pricing details.
+
+== Logging improvements
+We started identifying the cryptic log messages or unnecessary log messages that flood the logs and consume a lot of disk space. We will improve the log messages to help users quickly understand the issue.
+
+== New Project - Glusterd Plus
+After trying out many options, we started a new project to provide the modern features on top of Glusterd. Glusterd Plus provides ReST APIs, Web Console and many other features on top of Glusterd and provides the framework to implement new features. Refer link:/blog/new-project-glusterd-plus[this blog post] to learn about the Glusterd Plus project.
+
+++++
+<div class="has-text-centered">
+* * * * * * *
+</div>
+++++
+
+Write to us at hello@kadalu.tech if you have any questions about our offerings and projects related to Gluster FS.
