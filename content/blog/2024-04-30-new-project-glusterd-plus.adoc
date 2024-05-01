@@ -1,0 +1,52 @@
+---
+title: New Project - Glusterd Plus
+author: aravindavk
+description: We are working on a new project to provide modern management features to Gluster FS without breaking the existing deployments of  Gluster FS. Glusterd Plus provides the ReST APIs to all the existing features using Glusterd and provides the framework to develop the new features. The project is backward compatible and allows to add the new features incrementally.
+image: /images/glusterd-plus-peers.png
+---
+
+We are working on a new project to provide modern management features to Gluster FS without breaking the existing deployments of  Gluster FS. Glusterd Plus provides the ReST APIs to all the existing features using Glusterd and provides the framework to develop the new features. The project is backward compatible and allows to add the new features incrementally.
+
+image::/images/glusterd-plus-peers.png[List of Peers - Glusterd Plus]
+
+== Features
+- **ReST APIs** - Glusterd Plus runs Gluster commands and provides ReST APIs for the existing Gluster FS features. Additionally, it provides many new APIs for bricks management and smart volume management.
+- **Enhanced CLI** - Glusterd Plus also provides the CLI to manage the Gluster FS cluster.
+- **SDKs** - SDKs are available in multiple programming languages. To begin with, Glusterd Plus provides Python and Ruby SDK.
+- **Web Console** - Glusterd Plus provides a featured Web Console to manage Gluster FS volumes and Peers.
+- **Inbuilt Metrics Exporter** - Glusterd Plus provides the metrics in JSON and Prometheus-compatible format.
+- **Status Reports** - Glusterd Plus APIs will help to create customized dashboards or status reports.
+- **Framework for new features** - Glusterd Plus provides the framework to implement the new features for Gluster FS.
+
+== Comparisons with alternatives
+
+=== Glusterd Plus Web console vs Gdash
+
+https://github.com/kadalu/gdash[Gdash] is a lightweight tool maintained by Kadalu Technologies.
+
+- Gdash provides very basic details about the Cluster. Glusterd Plus Web console provides complete details about the Cluster including Prometheus compatible metrics.
+- Gdash is read-only, it doesn't allow to manage the Cluster. Using Glusterd Plus Web console, easily manage the Gluster FS clusters.
+
+
+=== Glusterd Plus vs Heketi
+The https://github.com/heketi/heketi[Heketi] project is not maintained anymore, but since many users still use it, this comparison will surely be useful for them.
+
+- **State maintenance** - Heketi maintains an additional state along with the Glusterd state. There are chances of going out of sync if some operations are done via the Gluster FS command line. Glusterd Plus will not use the separate store for the existing Gluster FS features. New features state will be stored outside of Glusterd when needed.
+- **APIs** - Heketi provides high-level APIs and provides less control to users. For example, the Volume can be created by giving size and other tags as input, but it doesn’t allow users to specify the nodes or bricks. Heketi only supports creating the Gluster Volume using  LVM(To support Snapshots) bricks. Glusterd Plus provides low-level APIs that are available via Gluster FS commands along with the new APIs.
+- **Execution** - Heketi executes the Gluster commands and  LVM commands via SSH, and the Heketi server can be hosted outside the  Gluster Cluster. Glusterd Plus is installed in all the server nodes and executes the commands locally.
+- **High availability** - Heketi runs in a single node and doesn’t provide high availability for the APIs. Heketi state is saved in a Gluster volume to provide high availability for metadata. If the  Heketi node goes down, it can be started in another node by using the state from the Gluster volume. Glusterd Plus is installed in all the storage nodes and only a few nodes can be exposed to the external world.
+- **Coverage** - Heketi doesn’t support all the Gluster FS  features. It is very opinionated and supports only a specific use case. Glusterd Plus will provide APIs for all the existing features and the framework to develop the new features.
+
+There are many other differences, but I haven’t used Heketi enough to write about all the differences. Hope this high-level comparison helps.
+
+
+=== Glusterd Plus vs Glusterd2
+The https://github.com/gluster/glusterd2[Glusterd2] project is archived by its developers. The differences between Glusterd2 and Glusterd Plus are:
+
+- **Architecture** - Glusterd2 is a re-implementation of  Glusterd to provide modern features. Glusterd Plus is an additional layer on top of Glusterd to provide modern features.
+- **Features** - All the Gluster FS features are not available with Glusterd2. Glusterd Plus provides the features incrementally, if some of the Gluster FS features are not available with  Glusterd Plus then use them using the Gluster FS commands.
+- **Migration** - Cluster downtime is required to migrate from the Gluster FS cluster to use Glusterd2. All the connected mounts(clients) will face downtime during the migration. Glusterd Plus can be installed on the existing Cluster without disturbing the existing mounts or the servers.
+- **Backward compatibility** - Glusterd2 is not backward compatible with Gluster FS CLIs, this will break all the applications that use Gluster FS CLI. Glusterd Plus will not affect the existing integrations.
+
+== Conclusion
+We are aiming to make this project available for general use by the end of this year (2024). Stay tuned to learn more about this project.  Please write to us at hello@kadalu.tech if you want to sponsor this project or expedite the project development.
