@@ -1,0 +1,198 @@
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charSet="utf-8"/>
+    <title>Gluster FS updates - April 2024</title>
+    <link rel="stylesheet" href="/bulma@1.0.0.min.css">
+    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="/syntax-highlight-emacs.css">
+    <script defer src="/alpinejs-3.10.5.min.js"></script>
+
+    <meta name="generator" content="Nanoc 4.12.20">
+    
+<link href="/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/favicon.ico" />
+<meta name="generator" content="Nanoc 4.12.20">
+<meta property="og:title" content="Gluster FS updates - April 2024"/>
+<meta name="author" content="aravindavk"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="description" content="Gluster FS updates from Kadalu Technologies. Premium packages, Gluster FS support, new project updates and much more."/>
+<meta property="og:description" content="Gluster FS updates from Kadalu Technologies. Premium packages, Gluster FS support, new project updates and much more."/>
+<link rel="canonical" href="/blog/glusterfs-updates-april-2024/"/>
+<meta property="og:url" content="/blog/glusterfs-updates-april-2024/"/>
+<meta property="og:site_name" content="Kadalu"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2024-05-01"/>
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:image" content="https://kadalu.tech/images/logo-icon-spaced.png"/>
+<meta property="og:image" content="https://kadalu.tech/images/logo-icon-spaced.png"/>
+
+<meta name="twitter:site" content="https://kadalu.tech"/>
+<meta name="twitter:title" content="Gluster FS updates - April 2024"/>
+<meta name="twitter:description" content="Gluster FS updates from Kadalu Technologies. Premium packages, Gluster FS support, new project updates and much more."/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <script defer data-domain="kadalu.tech" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+    <body>
+        <div id="main">
+            <nav class="navbar" role="navigation" aria-label="main navigation" x-data="{showing: false}">
+    <div class="navbar-brand" style="min-height: 70px">
+        <a class="navbar-item" href="/">
+            <img src="/images/logo.svg" style="max-height: 50px"/>
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" :class="showing ? 'is-active' : ''" @click="showing = !showing" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu" :class="showing ? 'is-active' : ''">
+        <div class="navbar-end">
+            <a class="navbar-item" href="/blog">
+                Blog
+            </a>
+
+            <a class="navbar-item" href="/pricing">
+                Pricing
+            </a>
+
+            <a class="navbar-item" href="/about">
+                About Us
+            </a>
+        </div>
+    </div>
+    </div>
+</nav>
+
+            <div class="container is-max-desktop px-4" id="content">
+                <div class="has-text-centered py-6">
+                    <a href="/">
+                        <figure class="image is-64x64" style="margin: auto">
+                            <img class="is-rounded" src="https://github.com/aravindavk.png?size=300px">
+                        </figure>
+                        <p class="has-text-grey pb-6 is-size-6 is-uppercase">Aravinda VK</p>
+                    </a>
+                </div>
+
+                <div class="">
+                    <h1 class="title is-1 has-text-centered">Gluster FS updates - April 2024</h1>
+                    <div class="has-text-grey mb-1 has-text-centered">
+                        Posted on <strong>May 1, 2024</strong> by <strong>Aravinda VK</strong>
+                    </div>
+                    <p class="has-text-centered">
+                        <span class="icon-text">
+                            <svg class="mr-1 icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                            <span><strong>1 minute</strong> read.</span>
+                        </span>
+                    </p>
+                    <div class="content py-6">
+                        <div class="sect1">
+<h2 id="_premium_packages">Premium packages</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We asked users a few questions related to premium packages and the distributions. Based on the responses, we started creating the packages and testing for the production use cases. If you haven&#8217;t participated, the survey is still open. Please provide your feedback. <strong>Participants of the Gluster Premium packages survey can get the packages with a 40% discount for the first year once the packages are available.</strong>.</p>
+</div>
+<div class="has-text-centered pt-2 pb-6">
+<a href="https://forms.gle/xUzZUPxMcdBzNjqGA" class="button has-background-warning-45 has-text-white">Premium Packages survey</a>
+</div>
+<div class="paragraph">
+<p>We are running thousands of automated tests to make sure Gluster FS will not break when used in production. We are using <a href="https://github.com/kadalu/binnacle">Kadalu Binnacle</a> for provisioning the resources and running the tests. Kadalu Binnacle is a simple imperative tool for tests and infrastructure automation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_gluster_fs_support">Gluster FS support</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We are now offering Premium Gluster FS Email support. Tutorials, interactive documentation and access to troubleshooting documentation are included in the plan. <a href="/pricing">See here</a> for the Pricing details.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_logging_improvements">Logging improvements</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We started identifying the cryptic log messages or unnecessary log messages that flood the logs and consume a lot of disk space. We will improve the log messages to help users quickly understand the issue.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_new_project_glusterd_plus">New Project - Glusterd Plus</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After trying out many options, we started a new project to provide the modern features on top of Glusterd. Glusterd Plus provides ReST APIs, Web Console and many other features on top of Glusterd and provides the framework to implement new features. Refer <a href="/blog/new-project-glusterd-plus">this blog post</a> to learn about the Glusterd Plus project.</p>
+</div>
+<div class="has-text-centered">
+* * * * * * *
+</div>
+<div class="paragraph">
+<p>Write to us at <a href="mailto:hello@kadalu.tech">hello@kadalu.tech</a> if you have any questions about our offerings and projects related to Gluster FS.</p>
+</div>
+</div>
+</div>
+                    </div>
+                </div>
+
+                <div class="has-text-centered mb-6 notification is-light">
+                    <p class="has-text-grey is-uppercase is-size-5 pb-2">About Aravinda VK</p>
+                    
+                    <p class="mb-4">Co-Founder, CTO - Kadalu Technologies</p>
+                    
+                    <p>
+                        
+                        <a class="mr-2" href="https://aravindavk.in">Website</a>|
+                        
+                        
+                        <a class="mx-2" href="https://twitter.com/aravindavk">Twitter</a>|
+                        
+                        <a class="ml-2" href="https://github.com/aravindavk">Github</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer has-background-info-25 has-text-white pt-6">
+    <div class="columns">
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Company</h2>
+            <a class="is-block has-text-white" href="/about">About Us</a>
+            <a class="is-block has-text-white" href="/blog">Blog Posts</a>
+        </div>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Resources</h2>
+            <a class="is-block has-text-white" href="/support">Support</a>
+            <a class="is-block has-text-white" href="/security">Security</a>
+            <a class="is-block has-text-white" href="/storage/quick-start">Gluster FS Quick start</a>
+        </div>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Community</h2>
+            <a class="is-block has-text-white" target="_blank" href="https://join.slack.com/t/kadalu/shared_invite/enQtNzg1ODQ0MDA5NTM2LWMzMTc5ZTJmMjk4MzI0YWVhOGFlZTJjZjY5MDNkZWI0Y2VjMDBlNzVkZmI1NWViN2U3MDNlNDJhNjE5OTBlOGU">Community Slack</a>
+            <a class="is-block has-text-white" target="_blank" href="https://github.com/kadalu">Github</a>
+        </div>
+
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Contact Us</h2>
+            <a class="is-block has-text-white" href="mailto:hello@kadalu.tech">Email to hello@kadalu.tech</a>
+            <a class="is-block has-text-white" href="https://twitter.com/kadalu_tech">Twitter</a>
+            <a class="is-block has-text-white" href="https://linkedin.com/kadalu_tech">Linkedin</a>
+        </div>
+    </div>
+    <div class="has-text-centered mt-6">
+        Copyright &copy; 2019-2024 Kadalu Technologies Private Limited.
+    </div>
+</div>
+
+        </div>
+    </body>
+</html>

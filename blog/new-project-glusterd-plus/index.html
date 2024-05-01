@@ -1,0 +1,271 @@
+
+
+<!DOCTYPE HTML>
+<html lang="en">
+    <head>
+    <meta name="viewport" content="width=device-width"/>
+    <meta charSet="utf-8"/>
+    <title>New Project - Glusterd Plus</title>
+    <link rel="stylesheet" href="/bulma@1.0.0.min.css">
+    <link rel="stylesheet" href="/stylesheet.css">
+    <link rel="stylesheet" href="/syntax-highlight-emacs.css">
+    <script defer src="/alpinejs-3.10.5.min.js"></script>
+
+    <meta name="generator" content="Nanoc 4.12.20">
+    
+<link href="/favicon.ico" rel="icon" type="image/x-icon" />
+<link rel="apple-touch-icon" href="/favicon.ico" />
+<meta name="generator" content="Nanoc 4.12.20">
+<meta property="og:title" content="New Project - Glusterd Plus"/>
+<meta name="author" content="aravindavk"/>
+<meta property="og:locale" content="en_US"/>
+<meta name="description" content="We are working on a new project to provide modern management features to Gluster FS without breaking the existing deployments of  Gluster FS. Glusterd Plus provides the ReST APIs to all the existing features using Glusterd and provides the framework to develop the new features. The project is backward compatible and allows to add the new features incrementally."/>
+<meta property="og:description" content="We are working on a new project to provide modern management features to Gluster FS without breaking the existing deployments of  Gluster FS. Glusterd Plus provides the ReST APIs to all the existing features using Glusterd and provides the framework to develop the new features. The project is backward compatible and allows to add the new features incrementally."/>
+<link rel="canonical" href="/blog/new-project-glusterd-plus/"/>
+<meta property="og:url" content="/blog/new-project-glusterd-plus/"/>
+<meta property="og:site_name" content="Kadalu"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2024-04-30"/>
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://kadalu.tech/images/glusterd-plus-peers.png"/>
+<meta property="og:image" content="https://kadalu.tech/images/glusterd-plus-peers.png"/>
+
+<meta name="twitter:site" content="https://kadalu.tech"/>
+<meta name="twitter:title" content="New Project - Glusterd Plus"/>
+<meta name="twitter:description" content="We are working on a new project to provide modern management features to Gluster FS without breaking the existing deployments of  Gluster FS. Glusterd Plus provides the ReST APIs to all the existing features using Glusterd and provides the framework to develop the new features. The project is backward compatible and allows to add the new features incrementally."/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+
+    <script defer data-domain="kadalu.tech" src="https://plausible.io/js/plausible.js"></script>
+</head>
+
+    <body>
+        <div id="main">
+            <nav class="navbar" role="navigation" aria-label="main navigation" x-data="{showing: false}">
+    <div class="navbar-brand" style="min-height: 70px">
+        <a class="navbar-item" href="/">
+            <img src="/images/logo.svg" style="max-height: 50px"/>
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" :class="showing ? 'is-active' : ''" @click="showing = !showing" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu" :class="showing ? 'is-active' : ''">
+        <div class="navbar-end">
+            <a class="navbar-item" href="/blog">
+                Blog
+            </a>
+
+            <a class="navbar-item" href="/pricing">
+                Pricing
+            </a>
+
+            <a class="navbar-item" href="/about">
+                About Us
+            </a>
+        </div>
+    </div>
+    </div>
+</nav>
+
+            <div class="container is-max-desktop px-4" id="content">
+                <div class="has-text-centered py-6">
+                    <a href="/">
+                        <figure class="image is-64x64" style="margin: auto">
+                            <img class="is-rounded" src="https://github.com/aravindavk.png?size=300px">
+                        </figure>
+                        <p class="has-text-grey pb-6 is-size-6 is-uppercase">Aravinda VK</p>
+                    </a>
+                </div>
+
+                <div class="">
+                    <h1 class="title is-1 has-text-centered">New Project - Glusterd Plus</h1>
+                    <div class="has-text-grey mb-1 has-text-centered">
+                        Posted on <strong>Apr 30, 2024</strong> by <strong>Aravinda VK</strong>
+                    </div>
+                    <p class="has-text-centered">
+                        <span class="icon-text">
+                            <svg class="mr-1 icon" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z" clip-rule="evenodd"></path></svg>
+                            <span><strong>5 minutes</strong> read.</span>
+                        </span>
+                    </p>
+                    <div class="content py-6">
+                        <div class="paragraph">
+<p>We are working on a new project to provide modern management features to Gluster FS without breaking the existing deployments of  Gluster FS. Glusterd Plus provides the ReST APIs to all the existing features using Glusterd and provides the framework to develop the new features. The project is backward compatible and allows to add the new features incrementally.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="/images/glusterd-plus-peers.png" alt="List of Peers - Glusterd Plus">
+</div>
+</div>
+<div class="sect1">
+<h2 id="_features">Features</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p><strong>ReST APIs</strong> - Glusterd Plus runs Gluster commands and provides ReST APIs for the existing Gluster FS features. Additionally, it provides many new APIs for bricks management and smart volume management.</p>
+</li>
+<li>
+<p><strong>Enhanced CLI</strong> - Glusterd Plus also provides the CLI to manage the Gluster FS cluster.</p>
+</li>
+<li>
+<p><strong>SDKs</strong> - SDKs are available in multiple programming languages. To begin with, Glusterd Plus provides Python and Ruby SDK.</p>
+</li>
+<li>
+<p><strong>Web Console</strong> - Glusterd Plus provides a featured Web Console to manage Gluster FS volumes and Peers.</p>
+</li>
+<li>
+<p><strong>Inbuilt Metrics Exporter</strong> - Glusterd Plus provides the metrics in JSON and Prometheus-compatible format.</p>
+</li>
+<li>
+<p><strong>Status Reports</strong> - Glusterd Plus APIs will help to create customized dashboards or status reports.</p>
+</li>
+<li>
+<p><strong>Framework for new features</strong> - Glusterd Plus provides the framework to implement the new features for Gluster FS.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_comparisons_with_alternatives">Comparisons with alternatives</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_glusterd_plus_web_console_vs_gdash">Glusterd Plus Web console vs Gdash</h3>
+<div class="paragraph">
+<p><a href="https://github.com/kadalu/gdash">Gdash</a> is a lightweight tool maintained by Kadalu Technologies.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Gdash provides very basic details about the Cluster. Glusterd Plus Web console provides complete details about the Cluster including Prometheus compatible metrics.</p>
+</li>
+<li>
+<p>Gdash is read-only, it doesn&#8217;t allow to manage the Cluster. Using Glusterd Plus Web console, easily manage the Gluster FS clusters.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_glusterd_plus_vs_heketi">Glusterd Plus vs Heketi</h3>
+<div class="paragraph">
+<p>The <a href="https://github.com/heketi/heketi">Heketi</a> project is not maintained anymore, but since many users still use it, this comparison will surely be useful for them.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>State maintenance</strong> - Heketi maintains an additional state along with the Glusterd state. There are chances of going out of sync if some operations are done via the Gluster FS command line. Glusterd Plus will not use the separate store for the existing Gluster FS features. New features state will be stored outside of Glusterd when needed.</p>
+</li>
+<li>
+<p><strong>APIs</strong> - Heketi provides high-level APIs and provides less control to users. For example, the Volume can be created by giving size and other tags as input, but it doesn’t allow users to specify the nodes or bricks. Heketi only supports creating the Gluster Volume using  LVM(To support Snapshots) bricks. Glusterd Plus provides low-level APIs that are available via Gluster FS commands along with the new APIs.</p>
+</li>
+<li>
+<p><strong>Execution</strong> - Heketi executes the Gluster commands and  LVM commands via SSH, and the Heketi server can be hosted outside the  Gluster Cluster. Glusterd Plus is installed in all the server nodes and executes the commands locally.</p>
+</li>
+<li>
+<p><strong>High availability</strong> - Heketi runs in a single node and doesn’t provide high availability for the APIs. Heketi state is saved in a Gluster volume to provide high availability for metadata. If the  Heketi node goes down, it can be started in another node by using the state from the Gluster volume. Glusterd Plus is installed in all the storage nodes and only a few nodes can be exposed to the external world.</p>
+</li>
+<li>
+<p><strong>Coverage</strong> - Heketi doesn’t support all the Gluster FS  features. It is very opinionated and supports only a specific use case. Glusterd Plus will provide APIs for all the existing features and the framework to develop the new features.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are many other differences, but I haven’t used Heketi enough to write about all the differences. Hope this high-level comparison helps.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_glusterd_plus_vs_glusterd2">Glusterd Plus vs Glusterd2</h3>
+<div class="paragraph">
+<p>The <a href="https://github.com/gluster/glusterd2">Glusterd2</a> project is archived by its developers. The differences between Glusterd2 and Glusterd Plus are:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Architecture</strong> - Glusterd2 is a re-implementation of  Glusterd to provide modern features. Glusterd Plus is an additional layer on top of Glusterd to provide modern features.</p>
+</li>
+<li>
+<p><strong>Features</strong> - All the Gluster FS features are not available with Glusterd2. Glusterd Plus provides the features incrementally, if some of the Gluster FS features are not available with  Glusterd Plus then use them using the Gluster FS commands.</p>
+</li>
+<li>
+<p><strong>Migration</strong> - Cluster downtime is required to migrate from the Gluster FS cluster to use Glusterd2. All the connected mounts(clients) will face downtime during the migration. Glusterd Plus can be installed on the existing Cluster without disturbing the existing mounts or the servers.</p>
+</li>
+<li>
+<p><strong>Backward compatibility</strong> - Glusterd2 is not backward compatible with Gluster FS CLIs, this will break all the applications that use Gluster FS CLI. Glusterd Plus will not affect the existing integrations.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_conclusion">Conclusion</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>We are aiming to make this project available for general use by the end of this year (2024). Stay tuned to learn more about this project.  Please write to us at <a href="mailto:hello@kadalu.tech">hello@kadalu.tech</a> if you want to sponsor this project or expedite the project development.</p>
+</div>
+</div>
+</div>
+                    </div>
+                </div>
+
+                <div class="has-text-centered mb-6 notification is-light">
+                    <p class="has-text-grey is-uppercase is-size-5 pb-2">About Aravinda VK</p>
+                    
+                    <p class="mb-4">Co-Founder, CTO - Kadalu Technologies</p>
+                    
+                    <p>
+                        
+                        <a class="mr-2" href="https://aravindavk.in">Website</a>|
+                        
+                        
+                        <a class="mx-2" href="https://twitter.com/aravindavk">Twitter</a>|
+                        
+                        <a class="ml-2" href="https://github.com/aravindavk">Github</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer has-background-info-25 has-text-white pt-6">
+    <div class="columns">
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Company</h2>
+            <a class="is-block has-text-white" href="/about">About Us</a>
+            <a class="is-block has-text-white" href="/blog">Blog Posts</a>
+        </div>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Resources</h2>
+            <a class="is-block has-text-white" href="/support">Support</a>
+            <a class="is-block has-text-white" href="/security">Security</a>
+            <a class="is-block has-text-white" href="/storage/quick-start">Gluster FS Quick start</a>
+        </div>
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Community</h2>
+            <a class="is-block has-text-white" target="_blank" href="https://join.slack.com/t/kadalu/shared_invite/enQtNzg1ODQ0MDA5NTM2LWMzMTc5ZTJmMjk4MzI0YWVhOGFlZTJjZjY5MDNkZWI0Y2VjMDBlNzVkZmI1NWViN2U3MDNlNDJhNjE5OTBlOGU">Community Slack</a>
+            <a class="is-block has-text-white" target="_blank" href="https://github.com/kadalu">Github</a>
+        </div>
+
+        <div class="column">
+            <h2 class="has-font-weight-semibold is-size-5 is-underlined py-2">Contact Us</h2>
+            <a class="is-block has-text-white" href="mailto:hello@kadalu.tech">Email to hello@kadalu.tech</a>
+            <a class="is-block has-text-white" href="https://twitter.com/kadalu_tech">Twitter</a>
+            <a class="is-block has-text-white" href="https://linkedin.com/kadalu_tech">Linkedin</a>
+        </div>
+    </div>
+    <div class="has-text-centered mt-6">
+        Copyright &copy; 2019-2024 Kadalu Technologies Private Limited.
+    </div>
+</div>
+
+        </div>
+    </body>
+</html>
