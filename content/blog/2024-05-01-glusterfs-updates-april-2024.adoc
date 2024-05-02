@@ -23,7 +23,7 @@ We are now offering Premium Gluster FS Email support. Tutorials, interactive doc
 We started identifying the cryptic log messages or unnecessary log messages that flood the logs and consume a lot of disk space. We will improve the log messages to help users quickly understand the issue.
 
 == New Project - Glusterd Plus
-After trying out many options, we started a new project to provide the modern features on top of Glusterd. Glusterd Plus provides ReST APIs, Web Console and many other features on top of Glusterd and provides the framework to implement new features. Refer link:/blog/new-project-glusterd-plus[this blog post] to learn about the Glusterd Plus project.
+After trying out many options, we started a new project to provide the modern features on top of Glusterd. Glusterd Plus provides ReST APIs, Web Console and many other features on top of Glusterd and provides the framework to implement new features. Refer link:/blog/project-update-glusterd-plus[this blog post] to learn about the Glusterd Plus project.
 
 ++++
 <div class="has-text-centered">
