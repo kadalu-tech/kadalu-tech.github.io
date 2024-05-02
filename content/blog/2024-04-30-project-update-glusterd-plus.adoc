@@ -5,6 +5,8 @@ description: We are working on a project to provide modern management features t
 image: /images/glusterd-plus-peers.png
 ---
 
+TLDR; Glusterd Plus is an enhancement to Glusterd to provide ReST APIs and other modern features to manage Gluster FS.
+
 Glusterd service manages all the Gluster FS resources (Bricks, volumes and peers).  It is hard to extend the Glusterd to add new features or to run the Gluster FS commands from remote nodes. The node should be part of the Cluster to execute the commands and execute commands via SSH to run the commands from a node that is not part of the Cluster. It is not always practical to execute the commands via SSH, for example, while managing the Cluster from a mobile phone or an application. 
 
 We are working on a project to provide modern management features to Gluster FS without breaking the existing deployments of Gluster FS. **Glusterd Plus** provides the ReST APIs to all the existing features using Glusterd and provides the framework to develop the new features. The project is backward compatible and allows to add the new features incrementally.
