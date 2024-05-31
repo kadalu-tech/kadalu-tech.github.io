@@ -44,6 +44,7 @@ $ ps ax | grep gluster/nfs
 +
 - **Will I face any stability issues with gnfs?**
 +
+Gnfs tests in upstream CI is not disabled, so it is tested for many use cases. However, fixing the issues for this module may be slow compared to NFS Ganesha issues. Many users prefer using gnfs for its simplicity.
 - **Where can I get the GlusterFS packages with gnfs enabled?**
 +
 Kadalu Technologies will provide the premium packages with gfs enabled. See the https://kadalu.tech/pricing[pricing page] for more details or write to us at hello@kadalu.tech.
