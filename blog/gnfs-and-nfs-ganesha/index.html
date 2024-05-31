@@ -5,7 +5,7 @@
     <head>
     <meta name="viewport" content="width=device-width"/>
     <meta charSet="utf-8"/>
-    <title>Gluster FS native NFS and NFS Ganesha</title>
+    <title>GlusterFS with gNFS and NFS Ganesha</title>
     <link rel="stylesheet" href="/bulma@1.0.0.min.css">
     <link rel="stylesheet" href="/stylesheet.css">
     <link rel="stylesheet" href="/syntax-highlight-emacs.css">
@@ -16,7 +16,7 @@
 <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 <link rel="apple-touch-icon" href="/favicon.ico" />
 <meta name="generator" content="Nanoc 4.12.20">
-<meta property="og:title" content="Gluster FS native NFS and NFS Ganesha"/>
+<meta property="og:title" content="GlusterFS with gNFS and NFS Ganesha"/>
 <meta name="author" content="aravindavk"/>
 <meta property="og:locale" content="en_US"/>
 <meta name="description" content="We experimented in our lab and found that we can keep both and let users select the implementation that suits them. Of Course there are limitations with the native NFS implementation, it supports only NFS v3. The improved documentation for gnfs and NFS Ganesha helps the users understand the differences between these two implementations and select the one that suits their workload."/>
@@ -32,7 +32,7 @@
 <meta property="og:image" content="https://kadalu.tech/images/gnfs-and-nfs-ganesha.png"/>
 
 <meta name="twitter:site" content="https://kadalu.tech"/>
-<meta name="twitter:title" content="Gluster FS native NFS and NFS Ganesha"/>
+<meta name="twitter:title" content="GlusterFS with gNFS and NFS Ganesha"/>
 <meta name="twitter:description" content="We experimented in our lab and found that we can keep both and let users select the implementation that suits them. Of Course there are limitations with the native NFS implementation, it supports only NFS v3. The improved documentation for gnfs and NFS Ganesha helps the users understand the differences between these two implementations and select the one that suits their workload."/>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="">
-                    <h1 class="title is-1 has-text-centered">Gluster FS native NFS and NFS Ganesha</h1>
+                    <h1 class="title is-1 has-text-centered">GlusterFS with gNFS and NFS Ganesha</h1>
                     <div class="has-text-grey mb-1 has-text-centered">
                         Posted on <strong>May 31, 2024</strong> by <strong>Aravinda VK</strong>
                     </div>
@@ -98,7 +98,7 @@
                     </p>
                     <div class="content py-6">
                         <div class="paragraph">
-<p>Gluster FS Native NFS server implementation was disabled since NFS Ganesha integration supported both NFS v3/v4 and to avoid confusion to users.</p>
+<p>GlusterFS Native NFS server implementation was disabled since NFS Ganesha integration supported both NFS v3/v4 and to avoid confusion to users.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -106,7 +106,7 @@
 </div>
 </div>
 <div class="paragraph">
-<p>Many users requested in the past to enable native NFS because of the complexities involved with NFS Ganesha. Since Gluster FS supports multiple access protocols why not support native NFS?</p>
+<p>Many users requested in the past to enable native NFS because of the complexities involved with NFS Ganesha. Since GlusterFS supports multiple access protocols why not support native NFS?</p>
 </div>
 <div class="paragraph">
 <p>We experimented in our lab and found that we can keep both and let users select the implementation that suits them. Of Course, there are limitations with the native NFS implementation, it supports only NFS v3. The improved documentation for gnfs and NFS Ganesha helps the users understand the differences between these two implementations and select the one that suits their workload.</p>
@@ -117,7 +117,7 @@
 <div class="sect2">
 <h3 id="_native_nfs_gnfs">Native NFS (gnfs)</h3>
 <div class="paragraph">
-<p>Native NFS is implemented as an xlator(Gluster FS module), when the glusterfs process starts with the Volfile (Volume config file) with the necessary NFS-related configuration, then the Gluster FS process speaks NFS! All these are handled by Glusterd and NFS export can be enabled or disabled using the volume set option.</p>
+<p>Native NFS is implemented as an xlator(GlusterFS module), when the glusterfs process starts with the Volfile (Volume config file) with the necessary NFS-related configuration, then the GlusterFS process speaks NFS! All these are handled by Glusterd and NFS export can be enabled or disabled using the volume set option.</p>
 </div>
 <div class="listingblock">
 <div class="content">
@@ -128,10 +128,10 @@
 <div class="sect2">
 <h3 id="_nfs_ganesha">NFS Ganesha</h3>
 <div class="paragraph">
-<p>NFS Ganesha is a third-party server that supports both NFSv3 and v4 and provides a framework(File System Abstraction Layer(FSAL) ) to integrate with any backend file system/storage. Gluster FS provides the FSAL plugin using libgfapi and is integrated with NFS Ganesha. NFS Ganesha accepts the requests from NFS clients and then uses the FSAL layer to transform the request into file system calls.</p>
+<p>NFS Ganesha is a third-party server that supports both NFSv3 and v4 and provides a framework(File System Abstraction Layer(FSAL) ) to integrate with any backend file system/storage. GlusterFS provides the FSAL plugin using libgfapi and is integrated with NFS Ganesha. NFS Ganesha accepts the requests from NFS clients and then uses the FSAL layer to transform the request into file system calls.</p>
 </div>
 <div class="paragraph">
-<p>Add the Gluster FS volume details to the NFS Ganesha configuration file to export a Gluster volume as NFS.</p>
+<p>Add the GlusterFS volume details to the NFS Ganesha configuration file to export a Gluster volume as NFS.</p>
 </div>
 </div>
 </div>
@@ -142,12 +142,16 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Is it possible to export a volume as both gnfs and NFS Ganesha?</strong>
-Yes. Technically this works but may not be useful since NFS Ganesha alone can support NFSv3/v4. It is not possible to run native NFS and NFS Ganesha services in the same server since both use the same ports. Export the volume as NFS Ganesha export from a server outside the Cluster and use gnfs using the volume set option.</p>
+<p><strong>Is it possible to export a volume as both gnfs and NFS Ganesha?</strong></p>
+<div class="paragraph">
+<p>Yes. Technically this works but may not be useful since NFS Ganesha alone can support NFSv3/v4. It is not possible to run native NFS and NFS Ganesha services in the same server since both use the same ports. Export the volume as NFS Ganesha export from a server outside the Cluster and use gnfs using the volume set option.</p>
+</div>
 </li>
 <li>
-<p><strong>Will enabling the gnfs cause issues for NFS Ganesha integration?</strong>
-No. gnfs is implemented as a xlator and that will not be included in regular volume mounts or the mount (libgfapi mount) used by NFS Ganesha FSAL. Gnfs is run as a separate process with its own volume config file (See below ps command output)</p>
+<p><strong>Will enabling the gnfs cause issues for NFS Ganesha integration?</strong></p>
+<div class="paragraph">
+<p>No. gnfs is implemented as a xlator and that will not be included in regular volume mounts or the mount (libgfapi mount) used by NFS Ganesha FSAL. Gnfs is run as a separate process with its own volume config file (See below ps command output)</p>
+</div>
 <div class="listingblock">
 <div class="content">
 <pre class="rouge highlight"><code data-lang="console"><span class="gp">$</span><span class="w"> </span>ps ax | <span class="nb">grep </span>gluster/nfs
@@ -156,12 +160,13 @@ No. gnfs is implemented as a xlator and that will not be included in regular vol
 </div>
 </li>
 <li>
-<p><strong>Will I face any stability issues with gnfs?</strong>
-Gnfs tests in upstream CI is not disabled, so it is tested for many use cases. However, fixing the issues for this module may be slow compared to NFS Ganesha issues. Many users prefer using gnfs for its simplicity.</p>
+<p><strong>Will I face any stability issues with gnfs?</strong></p>
 </li>
 <li>
-<p><strong>Where can I get the Gluster FS packages with gnfs enabled?</strong>
-Kadalu Technologies will provide the premium packages with gfs enabled. See the <a href="https://kadalu.tech/pricing">pricing page</a> for more details or write to us at <a href="mailto:hello@kadalu.tech">hello@kadalu.tech</a>.</p>
+<p><strong>Where can I get the GlusterFS packages with gnfs enabled?</strong></p>
+<div class="paragraph">
+<p>Kadalu Technologies will provide the premium packages with gfs enabled. See the <a href="https://kadalu.tech/pricing">pricing page</a> for more details or write to us at <a href="mailto:hello@kadalu.tech">hello@kadalu.tech</a>.</p>
+</div>
 </li>
 </ul>
 </div>
