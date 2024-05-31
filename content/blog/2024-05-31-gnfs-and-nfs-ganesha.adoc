@@ -1,0 +1,46 @@
+---
+title: Gluster FS native NFS and NFS Ganesha
+author: aravindavk
+description: We experimented in our lab and found that we can keep both and let users select the implementation that suits them. Of Course there are limitations with the native NFS implementation, it supports only NFS v3. The improved documentation for gnfs and NFS Ganesha helps the users understand the differences between these two implementations and select the one that suits their workload.
+image: /images/gnfs-and-nfs-ganesha.png
+---
+
+Gluster FS Native NFS server implementation was disabled since NFS Ganesha integration supported both NFS v3/v4 and to avoid confusion to users.
+
+image::/images/gnfs-and-nfs-ganesha.png[Gnfs and NFS Ganesha]
+
+Many users requested in the past to enable native NFS because of the complexities involved with NFS Ganesha. Since Gluster FS supports multiple access protocols why not support native NFS?
+
+We experimented in our lab and found that we can keep both and let users select the implementation that suits them. Of Course, there are limitations with the native NFS implementation, it supports only NFS v3. The improved documentation for gnfs and NFS Ganesha helps the users understand the differences between these two implementations and select the one that suits their workload.
+
+== Implementation details
+=== Native NFS (gnfs)
+Native NFS is implemented as an xlator(Gluster FS module), when the glusterfs process starts with the Volfile (Volume config file) with the necessary NFS-related configuration, then the Gluster FS process speaks NFS! All these are handled by Glusterd and NFS export can be enabled or disabled using the volume set option.
+
+[source]
+----
+gluster volume set vol1 nfs.disable off
+----
+
+=== NFS Ganesha
+NFS Ganesha is a third-party server that supports both NFSv3 and v4 and provides a framework(File System Abstraction Layer(FSAL) ) to integrate with any backend file system/storage. Gluster FS provides the FSAL plugin using libgfapi and is integrated with NFS Ganesha. NFS Ganesha accepts the requests from NFS clients and then uses the FSAL layer to transform the request into file system calls.
+
+Add the Gluster FS volume details to the NFS Ganesha configuration file to export a Gluster volume as NFS.
+
+== FAQs:
+
+- **Is it possible to export a volume as both gnfs and NFS Ganesha?**
+Yes. Technically this works but may not be useful since NFS Ganesha alone can support NFSv3/v4. It is not possible to run native NFS and NFS Ganesha services in the same server since both use the same ports. Export the volume as NFS Ganesha export from a server outside the Cluster and use gnfs using the volume set option.
+- **Will enabling the gnfs cause issues for NFS Ganesha integration?**
+No. gnfs is implemented as a xlator and that will not be included in regular volume mounts or the mount (libgfapi mount) used by NFS Ganesha FSAL. Gnfs is run as a separate process with its own volume config file (See below ps command output)
++
+[source,console]
+----
+$ ps ax | grep gluster/nfs
+ 841693 ?    	SLsl   0:01 /usr/sbin/glusterfs -s localhost --volfile-id gluster/nfs -p /var/run/gluster/nfs/nfs.pid -l /var/log/glusterfs/nfs.log -S /var/run/gluster/335fab3904fdd095.socket 
+----
++
+- **Will I face any stability issues with gnfs?**
+Gnfs tests in upstream CI is not disabled, so it is tested for many use cases. However, fixing the issues for this module may be slow compared to NFS Ganesha issues. Many users prefer using gnfs for its simplicity.
+- **Where can I get the Gluster FS packages with gnfs enabled?**
+Kadalu Technologies will provide the premium packages with gfs enabled. See the https://kadalu.tech/pricing[pricing page] for more details or write to us at hello@kadalu.tech.
