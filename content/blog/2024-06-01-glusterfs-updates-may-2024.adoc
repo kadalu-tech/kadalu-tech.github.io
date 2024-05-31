@@ -1,0 +1,66 @@
+---
+title: Gluster FS updates - May 2024
+author: aravindavk
+description: Premium packages, Glusterd Plus UI, APIs and CLI updates.
+image: /images/glusterdplus_cli.png
+---
+
+If you missed Gluster FS April updates, https://kadalu.tech/blog/glusterfs-updates-april-2024[see here].
+
+image::/images/glusterdplus_cli.png[Glusterd Plus CLI]
+
+== Premium packages
+
+- **Enable GNFS** - Gluster FS native NFS is disabled in upstream published packages. We are testing the Gluster FS packages with gnfs enabled. Both Gnfs and NFS Ganesha will be available for users. Read link:/blog/gnfs-and-nfs-ganesha[this blog post] to know more about Gnfs and NFS Ganesha.
+- **Ubuntu packages** - Ubuntu 22.04 and 24.04 packages are built and testing is in progress.
+
+== Glusterd Plus
+- **APIs** - APIs for Peer add, Peer list and delete peer added.
++
+[source]
+----
+POST   /api/v1/peers          -> Create a Peer
+GET    /api/v1/peers          -> List Peers
+DELETE /api/v1/peers/:address -> Delete a Peer
+----
++
+- **Web Console** - UI changes related to Peers management are now available.
+- **Prometheus and JSON metrics integration** - Glusterd Plus can now export the metrics in Prometheus or JSON format. Peers related metrics are available now. All the metrics exported via the Gluster Metrics Exporter project will be available with Glusterd Plus.
++
+[source,prometheus]
+----
+# HELP peer_count Shows the number of peers
+# TYPE peer_count gauge
+peer_count 3 1717081085361
+
+# HELP peer_state State of Peer
+# TYPE peer_state gauge
+peer_state{address="server1.gluster"} 1 1717081085361
+peer_state{address="server2.gluster"} 1 1717081085361
+peer_state{address="server3.gluster"} 1 1717081085361
+----
++
+- **Ubuntu Packages** - Install instructions for Glusterd Plus are still vague. We created the Ubuntu packages for Glusterd Plus, we will share the details after our testing. Not many features are available for now, let us know if you are interested in testing the packages and providing feedback.
+- **New CLI - glusterp** - An easy-to-use command line tool using the ReST APIs provided by Glusterd Plus.
++
+[source, console]
+----
+$ glusterp peer list
+Address           	ID                                	State
+server1.gluster   	1b58cfc0-15ed-40b8-be28-f7c341250777  Connected
+server2.gluster   	49a9efb5-7488-45af-8fbc-e508085898ff  Connected
+server3.gluster   	9b74a630-0af3-4b75-815a-546605ffa566  Connected
+----
++
+- **SDKs** - Ruby and Python SDKs are in progress. These SDKs will help the users to manage Gluster FS from Python/Ruby applications or to write automation scripts.
++
+[source,python]
+----
+from glusterd_plus import Connection
+
+conn = Connection("http://server1.gluster:3000")
+conn.add_peer("server2.gluster")
+print(conn.list_peers())
+----
+
+Write to us at hello@kadalu.tech if you have any questions about our offerings and projects related to Gluster FS.
