@@ -1,13 +1,11 @@
 ---
 title: GlusterFS updates - May 2024
 author: aravindavk
-description: Premium packages, Glusterd Plus UI, APIs and CLI updates.
+description: Gluster FS updates from Kadalu Technologies. Premium packages, Glusterd Plus UI, APIs and CLI updates.
 image: /images/glusterdplus_cli.png
 ---
 
 If you missed GlusterFS April updates, https://kadalu.tech/blog/glusterfs-updates-april-2024[see here].
-
-image::/images/glusterdplus_cli.png[Glusterd Plus CLI]
 
 == Premium packages
 
